@@ -306,7 +306,7 @@ Transform:
   m_GameObject: {fileID: 517136341}
   m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
   m_LocalPosition: {x: -50, y: 10, z: 50}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!65 &517136346
@@ -517,15 +517,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 51916b3a62ae2bb49ba650dc8332c2d1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 51916b3a62ae2bb49ba650dc8332c2d1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 51916b3a62ae2bb49ba650dc8332c2d1, type: 3}
       propertyPath: m_LocalScale.z
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51916b3a62ae2bb49ba650dc8332c2d1, type: 3}
@@ -627,7 +627,8 @@ GameObject:
   - 4: {fileID: 1324527786}
   - 33: {fileID: 1324527789}
   - 23: {fileID: 1324527788}
-  - 64: {fileID: 1324527787}
+  - 54: {fileID: 1324527790}
+  - 135: {fileID: 1324527787}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -646,20 +647,18 @@ Transform:
   m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!64 &1324527787
-MeshCollider:
+--- !u!135 &1324527787
+SphereCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6400000, guid: 79bce83937e43d042843a359e671ca99,
-    type: 2}
-  m_PrefabInternal: {fileID: 1538561213}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1324527785}
-  m_Material: {fileID: 13400000, guid: ba565a68c36aa3648bbf02f3f4b937dd, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 0
-  m_Mesh: {fileID: 4300002, guid: b170a071d9c685343bdda95ed3bf48ef, type: 3}
+  m_Radius: 18.6978989
+  m_Center: {x: -.857749939, y: .874025345, z: -.0699243546}
 --- !u!23 &1324527788
 Renderer:
   m_ObjectHideFlags: 0
@@ -690,6 +689,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1538561213}
   m_GameObject: {fileID: 1324527785}
   m_Mesh: {fileID: 4300002, guid: b170a071d9c685343bdda95ed3bf48ef, type: 3}
+--- !u!54 &1324527790
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1324527785}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1538561213
 Prefab:
   m_ObjectHideFlags: 0
@@ -744,13 +758,17 @@ Prefab:
     - target: {fileID: 6400000, guid: 79bce83937e43d042843a359e671ca99, type: 2}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: ba565a68c36aa3648bbf02f3f4b937dd,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 6400000, guid: 79bce83937e43d042843a359e671ca99, type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300002, guid: b170a071d9c685343bdda95ed3bf48ef, type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 6400000, guid: 79bce83937e43d042843a359e671ca99, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: 79bce83937e43d042843a359e671ca99, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 79bce83937e43d042843a359e671ca99, type: 2}
   m_RootGameObject: {fileID: 1324527785}
   m_IsPrefabParent: 0
