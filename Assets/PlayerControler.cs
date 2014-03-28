@@ -20,9 +20,10 @@ public class PlayerControler : MonoBehaviour {
 	
 		if(Input.GetKeyDown(KeyCode.Mouse0)){
 			GameObject newProjectile;
-			newProjectile = Instantiate(Projectile, ProjectileSpawnLocation.transform.position, Quaternion.identity) as GameObject;
-			newProjectile.rigidbody.AddForce(newProjectile.transform.forward * ProjectileSpeed);
-			newProjectile.rigidbody.AddTorque(newProjectile.transform.forward * (-1*ProjectileSpeed));
+			newProjectile = Instantiate(Projectile, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation) as GameObject;
+			newProjectile.transform.Rotate(0,90f,0);
+			newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+			newProjectile.rigidbody.AddTorque(ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
 		}
 	}
 }
