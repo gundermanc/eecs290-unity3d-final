@@ -14,10 +14,12 @@ public class ProjectileScript : MonoBehaviour {
 		if(Target.collider.tag == "Player" || Target.collider.tag == "Tower"){
 			Element enemyType = Target.transform.GetComponent<ElementalObjectScript>().getElementalType();
 
+
 			int collisionResult = ElementComparer(ProjectileType, enemyType);
+			Debug.Log("the elementcomparer returned "+collisionResult);
 
 			if(collisionResult < 0){
-				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)baseDamage*(1/2));
+				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)(baseDamage*.5f));
 			} else {
 				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)baseDamage*((2*collisionResult)+1));
 			}
@@ -40,14 +42,14 @@ public class ProjectileScript : MonoBehaviour {
 		 * scissors - rock = 2 - 0 = 2
 		 * scissors - paper = 2 - 1 = 1
 		 */
-		int result = enemyType - playerType;
+		int result = playerType - enemyType;
 		switch(playerType){
 			
 		case Element.Rock: 
 			// 1 is loss, 2 is win
-			if(result == 2){
+			if(result == -2){
 				result = 1;
-			} else if(result == 1) {
+			} else if(result == -1) {
 				result = -1;
 			} else {
 				result = 0;
@@ -56,14 +58,13 @@ public class ProjectileScript : MonoBehaviour {
 			
 		case Element.Paper:
 			// 1 is win -1 is loss
-			return enemyType - playerType;
+			return result;
 			
 		case Element.Scissors:
 			// 2 is loss, 1 is win
-			result = playerType - enemyType;
-			if(result == 2){
+			if(result == 1){
 				result = 1;
-			} else if(result == 1) {
+			} else if(result == 2) {
 				result = -1;
 			} else {
 				result = 0;

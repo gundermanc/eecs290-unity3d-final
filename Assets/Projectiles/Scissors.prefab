@@ -272,8 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 5
-  baseDamage: 0
-  attackType: 0
+  baseDamage: 10
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

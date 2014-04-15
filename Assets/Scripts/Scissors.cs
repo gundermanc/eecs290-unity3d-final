@@ -5,7 +5,7 @@ public class Scissors : MonoBehaviour {
 
 	public float destroyTime = 5.0f;
 	public float baseDamage;
-	public float attackType;		//e.g. 0 = Rock, 1 = Paper, 2 = Scissors -- just thinking to myself
+	//public float attackType;		//e.g. 0 = Rock, 1 = Paper, 2 = Scissors -- just thinking to myself
 
 	// Use this for initialization
 	void Start () {
