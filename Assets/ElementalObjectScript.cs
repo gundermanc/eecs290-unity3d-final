@@ -8,21 +8,11 @@ public class ElementalObjectScript : MonoBehaviour {
 	public int Health;
 	public Element thisType;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-	void Hurt(int amount){
+	public void Hurt(int amount){
 		Health -= amount;
 	}
 
-	Element getType(){
+	public Element getElementalType(){
 		return thisType;
 	}
 }

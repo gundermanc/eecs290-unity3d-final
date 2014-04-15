@@ -12,10 +12,24 @@ public class ProjectileScript : MonoBehaviour {
 	// Update is called once per frame
 	void OnCollisionEnter(Collision Target){
 		if(Target.collider.tag == "Player" || Target.collider.tag == "Tower"){
+			Element enemyType = Target.transform.GetComponent<ElementalObjectScript>().getElementalType();
 
+			int collisionResult = ElementComparer(ProjectileType, enemyType);
+
+			if(collisionResult < 0){
+				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)baseDamage*(1/2));
+			} else {
+				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)baseDamage*((2*collisionResult)+1));
+			}
 		}
 	}
 
+	/**
+	 * Compares the element of the projectile with the element of the collided with object
+	 * returns 1 if the projectile type beats the collided object type
+	 * returns -1 if the projectile ype gets beat by the collided object type
+	 * returns 0 if they are neutral
+	 */
 	public int ElementComparer(Element playerType, Element enemyType){
 		/* rock - paper = 0 - 1 = -1
 		 * rock - scissors = 0 - 2 = -2
