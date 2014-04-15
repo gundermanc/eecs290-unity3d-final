@@ -9,6 +9,7 @@ public class ElementalObjectScript : MonoBehaviour {
 	public Element thisType;
 
 	public void Hurt(int amount){
+		Debug.Log("hurt this amount: "+amount);
 		Health -= amount;
 	}
 
