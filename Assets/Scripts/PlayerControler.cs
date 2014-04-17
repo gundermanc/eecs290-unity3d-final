@@ -16,7 +16,7 @@ public class PlayerControler : MonoBehaviour {
 	
 		if(Input.GetKeyDown(KeyCode.Mouse0)){
 			GameObject newProjectile;
-			newProjectile = Instantiate(Projectile, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation) as GameObject;
+			newProjectile = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 			newProjectile.transform.Rotate(0,90f,0);
 			newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 			newProjectile.rigidbody.AddTorque(ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
