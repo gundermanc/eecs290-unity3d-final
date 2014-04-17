@@ -845,6 +845,8 @@ GameObject:
   - 20: {fileID: 703884734}
   - 92: {fileID: 703884733}
   - 124: {fileID: 703884732}
+  - 114: {fileID: 703884736}
+  - 114: {fileID: 703884731}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -852,6 +854,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &703884731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703884730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92252a69cfb1cf048ba1abf5c0e36dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarTexture: {fileID: 0}
+  healthBarBackgroundTexture: {fileID: 0}
+  fatigueBarTexture: {fileID: 0}
+  fatigueBarBackgroundTexture: {fileID: 0}
+  batteryBarTexture: {fileID: 0}
+  batteryBarBackgroundTexture: {fileID: 0}
+  messageDisplayTime: 5
+  bloodDecalsTexture: {fileID: 0}
+  logoTexture: {fileID: 2800000, guid: 1031bef2a295b9f4e8ad8aea3ed46591, type: 3}
+  overlayTexture: {fileID: 2800000, guid: 176fe2badc5b1064aa2ec6d8b0a272cc, type: 3}
 --- !u!124 &703884732
 Behaviour:
   m_ObjectHideFlags: 0
@@ -906,6 +929,18 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &703884736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703884730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa9770010a89f3942ab42fc72deeb251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 0}
 --- !u!1 &853209944
 GameObject:
   m_ObjectHideFlags: 0

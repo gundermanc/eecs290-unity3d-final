@@ -293,11 +293,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab79d7f243824f5d9826bd83522c8df, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f21164220437c04f8cf5ba7de4fa7b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canControl: 1
-  useFixedUpdate: 1
   movement:
     maxForwardSpeed: 6
     maxSidewaysSpeed: 6
@@ -348,7 +346,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60bca8f58a0b8478e946e6e86658cb29, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ba83a738ae853e4f9489a9fb10deb40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11400012

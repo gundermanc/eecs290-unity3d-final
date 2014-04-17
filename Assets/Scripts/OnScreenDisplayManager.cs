@@ -207,8 +207,8 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		GUIStyle regularStyle = GUI.skin.GetStyle ("Label");
 		regularStyle.alignment = TextAnchor.UpperLeft;
 		
-		DrawHealthBar ();
-		DrawFatigueBar ();
+		//DrawHealthBar ();
+		//DrawFatigueBar ();
 		DrawMessages ();
 	}
 	
