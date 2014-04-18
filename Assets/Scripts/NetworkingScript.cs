@@ -34,6 +34,12 @@ public class NetworkingScript : Photon.MonoBehaviour {
 			thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayer", spawnPoint.position, Quaternion.identity, 0);
 		}
 
+		thisPlayer.GetComponentInChildren<Camera>().enabled = true;
+		thisPlayer.GetComponent<MouseLook>().enabled = true;
+		thisPlayer.GetComponent<CharacterMotor>().enabled = true;
+		thisPlayer.GetComponent<FPSInputController>().enabled = true;
+		thisPlayer.GetComponent<PlayerControler>().enabled = true;
+
 		//Vector3 spawnPoint = new Vector3(Random.Range(0f, 30f), 1000f, Random.Range(0f, 30f));
 	//	GameObject myShip = PhotonNetwork.Instantiate("Ship1", spawnPoint, Quaternion.identity, 0);
 	//	myShip.GetComponent<Aircraft>().isPlayer = true;
