@@ -28,6 +28,8 @@ public class ProjectileScript : MonoBehaviour {
 	}
 
 	/**
+	 * @param: playerType - Element of the player (e.g. rock, paper, or scissors)
+	 * @param: enemyType - Element of the enemy (e.g. rock, paper, or scissors)
 	 * Compares the element of the projectile with the element of the collided with object
 	 * returns 1 if the projectile type beats the collided object type
 	 * returns -1 if the projectile ype gets beat by the collided object type
