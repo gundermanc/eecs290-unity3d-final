@@ -3556,6 +3556,8 @@ MonoBehaviour:
   ProjectileSpawnLocation: {fileID: 100018}
   Projectile: {fileID: 100004, guid: 8b2a8271f6ba2408abcba4b7f2f08400, type: 2}
   elementalType: 2
+  stamina: 100
+  NormalAttackCooldown: .200000003
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1

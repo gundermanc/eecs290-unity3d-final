@@ -3,18 +3,23 @@ using System.Collections;
 
 public class PlayerControler : MonoBehaviour {
 
-	public int ProjectileSpeed;
-	public GameObject ProjectileSpawnLocation;
-	public GameObject Projectile;
-	public Element elementalType;
-	public float stamina = 100.0f;
-	private bool speedDebuffed = false;
-	private bool fatiguedOut = false;
+	public int ProjectileSpeed;					//Speed of the projectile
+	public GameObject ProjectileSpawnLocation;  //Location to spawn the projectile, specified by a GameObject
+	public GameObject Projectile;				//The projectile GameObject itself
+	public Element elementalType;				//The type of the GameObject with this class
+	public float stamina = 100.0f;				//Stamina value where 100 equates to 100% stamina, the max
+	public float NormalAttackCooldown;		//The minimum wait time between two consecutive normal shooting attacks 
+	private bool speedDebuffed;					//Marks the player as debuffed, preventing sprinting
+	private bool fatiguedOut;					//Marks the player as fatigued, slowing them down and preventing sprinting
+	private float normalAttackCooldownTimer;
 	//private float waitTime = 1.0f; 			Was used for debugging
 	//private float timer = 0.0f;				Was used for debugging
 
 	// Use this for initialization
 	void Start () {
+		speedDebuffed = false;
+		fatiguedOut = false;
+		normalAttackCooldownTimer = 0.0f;
 	}
 	
 	// Update is called once per frame
@@ -44,7 +49,8 @@ public class PlayerControler : MonoBehaviour {
 		}
 			
 		//Launches a projectile
-		if(Input.GetKeyDown(KeyCode.Mouse0)){
+		if(Input.GetKeyDown(KeyCode.Mouse0) && normalAttackCooldownTimer == 0){
+			normalAttackCooldownTimer = NormalAttackCooldown;
 			GameObject newProjectile;
 			newProjectile = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 			if(elementalType != Element.Paper){
@@ -54,6 +60,13 @@ public class PlayerControler : MonoBehaviour {
 			} else {
 				newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 			}
+		}
+
+		if (normalAttackCooldownTimer > 0) {
+			normalAttackCooldownTimer -= Time.deltaTime;
+		}
+		if (normalAttackCooldownTimer < 0) {
+			normalAttackCooldownTimer = 0;
 		}
 
 		//Allows sprinting by holding left-shift

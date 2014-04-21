@@ -6,10 +6,12 @@ public class ProjectileScript : MonoBehaviour {
 	public float baseDamage;
 	// Use this for initialization
 	void Start () {
-		GetComponentInChildren<ParticleSystem>().Stop();
 	}
 	
-	// Update is called once per frame
+	/*@param: Target - the collider object with which to check to see if a collision has occured with
+	 * This function checks to see if the projectile has collided with a player or a tower.
+	 * It then plays a particle system and deals damage according to the "elemental type".
+	 */
 	void OnCollisionEnter(Collision Target){
 		if(Target.collider.tag == "Player" || Target.collider.tag == "Tower"){
 			GetComponentInChildren<ParticleSystem>().Play();
@@ -21,8 +23,12 @@ public class ProjectileScript : MonoBehaviour {
 
 			if(collisionResult < 0){
 				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)(baseDamage*.5f));
-			} else {
-				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)baseDamage*((2*collisionResult)+1));
+			}
+			if (collisionResult == 0) {
+				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)(baseDamage*1.0f));
+			}
+			if (collisionResult > 0) {
+				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)(baseDamage*2.0f));
 			}
 		}
 	}

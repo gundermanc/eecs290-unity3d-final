@@ -1898,6 +1898,8 @@ MonoBehaviour:
   ProjectileSpawnLocation: {fileID: 100000}
   Projectile: {fileID: 100000, guid: 79bce83937e43d042843a359e671ca99, type: 2}
   elementalType: 0
+  stamina: 100
+  NormalAttackCooldown: .200000003
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1910,6 +1912,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
   thisType: 0
 --- !u!114 &11400006
 MonoBehaviour:
@@ -2007,6 +2012,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
   thisType: 0
 --- !u!114 &11400014
 MonoBehaviour:

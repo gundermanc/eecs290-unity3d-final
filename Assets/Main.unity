@@ -271,7 +271,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 8019c8139707744bf80070073f6e4277, type: 2}
       propertyPath: Health
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 13500000, guid: 8019c8139707744bf80070073f6e4277, type: 2}
       propertyPath: m_Enabled
@@ -279,7 +279,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 8019c8139707744bf80070073f6e4277, type: 2}
       propertyPath: defense
-      value: 10
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8019c8139707744bf80070073f6e4277, type: 2}
+      propertyPath: moveSpeed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8019c8139707744bf80070073f6e4277, type: 2}
@@ -406,10 +410,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 1000
   attackSpeed: 1
-  defense: 10
-  moveSpeed: 1
+  defense: 1
+  moveSpeed: 0
   thisType: 0
 --- !u!1 &569435157
 GameObject:
@@ -602,11 +606,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: f071ed73b16974ad99989def18f00833, type: 2}
       propertyPath: defense
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: f071ed73b16974ad99989def18f00833, type: 2}
       propertyPath: Health
-      value: 100
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: f071ed73b16974ad99989def18f00833, type: 2}
+      propertyPath: moveSpeed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f071ed73b16974ad99989def18f00833, type: 2}
@@ -1009,10 +1017,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 1000
   attackSpeed: 1
-  defense: 10
-  moveSpeed: 1
+  defense: 1
+  moveSpeed: 0
   thisType: 2
 --- !u!1 &1719434274
 GameObject:
@@ -1191,11 +1199,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400006, guid: 27840e60fd14b7445872c06e1302e61a, type: 2}
       propertyPath: Health
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 11400006, guid: 27840e60fd14b7445872c06e1302e61a, type: 2}
       propertyPath: defense
-      value: 10
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 27840e60fd14b7445872c06e1302e61a, type: 2}
+      propertyPath: moveSpeed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27840e60fd14b7445872c06e1302e61a, type: 2}
@@ -1322,10 +1334,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 1000
   attackSpeed: 1
-  defense: 10
-  moveSpeed: 1
+  defense: 1
+  moveSpeed: 0
   thisType: 1
 --- !u!1 &1990655406
 GameObject:

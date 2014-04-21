@@ -13,7 +13,7 @@ public class ElementalObjectScript : MonoBehaviour {
 	
 	//Decreases the health of the object
 	public void Hurt(int amount){
-		int damageDealt = Mathf.FloorToInt(amount / defense);
+		int damageDealt = Mathf.CeilToInt(amount / defense);
 		Debug.Log("Damage dealt: "+damageDealt);
 		if (Health - damageDealt > 0) {
 			Health -= damageDealt;
