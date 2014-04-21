@@ -385,6 +385,8 @@ MonoBehaviour:
   elementalType: 1
   stamina: 100
   NormalAttackCooldown: .200000003
+  specialCooldownOne: 3
+  specialCooldownTwo: 1
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -502,6 +504,8 @@ MonoBehaviour:
   elementalType: 0
   stamina: 100
   NormalAttackCooldown: 0
+  specialCooldownOne: 0
+  specialCooldownTwo: 0
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1

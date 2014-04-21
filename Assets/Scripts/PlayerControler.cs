@@ -8,12 +8,16 @@ public class PlayerControler : MonoBehaviour {
 	public GameObject Projectile;				//The projectile GameObject itself
 	public Element elementalType;				//The type of the GameObject with this class
 	public float stamina = 100.0f;				//Stamina value where 100 equates to 100% stamina, the max
-	public float NormalAttackCooldown;		//The minimum wait time between two consecutive normal shooting attacks 
+	public float NormalAttackCooldown;			//The minimum wait time between two consecutive normal shooting attacks 
+	public float specialCooldownOne;			//The minimum wait time between two consecutive special #1 attacks
+	public float specialCooldownTwo;			//The minimum wait time between two consecutive special #2 attacks
 	private bool speedDebuffed;					//Marks the player as debuffed, preventing sprinting
 	private bool fatiguedOut;					//Marks the player as fatigued, slowing them down and preventing sprinting
-	private float normalAttackCooldownTimer;
-	//private float waitTime = 1.0f; 			Was used for debugging
-	//private float timer = 0.0f;				Was used for debugging
+	private float normalAttackCooldownTimer;	//Stores the time left until the next normal attack can be done
+	private float specialOneCooldownTimer;		//Stores the time left until the next special #1 attack can be done
+	private float specialTwoCooldownTimer;		//Stores the time left until the next special #2 attack can be done
+	//private float waitTime = 1.0f; 			Was used for debugging; delete for final version
+	//private float timer = 0.0f;				Was used for debugging; delete for final version
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +29,7 @@ public class PlayerControler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		/* A code to send debug messages every second for testing purposes
+		/* A code to send debug messages every second for testing purposes; delete for final version
 		 * timer += Time.deltaTime;
 		
 		if (timer > waitTime)
@@ -47,28 +51,60 @@ public class PlayerControler : MonoBehaviour {
 			fatiguedOut = false;
 			this.gameObject.GetComponent<ElementalObjectScript>().resetMoveSpeed();
 		}
-			
-		//Launches a projectile
-		if(Input.GetKeyDown(KeyCode.Mouse0) && normalAttackCooldownTimer == 0){
-			normalAttackCooldownTimer = NormalAttackCooldown;
-			GameObject newProjectile;
-			newProjectile = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
-			if(elementalType != Element.Paper){
-				newProjectile.transform.Rotate(0,90f,0);
-				newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
-				newProjectile.rigidbody.AddTorque(ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
-			} else {
-				newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+
+		//Special One Attacks; Requires "Q" + Left Mouse-Click
+		if (Input.GetKey(KeyCode.Q) && Input.GetKeyDown(KeyCode.Mouse0)) {
+			//If the cooldown is reset (0), then proceed with the attack and set the cooldown time
+			if (specialOneCooldownTimer == 0) {
+				specialOneCooldownTimer = specialCooldownOne;
+				//Rock-Type Attack
+				if (elementalType == Element.Rock) {
+				}
+				//Paper-Type Attack: Create a static paper-stack wall that blocks objects and disappears after time.
+				if (elementalType == Element.Paper) {
+					GameObject newPaperWall = PhotonNetwork.Instantiate("PaperWall", new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 3, this.gameObject.transform.position.z + 5), new Quaternion(0,0,0,0), 0) as GameObject;
+				}
+				//Scissors-Type Attack
+				if (elementalType == Element.Scissors) {
+				}
+			}
+		} else {			
+			//Launches a normal projectile if the attack cooldown timer is reset, i.e. at 0, and the mouse is left-clicked
+			if(Input.GetKeyDown(KeyCode.Mouse0) && normalAttackCooldownTimer == 0){
+				//Sets the timer to the cooldown value specified for the character
+				normalAttackCooldownTimer = NormalAttackCooldown;
+				//Instantiates the projectile
+				GameObject newProjectile;
+				newProjectile = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+				//Differentiates the physics depending on what type of projectile it is
+				if(elementalType != Element.Paper){
+					newProjectile.transform.Rotate(0,90f,0);
+					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+					newProjectile.rigidbody.AddTorque(ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
+				} else {
+					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+				}
 			}
 		}
 
+		//Normal attack cooldown timer slowly decreases over time until it hits 0
 		if (normalAttackCooldownTimer > 0) {
 			normalAttackCooldownTimer -= Time.deltaTime;
 		}
+		//In case above timer goes under 0, reset it back to 0
 		if (normalAttackCooldownTimer < 0) {
 			normalAttackCooldownTimer = 0;
 		}
 
+		//Special attack one cooldown timer slowly decreases over time until it hits 0
+		if (specialOneCooldownTimer > 0) {
+			specialOneCooldownTimer -= Time.deltaTime;
+		}
+		//In case above timer goes under 0, reset it back to 0
+		if (specialOneCooldownTimer < 0) {
+			specialOneCooldownTimer = 0;
+		}
+		
 		//Allows sprinting by holding left-shift
 		if(Input.GetKeyDown(KeyCode.LeftShift)) {
 			//Stamina must be greater than 0, cannot be debuffed or fatigued

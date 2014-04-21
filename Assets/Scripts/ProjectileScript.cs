@@ -19,7 +19,7 @@ public class ProjectileScript : MonoBehaviour {
 
 
 			int collisionResult = ElementComparer(ProjectileType, enemyType);
-			Debug.Log("the elementcomparer returned "+collisionResult);
+			Debug.Log("Element Comparer Result: "+collisionResult);
 
 			if(collisionResult < 0){
 				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)(baseDamage*.5f));
