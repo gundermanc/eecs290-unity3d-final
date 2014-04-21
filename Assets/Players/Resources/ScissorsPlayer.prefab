@@ -3173,7 +3173,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100034}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
@@ -3515,7 +3515,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100034}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
+  m_Script: {fileID: 11500000, guid: f6bec1f5dcfcd4e4885ceb1cc5d746b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   axes: 0
@@ -3558,18 +3558,20 @@ MonoBehaviour:
   elementalType: 2
   stamina: 100
   NormalAttackCooldown: .200000003
+  specialCooldownOne: 0
+  specialCooldownTwo: 0
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100178}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axes: 2
+  axes: 0
   sensitivityX: 10
   sensitivityY: 10
   minimumX: 0
@@ -3627,7 +3629,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100034}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24d40e6adda4c8247bc167441576546b, type: 3}
   m_Name: 

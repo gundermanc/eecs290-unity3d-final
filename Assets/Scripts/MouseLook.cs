@@ -32,12 +32,6 @@ public class MouseLook : MonoBehaviour {
 
 	void Update ()
 	{
-
-		// stop player look if the game is paused
-		if (GameManager.IsPaused ()) {
-			return;
-		}
-
 		if (axes == RotationAxes.MouseXAndY)
 		{
 			float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;

@@ -37,19 +37,22 @@ public class NetworkingScript : Photon.MonoBehaviour {
 
 		int sortingHat = playerNumber % 3;
 		if(sortingHat == (int)Element.Rock){
-			thisPlayer = PhotonNetwork.Instantiate("RockPlayer", spawnPoint.position, Quaternion.identity, groupNumber);
+			thisPlayer = PhotonNetwork.Instantiate("RockPlayerV2", spawnPoint.position, Quaternion.identity, groupNumber);
 		} else if(sortingHat == (int)Element.Paper){
-			thisPlayer = PhotonNetwork.Instantiate("PaperPlayer", spawnPoint.position, Quaternion.identity, groupNumber);
+			thisPlayer = PhotonNetwork.Instantiate("PaperPlayerV2", spawnPoint.position, Quaternion.identity, groupNumber);
 		} else {
-			thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayer", spawnPoint.position, Quaternion.identity, groupNumber);
+			thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayerV2", spawnPoint.position, Quaternion.identity, groupNumber);
 		}
 
 
 		thisPlayer.GetComponentInChildren<Camera>().enabled = true;
+		thisPlayer.GetComponentInChildren<Camera>().transform.parent = thisPlayer.transform;
+		// need to get all mouse looks not individual ones
 		thisPlayer.GetComponent<MouseLook>().enabled = true;
 		thisPlayer.GetComponent<CharacterMotor>().enabled = true;
 		thisPlayer.GetComponent<FPSInputController>().enabled = true;
 		thisPlayer.GetComponent<PlayerControler>().enabled = true;
+		thisPlayer.GetComponent<MainCamera>().enabled = true;
 		thisPlayer.GetComponentInChildren<TeamColorScript>().setPlayerMaterial(teamColors[groupNumber]);
 
 		//Vector3 spawnPoint = new Vector3(Random.Range(0f, 30f), 1000f, Random.Range(0f, 30f));
