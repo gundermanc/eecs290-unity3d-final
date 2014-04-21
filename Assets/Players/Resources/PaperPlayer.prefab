@@ -254,6 +254,7 @@ MonoBehaviour:
   ProjectileSpeed: 1000
   ProjectileSpawnLocation: {fileID: 100000}
   Projectile: {fileID: 100000, guid: 5e28da86bb64a4cdeaa0d4d356354ef1, type: 2}
+  elementalType: 1
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -365,6 +366,7 @@ MonoBehaviour:
   ProjectileSpeed: 0
   ProjectileSpawnLocation: {fileID: 0}
   Projectile: {fileID: 0}
+  elementalType: 0
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1

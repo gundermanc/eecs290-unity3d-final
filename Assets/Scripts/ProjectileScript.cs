@@ -6,12 +6,13 @@ public class ProjectileScript : MonoBehaviour {
 	public float baseDamage;
 	// Use this for initialization
 	void Start () {
-	
+		GetComponentInChildren<ParticleSystem>().Stop();
 	}
 	
 	// Update is called once per frame
 	void OnCollisionEnter(Collision Target){
 		if(Target.collider.tag == "Player" || Target.collider.tag == "Tower"){
+			GetComponentInChildren<ParticleSystem>().Play();
 			Element enemyType = Target.transform.GetComponent<ElementalObjectScript>().getElementalType();
 
 

@@ -19,7 +19,7 @@ public class Scissors : MonoBehaviour {
 	 */
 	IEnumerator DestroyObject() {
 		yield return new WaitForSeconds(destroyTime);
-		Destroy (this.gameObject);
+		PhotonNetwork.Destroy(this.gameObject);
 	}
 	
 }

@@ -3335,6 +3335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f21164220437c04f8cf5ba7de4fa7b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canControl: 1
+  useFixedUpdate: 1
   movement:
     maxForwardSpeed: 6
     maxSidewaysSpeed: 6
@@ -3422,6 +3424,7 @@ MonoBehaviour:
   ProjectileSpeed: 1000
   ProjectileSpawnLocation: {fileID: 100018}
   Projectile: {fileID: 100004, guid: 8b2a8271f6ba2408abcba4b7f2f08400, type: 2}
+  elementalType: 2
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -11,6 +11,14 @@ public class ElementalObjectScript : MonoBehaviour {
 	public void Hurt(int amount){
 		Debug.Log("hurt this amount: "+amount);
 		Health -= amount;
+		if(Health <= 0){
+			if(transform.tag == "Player"){
+
+			} else {
+				Debug.Log("I DIED!");
+				transform.parent.GetComponent<TowerScript>().Death();
+			}
+		}
 	}
 
 	public Element getElementalType(){

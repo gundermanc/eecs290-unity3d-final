@@ -4,7 +4,7 @@ using System.Collections;
 public class NetworkingScript : Photon.MonoBehaviour {
 	// Use this for initialization
 	public Transform spawnPoint;
-	public int playerNumber = -1;
+	public int playerNumber;
 	void Start () {
 		PhotonNetwork.ConnectUsingSettings("alpha 0.1");
 	}
@@ -22,7 +22,7 @@ public class NetworkingScript : Photon.MonoBehaviour {
 	}
 	
 	void OnJoinedRoom(){
-		playerNumber++;
+		playerNumber = PhotonNetwork.playerList.Length;
 		GameObject thisPlayer;
 
 		int sortingHat = playerNumber % 3;
