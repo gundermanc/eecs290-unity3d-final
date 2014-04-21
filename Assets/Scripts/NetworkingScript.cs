@@ -5,6 +5,8 @@ public class NetworkingScript : Photon.MonoBehaviour {
 	// Use this for initialization
 	public Transform spawnPoint;
 	public int playerNumber;
+	public Material[] teamColors;
+
 	void Start () {
 		PhotonNetwork.ConnectUsingSettings("alpha 0.1");
 	}
@@ -25,20 +27,30 @@ public class NetworkingScript : Photon.MonoBehaviour {
 		playerNumber = PhotonNetwork.playerList.Length;
 		GameObject thisPlayer;
 
+		// this assigns team 1 or team 2
+		int groupNumber;
+		if(playerNumber < 4){
+			groupNumber = 0;
+		} else {
+			groupNumber = 1;
+		}
+
 		int sortingHat = playerNumber % 3;
 		if(sortingHat == (int)Element.Rock){
-			thisPlayer = PhotonNetwork.Instantiate("RockPlayer", spawnPoint.position, Quaternion.identity, 0);
+			thisPlayer = PhotonNetwork.Instantiate("RockPlayer", spawnPoint.position, Quaternion.identity, groupNumber);
 		} else if(sortingHat == (int)Element.Paper){
-			thisPlayer = PhotonNetwork.Instantiate("PaperPlayer", spawnPoint.position, Quaternion.identity, 0);
+			thisPlayer = PhotonNetwork.Instantiate("PaperPlayer", spawnPoint.position, Quaternion.identity, groupNumber);
 		} else {
-			thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayer", spawnPoint.position, Quaternion.identity, 0);
+			thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayer", spawnPoint.position, Quaternion.identity, groupNumber);
 		}
+
 
 		thisPlayer.GetComponentInChildren<Camera>().enabled = true;
 		thisPlayer.GetComponent<MouseLook>().enabled = true;
 		thisPlayer.GetComponent<CharacterMotor>().enabled = true;
 		thisPlayer.GetComponent<FPSInputController>().enabled = true;
 		thisPlayer.GetComponent<PlayerControler>().enabled = true;
+		thisPlayer.GetComponentInChildren<TeamColorScript>().setPlayerMaterial(teamColors[groupNumber]);
 
 		//Vector3 spawnPoint = new Vector3(Random.Range(0f, 30f), 1000f, Random.Range(0f, 30f));
 	//	GameObject myShip = PhotonNetwork.Instantiate("Ship1", spawnPoint, Quaternion.identity, 0);
