@@ -14,44 +14,52 @@ public class ElementalObjectScript : MonoBehaviour {
 	//Decreases the health of the object
 	public void Hurt(int amount){
 		int damageDealt = Mathf.FloorToInt(amount / defense);
-		Debug.Log("Hurt this amount: "+damageDealt);
+		Debug.Log("Damage dealt: "+damageDealt);
 		if (Health - damageDealt > 0) {
 			Health -= damageDealt;
 		} else {
 			if(transform.tag == "Player"){
 				Destroy(this.gameObject);
 			} else {
-				Debug.Log("I DIED!");
+				Debug.Log("Death flag.");
 				transform.parent.GetComponent<TowerScript>().Death();
 			}
 		}
 	}
-		
-		public void decreaseAttackSpeed(int amount) {
-			this.attackSpeed -= amount;
-		}
-		
-		public void resetAttackSpeed() {
-			this.attackSpeed = 1.0f;
-		}
-		
-		public void decreaseDefense(int amount) {
-			this.defense -= amount;
-		}
-		
-		public void resetDefense() {
-			this.defense = 1.0f;
-		}
-		
-		public void decreaseMoveSpeed(int amount) {
-			this.moveSpeed -= amount;
-		}
-		
-		public void resetMoveSpeed(int amount) {
-			this.moveSpeed = 1.0f;
-		}
-		
-		public Element getElementalType(){
-			return thisType;
-		}
+	
+	public void decreaseAttackSpeed(float amount) {
+		this.attackSpeed -= amount;
 	}
+	
+	public void resetAttackSpeed() {
+		this.attackSpeed = 1.0f;
+	}
+	
+	public void decreaseDefense(float amount) {
+		this.defense -= amount;
+	}
+	
+	public void resetDefense() {
+		this.defense = 1.0f;
+	}
+	
+	public void changeMoveSpeed(float amount) {
+		this.moveSpeed += amount;
+		CharacterMotor script = this.gameObject.GetComponent<CharacterMotor>();
+		script.movement.maxForwardSpeed = script.movement.maxForwardSpeed*moveSpeed;
+		script.movement.maxSidewaysSpeed = script.movement.maxSidewaysSpeed*moveSpeed;
+		script.movement.maxBackwardsSpeed = script.movement.maxBackwardsSpeed*moveSpeed;
+	}
+	
+	public void resetMoveSpeed() {
+		CharacterMotor script = this.gameObject.GetComponent<CharacterMotor>();
+		script.movement.maxForwardSpeed = script.movement.maxForwardSpeed/moveSpeed;
+		script.movement.maxSidewaysSpeed = script.movement.maxSidewaysSpeed/moveSpeed;
+		script.movement.maxBackwardsSpeed = script.movement.maxBackwardsSpeed/moveSpeed;
+		this.moveSpeed = 1.0f;
+	}
+	
+	public Element getElementalType(){
+		return thisType;
+	}
+}
