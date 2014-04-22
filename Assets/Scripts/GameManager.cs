@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour {
 	 */
 	void Start () {
 		instance = this;
+		Pause ();
 		mode = GameMode.StartMenu;
 	}
 	
@@ -65,6 +66,13 @@ public class GameManager : MonoBehaviour {
 	 */
 	public static void Pause() {
 		mode = GameMode.Paused;
+		GameObject thisPlayer = NetworkingScript.GetThisPlayer ();
+		if(thisPlayer != null) {
+			thisPlayer.GetComponent<MouseLook> ().enabled = false;
+			foreach(FPSInputController obj in thisPlayer.GetComponentsInChildren<FPSInputController> ()) {
+				obj.enabled = false;
+			}
+		}
 	}
 	
 	/**
@@ -72,6 +80,13 @@ public class GameManager : MonoBehaviour {
 	 */
 	public static void UnPause() {
 		mode = GameMode.UnPaused;
+		GameObject thisPlayer = NetworkingScript.GetThisPlayer ();
+		if(thisPlayer != null) {
+			thisPlayer.GetComponent<MouseLook> ().enabled = true;
+			foreach(FPSInputController obj in thisPlayer.GetComponentsInChildren<FPSInputController> ()) {
+				obj.enabled = false;
+			}
+		}
 	}
 	
 	/**
@@ -80,6 +95,7 @@ public class GameManager : MonoBehaviour {
 	public static void StartGame() {
 		// register handler for game over event
 		//OnScreenDisplay.RegisterDeathCallback (new OnDeathHandler ());
+		PhotonNetwork.ConnectUsingSettings("alpha 0.1");
 		UnPause ();
 	}
 	
