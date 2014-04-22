@@ -76,7 +76,7 @@ GameObject:
   - 114: {fileID: 11400012}
   m_Layer: 0
   m_Name: PaperPlayerV2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -405,6 +405,7 @@ MonoBehaviour:
   ProjectileSpeed: 1000
   ProjectileSpawnLocation: {fileID: 100114}
   Projectile: {fileID: 100000, guid: 5e28da86bb64a4cdeaa0d4d356354ef1, type: 2}
+  RespawnPoint: {fileID: 0}
   elementalType: 1
   stamina: 100
   NormalAttackCooldown: 0
@@ -471,6 +472,7 @@ MonoBehaviour:
   ProjectileSpeed: 0
   ProjectileSpawnLocation: {fileID: 0}
   Projectile: {fileID: 0}
+  RespawnPoint: {fileID: 0}
   elementalType: 0
   stamina: 100
   NormalAttackCooldown: 0

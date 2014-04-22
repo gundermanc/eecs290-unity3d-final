@@ -14,12 +14,13 @@ public class ProjectileScript : MonoBehaviour {
 	 */
 	void OnCollisionEnter(Collision Target){
 		if(Target.collider.tag == "Player" || Target.collider.tag == "Tower"){
-			GetComponentInChildren<ParticleSystem>().Play();
+			if (Target.collider.tag == "Tower")
+				GetComponentInChildren<ParticleSystem>().Play();
 			Element enemyType = Target.transform.GetComponent<ElementalObjectScript>().getElementalType();
 
 
 			int collisionResult = ElementComparer(ProjectileType, enemyType);
-			Debug.Log("Element Comparer Result: "+collisionResult);
+			//Debug.Log("Element Comparer Result: "+collisionResult);
 
 			if(collisionResult < 0){
 				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)(baseDamage*.5f));

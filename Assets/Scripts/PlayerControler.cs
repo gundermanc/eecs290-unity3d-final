@@ -141,14 +141,11 @@ public class PlayerControler : MonoBehaviour {
 		}
 	}
 	public void Die(){
-		if (gameObject.active == true)
-			gameObject.active = false;
-		else
-			gameObject.active = true;
-		//gameObject.transform.position = new Vector3 (1000f, 1000f, 1000f);
+		Respawn ();
 	}
 	
-	public void Respawn(int Team){
-		//gameObject.transform = RespawnPoint.transform;
+	public void Respawn(){
+		gameObject.transform.position = RespawnPoint.transform.position;
+		gameObject.transform.rotation = RespawnPoint.transform.rotation;
 	}
 }

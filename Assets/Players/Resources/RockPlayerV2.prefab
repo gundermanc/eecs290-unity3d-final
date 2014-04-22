@@ -987,7 +987,7 @@ GameObject:
   - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: RockPlayerV2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1908,6 +1908,7 @@ MonoBehaviour:
   ProjectileSpeed: 0
   ProjectileSpawnLocation: {fileID: 100000}
   Projectile: {fileID: 100000, guid: 79bce83937e43d042843a359e671ca99, type: 2}
+  RespawnPoint: {fileID: 0}
   elementalType: 0
   stamina: 100
   NormalAttackCooldown: 0
