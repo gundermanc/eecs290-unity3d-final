@@ -6,27 +6,36 @@ public class ProjectileScript : MonoBehaviour {
 	public float baseDamage;
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
-	// Update is called once per frame
+	/*@param: Target - the collider object with which to check to see if a collision has occured with
+	 * This function checks to see if the projectile has collided with a player or a tower.
+	 * It then plays a particle system and deals damage according to the "elemental type".
+	 */
 	void OnCollisionEnter(Collision Target){
 		if(Target.collider.tag == "Player" || Target.collider.tag == "Tower"){
+			GetComponentInChildren<ParticleSystem>().Play();
 			Element enemyType = Target.transform.GetComponent<ElementalObjectScript>().getElementalType();
 
 
 			int collisionResult = ElementComparer(ProjectileType, enemyType);
-			Debug.Log("the elementcomparer returned "+collisionResult);
+			Debug.Log("Element Comparer Result: "+collisionResult);
 
 			if(collisionResult < 0){
 				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)(baseDamage*.5f));
-			} else {
-				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)baseDamage*((2*collisionResult)+1));
+			}
+			if (collisionResult == 0) {
+				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)(baseDamage*1.0f));
+			}
+			if (collisionResult > 0) {
+				Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)(baseDamage*2.0f));
 			}
 		}
 	}
 
 	/**
+	 * @param: playerType - Element of the player (e.g. rock, paper, or scissors)
+	 * @param: enemyType - Element of the enemy (e.g. rock, paper, or scissors)
 	 * Compares the element of the projectile with the element of the collided with object
 	 * returns 1 if the projectile type beats the collided object type
 	 * returns -1 if the projectile ype gets beat by the collided object type
