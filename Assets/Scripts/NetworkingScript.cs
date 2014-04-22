@@ -7,12 +7,16 @@ public class NetworkingScript : Photon.MonoBehaviour {
 	public int playerNumber;
 	public Material[] teamColors;
 
+	public static GameObject thisPlayer;
+
 	void Start () {
-		PhotonNetwork.ConnectUsingSettings("alpha 0.1");
+		// STOP, this is now done in the GameManager.StartGame() cdg46
+		// PhotonNetwork.ConnectUsingSettings("alpha 0.1");
 	}
 	
 	void OnGUI(){
-		GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
+		// STOP, this is now drawn to the screen in the OnScreenDisplay Manager
+		//GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
 	}
 	
 	void OnJoinedLobby(){
@@ -25,7 +29,6 @@ public class NetworkingScript : Photon.MonoBehaviour {
 	
 	void OnJoinedRoom(){
 		playerNumber = PhotonNetwork.playerList.Length;
-		GameObject thisPlayer;
 
 		// this assigns team 1 or team 2
 		int groupNumber;
@@ -52,8 +55,8 @@ public class NetworkingScript : Photon.MonoBehaviour {
 		thisPlayer.GetComponent<CharacterMotor>().enabled = true;
 		thisPlayer.GetComponent<FPSInputController>().enabled = true;
 		thisPlayer.GetComponent<PlayerControler>().enabled = true;
-		//thisPlayer.GetComponent<MainCamera>().enabled = true; Causes an error, but I think this is already handled in 49
-		thisPlayer.GetComponentInChildren<TeamColorScript>().setPlayerMaterial(teamColors[groupNumber]);
+	//	thisPlayer.GetComponent<MainCamera>().enabled = true;
+	//	thisPlayer.GetComponentInChildren<TeamColorScript>().setPlayerMaterial(teamColors[groupNumber]);
 
 		//Vector3 spawnPoint = new Vector3(Random.Range(0f, 30f), 1000f, Random.Range(0f, 30f));
 	//	GameObject myShip = PhotonNetwork.Instantiate("Ship1", spawnPoint, Quaternion.identity, 0);
@@ -61,5 +64,9 @@ public class NetworkingScript : Photon.MonoBehaviour {
 		//myShip.GetComponent<Aircraft> ().Control ();
 		//myShip.transform.parent = GameObject.Find("Players").transform;
 		//GameObject thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayer", spawnPoint.position, Quaternion.identity, 0);
+	}
+
+	public static GameObject GetThisPlayer() {
+		return thisPlayer;
 	}
 }

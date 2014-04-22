@@ -65,7 +65,7 @@ public class PlayerControler : MonoBehaviour {
 				}
 				//Paper-Type Attack: Create a static paper-stack wall that blocks objects and disappears after time.
 				if (elementalType == Element.Paper) {
-					GameObject newPaperWall = PhotonNetwork.Instantiate("PaperWall", new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 3, this.gameObject.transform.position.z + 5), new Quaternion(0,0,0,0), 0) as GameObject;
+					GameObject newPaperWall = PhotonNetwork.Instantiate("PaperWall", gameObject.transform.position + gameObject.transform.forward*5 + Vector3.up*3, gameObject.transform.rotation, 0) as GameObject;
 				}
 				//Scissors-Type Attack
 				if (elementalType == Element.Scissors) {

@@ -12,7 +12,7 @@ public class TowerScript : MonoBehaviour {
 	void Update(){
 		if(dead){
 			GetComponentInChildren<BoxCollider>().enabled = false;
-			transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, (transform.position.y - 0.01f), transform.position.z), lerpSpeed);
+			transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, (transform.position.y - 0.05f), transform.position.z), lerpSpeed);
 		}
 	}
 }

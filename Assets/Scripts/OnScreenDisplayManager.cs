@@ -43,7 +43,8 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	private int ammoCount = 100; //Default ammo count for throwing knives
 	private int maxAmmoCount = 100; //Maximum amount of ammo the player can have at one time
 	private LinkedList<Message> messageQueue; //A linked list containing all the queue'd messages to be displayed on screen
-	
+	private PeerState lastState = PeerState.Disconnected;
+
 	// singleton instance reference
 	private static OnScreenDisplayManager instance; 
 	
@@ -123,7 +124,8 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		if (GameManager.IsPaused ()) {
 			return;
 		}
-		
+
+		UpdateConnectionState ();
 		//Otherwise, slowly remove messages from message log
 		DiscardMessages ();
 	}
@@ -307,6 +309,13 @@ public class OnScreenDisplayManager : MonoBehaviour {
 			// this works...just not in the editor. you have to actually build the project first
 			GameManager.StartGame();
 		}
+	}
+
+	private void UpdateConnectionState () {
+		if(PhotonNetwork.connectionStateDetailed != lastState) {
+			OnScreenDisplayManager.PostMessage("Network: " + PhotonNetwork.connectionStateDetailed.ToString());
+		}
+		lastState = PhotonNetwork.connectionStateDetailed;
 	}
 	
 	/**
