@@ -1437,7 +1437,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100078}
-  m_LocalRotation: {x: .707388222, y: -.706825197, z: -9.80225309e-07, w: -9.81006224e-07}
+  m_LocalRotation: {x: .707388282, y: -.706825256, z: -9.80225423e-07, w: -9.81006337e-07}
   m_LocalPosition: {x: -.087059781, y: 3.81469718e-08, z: -2.98023217e-10}
   m_LocalScale: {x: 1.00000012, y: 1.00000012, z: 1}
   m_Children: []
@@ -1859,7 +1859,7 @@ MonoBehaviour:
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
-  instantiationId: 0
+  instantiationId: -1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1921,26 +1921,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 100128}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60bca8f58a0b8478e946e6e86658cb29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11400010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100128}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab79d7f243824f5d9826bd83522c8df, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f21164220437c04f8cf5ba7de4fa7b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canControl: 1
   useFixedUpdate: 1
   movement:
-    maxForwardSpeed: 6
-    maxSidewaysSpeed: 6
-    maxBackwardsSpeed: 6
+    maxForwardSpeed: 10
+    maxSidewaysSpeed: 10
+    maxBackwardsSpeed: 10
     slopeSpeedMultiplier:
       serializedVersion: 2
       m_Curve:
@@ -1961,14 +1950,14 @@ MonoBehaviour:
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    maxGroundAcceleration: 20
-    maxAirAcceleration: 15
-    gravity: 20
+    maxGroundAcceleration: 30
+    maxAirAcceleration: 20
+    gravity: 10
     maxFallSpeed: 20
   jumping:
     enabled: 1
     baseHeight: 1
-    extraHeight: 1
+    extraHeight: 4.0999999
     perpAmount: 0
     steepPerpAmount: .5
   movingPlatform:
@@ -1976,9 +1965,20 @@ MonoBehaviour:
     movementTransfer: 2
   sliding:
     enabled: 1
-    slidingSpeed: 10
+    slidingSpeed: 15
     sidewaysControl: 1
     speedControl: .400000006
+--- !u!114 &11400010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100128}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba83a738ae853e4f9489a9fb10deb40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
