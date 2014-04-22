@@ -17,7 +17,7 @@ using System.Collections;
 //@script AddComponentMenu ("Character/FPS Input Controller")
 
 
-public class CharacterMotorC : MonoBehaviour {
+public class CharacterMotor : MonoBehaviour {
 	[System.Serializable]
 	public enum MovementTransferOnJump {
 		None, // The jump is not affected by velocity of floor at all.

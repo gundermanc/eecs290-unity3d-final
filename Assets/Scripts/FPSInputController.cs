@@ -2,18 +2,18 @@
 using System.Collections;
 
 // Require a character controller to be attached to the same game object
-[RequireComponent (typeof (CharacterMotorC))]
+[RequireComponent (typeof (CharacterMotor))]
 
 //RequireComponent (CharacterMotor)
 [AddComponentMenu("Character/FPS Input Controller C")]
 //@script AddComponentMenu ("Character/FPS Input Controller")
 
 
-public class FPSInputControllerC : MonoBehaviour {
-	private CharacterMotorC cmotor;
+public class FPSInputController : MonoBehaviour {
+	private CharacterMotor cmotor;
 	// Use this for initialization
 	void Awake() {
-		cmotor = GetComponent<CharacterMotorC>();
+		cmotor = GetComponent<CharacterMotor>();
 	}
 	
 	// Update is called once per frame
