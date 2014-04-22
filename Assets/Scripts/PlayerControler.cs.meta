@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 5ce0e2dd73e9040548b1465cd67ee1f5
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - ProjectileSpawnLocation: {instanceID: 0}
+  - Projectile: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
