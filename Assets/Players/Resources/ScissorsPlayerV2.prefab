@@ -877,8 +877,8 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400008}
-  - 114: {fileID: 11400010}
   - 114: {fileID: 11400012}
+  - 114: {fileID: 11400010}
   m_Layer: 0
   m_Name: ScissorsPlayerV2
   m_TagString: Untagged
@@ -893,7 +893,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -.0871557519, y: 0, z: 0, w: .99619472}
-  m_LocalPosition: {x: -.0138931274, y: -.537627697, z: .228820801}
+  m_LocalPosition: {x: -.0138931274, y: -.537628174, z: .497344971}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400112}
@@ -1575,7 +1575,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.7340107, y: 1.12585628, z: 45.7616959}
+  m_LocalPosition: {x: 116.702934, y: 20.4252834, z: 255.812515}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400110}
@@ -1652,7 +1652,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100112}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!92 &9200000
 Behaviour:
   m_ObjectHideFlags: 1
@@ -1776,6 +1776,7 @@ MonoBehaviour:
   ProjectileSpeed: 1000
   ProjectileSpawnLocation: {fileID: 100000}
   Projectile: {fileID: 100004, guid: 8b2a8271f6ba2408abcba4b7f2f08400, type: 2}
+  RespawnPoint: {fileID: 0}
   elementalType: 2
   stamina: 100
   NormalAttackCooldown: 0

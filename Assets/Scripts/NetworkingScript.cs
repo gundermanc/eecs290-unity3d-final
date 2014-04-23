@@ -6,6 +6,7 @@ public class NetworkingScript : Photon.MonoBehaviour {
 	public Transform spawnPoint;
 	public int playerNumber;
 	public Material[] teamColors;
+	public Transform[] spawnPoints;
 
 	public static GameObject thisPlayer;
 
@@ -40,16 +41,37 @@ public class NetworkingScript : Photon.MonoBehaviour {
 
 		int sortingHat = playerNumber % 3;
 		if(sortingHat == (int)Element.Rock){
+			if(groupNumber == 0){
+				spawnPoint = spawnPoints[1];
+			} else {
+				spawnPoint = spawnPoints[4];
+			}
+
 			thisPlayer = PhotonNetwork.Instantiate("RockPlayerV2", spawnPoint.position, Quaternion.identity, groupNumber);
+
+
 		} else if(sortingHat == (int)Element.Paper){
+			if(groupNumber == 0){
+				spawnPoint = spawnPoints[0];
+			} else {
+				spawnPoint = spawnPoints[3];
+			}
+
 			thisPlayer = PhotonNetwork.Instantiate("PaperPlayerV2", spawnPoint.position, Quaternion.identity, groupNumber);
 		} else {
+			if(groupNumber == 0){
+				spawnPoint = spawnPoints[2];
+			} else {
+				spawnPoint = spawnPoints[5];
+			}
+
 			thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayerV2", spawnPoint.position, Quaternion.identity, groupNumber);
 		}
 
-
+		thisPlayer.GetComponent<PlayerControler>().RespawnPoint = spawnPoint;
 		thisPlayer.GetComponentInChildren<Camera>().enabled = true;
 		thisPlayer.GetComponentInChildren<Camera>().transform.parent = thisPlayer.transform;
+		thisPlayer.GetComponentInChildren<AudioListener>().enabled = true;
 		// need to get all mouse looks not individual ones
 		thisPlayer.GetComponent<MouseLook>().enabled = true;
 		thisPlayer.GetComponent<CharacterMotor>().enabled = true;

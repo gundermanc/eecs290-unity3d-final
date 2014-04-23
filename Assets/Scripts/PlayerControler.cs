@@ -6,7 +6,7 @@ public class PlayerControler : MonoBehaviour {
 	public int ProjectileSpeed;					//Speed of the projectile
 	public GameObject ProjectileSpawnLocation;  //Location to spawn the projectile, specified by a GameObject
 	public GameObject Projectile;				//The projectile GameObject itself
-	public GameObject RespawnPoint;				//Empty gameobject where player will respawn to
+	public Transform RespawnPoint;				//Empty gameobject where player will respawn to
 	public Element elementalType;				//The type of the GameObject with this class
 	public float stamina = 100.0f;				//Stamina value where 100 equates to 100% stamina, the max
 	public float NormalAttackCooldown;			//The minimum wait time between two consecutive normal shooting attacks 
@@ -145,7 +145,7 @@ public class PlayerControler : MonoBehaviour {
 	}
 	
 	public void Respawn(){
-		gameObject.transform.position = RespawnPoint.transform.position;
-		gameObject.transform.rotation = RespawnPoint.transform.rotation;
+		gameObject.transform.position = RespawnPoint.position;
+		gameObject.transform.rotation = RespawnPoint.rotation;
 	}
 }

@@ -654,6 +654,7 @@ Transform:
   - {fileID: 486625058}
   - {fileID: 1447658802}
   - {fileID: 974135066}
+  - {fileID: 1203146293}
   - {fileID: 1384068309}
   - {fileID: 1184172116}
   - {fileID: 1205817235}
@@ -889,57 +890,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 320975925}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &351364451
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100016, guid: 8ba535c70bbcf7b46b0cba1188faae47, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 351364453}
-  - 111: {fileID: 351364452}
-  m_Layer: 0
-  m_Name: golem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!111 &351364452
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11100000, guid: 8ba535c70bbcf7b46b0cba1188faae47,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 351364451}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400002, guid: 8ba535c70bbcf7b46b0cba1188faae47, type: 3}
-  m_Animations:
-  - {fileID: 7400002, guid: 8ba535c70bbcf7b46b0cba1188faae47, type: 3}
-  - {fileID: 7400004, guid: 8ba535c70bbcf7b46b0cba1188faae47, type: 3}
-  - {fileID: 7400006, guid: 8ba535c70bbcf7b46b0cba1188faae47, type: 3}
-  - {fileID: 7400008, guid: 8ba535c70bbcf7b46b0cba1188faae47, type: 3}
-  - {fileID: 7400010, guid: 8ba535c70bbcf7b46b0cba1188faae47, type: 3}
-  - {fileID: 7400014, guid: 8ba535c70bbcf7b46b0cba1188faae47, type: 3}
-  - {fileID: 7400016, guid: 8ba535c70bbcf7b46b0cba1188faae47, type: 3}
-  - {fileID: 7400018, guid: 8ba535c70bbcf7b46b0cba1188faae47, type: 3}
-  - {fileID: 7400020, guid: 8ba535c70bbcf7b46b0cba1188faae47, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
---- !u!4 &351364453
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400016, guid: 8ba535c70bbcf7b46b0cba1188faae47, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 351364451}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.1721497, y: 0, z: 50.8044128}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
 --- !u!1 &354778086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,6 +1564,13 @@ MonoBehaviour:
   teamColors:
   - {fileID: 2100000, guid: 3fdd727ef002d4da6a74e74e44b0bee1, type: 2}
   - {fileID: 2100000, guid: 16c436950bcfe433890a5dac3940d97f, type: 2}
+  spawnPoints:
+  - {fileID: 1729258900}
+  - {fileID: 2011865704}
+  - {fileID: 1686720250}
+  - {fileID: 2052376964}
+  - {fileID: 2083165659}
+  - {fileID: 1188177375}
 --- !u!1 &573816646
 GameObject:
   m_ObjectHideFlags: 0
@@ -2191,48 +2148,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 689402634}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &699312399
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100108, guid: 7d3425a6c7317e048be11c2ff72db69e, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 699312401}
-  - 95: {fileID: 699312400}
-  m_Layer: 0
-  m_Name: FreeCharacter_01
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!95 &699312400
-Animator:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9500000, guid: 7d3425a6c7317e048be11c2ff72db69e,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 699312399}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 7d3425a6c7317e048be11c2ff72db69e, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_ApplyRootMotion: 1
-  m_AnimatePhysics: 0
-  m_HasTransformHierarchy: 1
---- !u!4 &699312401
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400108, guid: 7d3425a6c7317e048be11c2ff72db69e, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 699312399}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.8753357, y: 7.4505806e-09, z: 47.9463654}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
 --- !u!1 &703884730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2682,7 +2597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 1000
   attackSpeed: 1
   defense: 1
   moveSpeed: 1
@@ -2951,7 +2866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 1000
   attackSpeed: 1
   defense: 1
   moveSpeed: 1
@@ -3824,6 +3739,64 @@ MonoBehaviour:
   m_LightmapSize: 1024
   m_DrawTreesAndFoliage: 1
   m_MaterialTemplate: {fileID: 0}
+--- !u!1 &1188177374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1188177375}
+  m_Layer: 0
+  m_Name: ScissorsTowerSouthSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1188177375
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1188177374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -24.9277954, y: -6.91543293, z: -139.437439}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1203146293}
+--- !u!1 &1203146292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1203146293}
+  m_Layer: 0
+  m_Name: SpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1203146293
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1203146292}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25, y: 9.53798008, z: 150}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1729258900}
+  - {fileID: 2052376964}
+  - {fileID: 2011865704}
+  - {fileID: 2083165659}
+  - {fileID: 1686720250}
+  - {fileID: 1188177375}
+  m_Father: {fileID: 196641692}
 --- !u!1 &1205817234
 GameObject:
   m_ObjectHideFlags: 0
@@ -5651,6 +5624,58 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1686531847}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1686720249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1686720250}
+  m_Layer: 0
+  m_Name: ScissorsTowerNorthSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1686720250
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1686720249}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25.0722046, y: -7.0784874, z: 138.062378}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1203146293}
+--- !u!1 &1729258899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1729258900}
+  m_Layer: 0
+  m_Name: PaperTowerNorthSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1729258900
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1729258899}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.0464935, y: -7.55204678, z: 137.703461}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1203146293}
 --- !u!1 &1753229282
 GameObject:
   m_ObjectHideFlags: 0
@@ -6894,6 +6919,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1999386296}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2011865703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2011865704}
+  m_Layer: 0
+  m_Name: RockTowerNorthSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2011865704
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2011865703}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.0763397217, y: -5.9580493, z: 139.347412}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1203146293}
 --- !u!1 &2038133090
 GameObject:
   m_ObjectHideFlags: 0
@@ -6968,6 +7019,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2038133090}
   m_Mesh: {fileID: 4300000, guid: 2cbe268c038dd4c4c92a673367d37743, type: 3}
+--- !u!1 &2052376963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2052376964}
+  m_Layer: 0
+  m_Name: PaperTowerSouthSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2052376964
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2052376963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24.9535065, y: -7.71598148, z: -140.999863}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1203146293}
 --- !u!1 &2079506954
 GameObject:
   m_ObjectHideFlags: 0
@@ -7049,7 +7126,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2083165659}
   m_Layer: 0
-  m_Name: spawnPoint
+  m_Name: RockTowerSouthSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7062,10 +7139,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2083165658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 130, y: 5, z: 110}
+  m_LocalPosition: {x: .684074402, y: -5.47926235, z: -140}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1203146293}
 --- !u!1 &2093564123
 GameObject:
   m_ObjectHideFlags: 0
