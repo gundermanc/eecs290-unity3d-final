@@ -881,7 +881,7 @@ GameObject:
   - 114: {fileID: 11400010}
   m_Layer: 0
   m_Name: ScissorsPlayerV2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -893,7 +893,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -.0871557519, y: 0, z: 0, w: .99619472}
-  m_LocalPosition: {x: -.0138931274, y: -.537628174, z: .497344971}
+  m_LocalPosition: {x: -.013885498, y: -.354717255, z: .920837402}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400112}
@@ -1550,8 +1550,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100110}
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .400000006, y: .5, z: .400000006}
+  m_LocalPosition: {x: 0, y: .647209167, z: 0}
+  m_LocalScale: {x: .65267998, y: .815850079, z: .65267998}
   m_Children:
   - {fileID: 400108}
   - {fileID: 400106}
@@ -1563,7 +1563,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .907083511, z: 0}
+  m_LocalPosition: {x: 0, y: 1.95494843, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -1575,7 +1575,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 116.702934, y: 20.4252834, z: 255.812515}
+  m_LocalPosition: {x: 131.146179, y: 20.1515732, z: 258.186981}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400110}
@@ -1725,6 +1725,10 @@ MonoBehaviour:
     extraHeight: .5
     perpAmount: 0
     steepPerpAmount: .5
+    jumping: 0
+    holdingJumpButton: 0
+    lastStartTime: 0
+    lastButtonDownTime: -100
   movingPlatform:
     enabled: 0
     movementTransfer: 2

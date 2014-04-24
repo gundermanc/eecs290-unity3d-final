@@ -19,7 +19,8 @@ public class ElementalObjectScript : MonoBehaviour {
 			Health -= damageDealt;
 		} else {
 			if(transform.tag == "Player"){
-				transform.parent.GetComponent<PlayerControler>().Die();
+				transform.GetComponent<PlayerControler>().Die();
+				Health = 100;
 			} else {
 				Debug.Log("Death flag.");
 				transform.parent.GetComponent<TowerScript>().Death();

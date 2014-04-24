@@ -480,7 +480,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e886df3dbf13048a6b7ab6c536fc85d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementType: 2
   dead: 0
+  teamNumber: 0
+  timeOfDeath: 0
+  timeToDestory: 0
   lerpSpeed: 1
 --- !u!1 &128951683
 GameObject:
@@ -1447,7 +1451,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e886df3dbf13048a6b7ab6c536fc85d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementType: 2
   dead: 0
+  teamNumber: 1
+  timeOfDeath: 0
+  timeToDestory: 0
   lerpSpeed: 1
 --- !u!1 &562686592
 GameObject:
@@ -1611,7 +1619,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e886df3dbf13048a6b7ab6c536fc85d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementType: 0
   dead: 0
+  teamNumber: 0
+  timeOfDeath: 0
+  timeToDestory: 0
   lerpSpeed: 1
 --- !u!114 &573816649
 MonoBehaviour:
@@ -1628,8 +1640,8 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 0}
-  synchronization: 0
+  observed: {fileID: 573816647}
+  synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: 0
@@ -2163,7 +2175,7 @@ GameObject:
   - 114: {fileID: 703884731}
   - 45: {fileID: 703884737}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: World Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5905,7 +5917,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e886df3dbf13048a6b7ab6c536fc85d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementType: 1
   dead: 0
+  teamNumber: 1
+  timeOfDeath: 0
+  timeToDestory: 0
   lerpSpeed: 1
 --- !u!1 &1773554700
 GameObject:
@@ -6432,7 +6448,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e886df3dbf13048a6b7ab6c536fc85d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementType: 0
   dead: 0
+  teamNumber: 1
+  timeOfDeath: 0
+  timeToDestory: 0
   lerpSpeed: 1
 --- !u!114 &1851416336
 MonoBehaviour:
@@ -6449,8 +6469,8 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 0}
-  synchronization: 0
+  observed: {fileID: 1851416334}
+  synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: 0
@@ -7244,7 +7264,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e886df3dbf13048a6b7ab6c536fc85d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementType: 1
   dead: 0
+  teamNumber: 0
+  timeOfDeath: 0
+  timeToDestory: 0
   lerpSpeed: 1
 --- !u!1 &2109000685
 GameObject:

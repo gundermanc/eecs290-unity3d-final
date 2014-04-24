@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
 	
 	/** The sound played when the player dies */
 	public AudioClip deathSound;
+
+	public bool[,] teamTowersDead = new bool[2,3];
 	
 	/** Saves a static reference to instance ... sloppy I know, I don't care */
 	private static GameManager instance;
@@ -22,6 +24,13 @@ public class GameManager : MonoBehaviour {
 		instance = this;
 		Pause ();
 		mode = GameMode.StartMenu;
+
+		// initiallizes all towers for each team as not dead
+		for(int i = 0; i < teamTowersDead.GetLength(0); i++){
+			for(int j = 0; j < teamTowersDead.GetLength(1); j++){
+				teamTowersDead[i, j] = false;
+			}
+		}
 	}
 	
 	/**
@@ -42,6 +51,27 @@ public class GameManager : MonoBehaviour {
 			Pause();
 			break;
 		}
+	}
+
+	/**
+	 * Called when a tower has died
+	 * flags that the tower from that team has died
+	 * checks all towers for that team, if one is alive the method returns
+	 * if all towers are dead, the loop is exited and the level is ended
+	 * @param the team the tower was from
+	 * @param the Element type the tower was
+	 */
+	public void TowerDied(int team, int towerType){
+		teamTowersDead[team, towerType] = true;
+		// checks all tower flags for the team
+		for(int i = 0; i < teamTowersDead.GetLength(team); i++){
+			// if one tower is alive, the method returns
+			if(!teamTowersDead[team, i]){
+				return;
+			}
+		}
+		// if the method reaches this point then the teams towers have been destroyed
+		EndLevel();
 	}
 	
 	/**
@@ -84,7 +114,7 @@ public class GameManager : MonoBehaviour {
 		if(thisPlayer != null) {
 			thisPlayer.GetComponent<MouseLook> ().enabled = true;
 			foreach(FPSInputController obj in thisPlayer.GetComponentsInChildren<FPSInputController> ()) {
-				obj.enabled = false;
+				obj.enabled = true;
 			}
 		}
 	}
@@ -118,7 +148,7 @@ public class GameManager : MonoBehaviour {
 	 * and loads next level.
 	 */
 	public static void EndLevel() {
-
+		Debug.Log("GAAAMMMEEEE OOVEEERRR!!!!!!");
 	}
 	
 	/**

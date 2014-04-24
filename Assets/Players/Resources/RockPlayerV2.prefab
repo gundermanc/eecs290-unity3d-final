@@ -999,7 +999,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -.0871557519, y: 0, z: 0, w: .99619472}
-  m_LocalPosition: {x: -.0117645264, y: -.445055008, z: .549583435}
+  m_LocalPosition: {x: -.0117645264, y: -.409667969, z: .784759521}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400126}
@@ -1740,8 +1740,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100124}
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .400000006, y: .5, z: .400000006}
+  m_LocalPosition: {x: 0, y: .316297531, z: 0}
+  m_LocalScale: {x: .536424637, y: .670530796, z: .536424637}
   m_Children:
   - {fileID: 400122}
   - {fileID: 400120}
@@ -1753,7 +1753,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .907083511, z: .0541610718}
+  m_LocalPosition: {x: 0, y: 1.56978607, z: .0839538574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -1765,7 +1765,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 115.654297, y: 20.3925724, z: 255.549088}
+  m_LocalPosition: {x: 127.347687, y: 20.1605225, z: 258.23526}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400124}
@@ -1979,6 +1979,10 @@ MonoBehaviour:
     extraHeight: .5
     perpAmount: 0
     steepPerpAmount: .5
+    jumping: 0
+    holdingJumpButton: 0
+    lastStartTime: 0
+    lastButtonDownTime: -100
   movingPlatform:
     enabled: 0
     movementTransfer: 2
