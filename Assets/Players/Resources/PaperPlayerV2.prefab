@@ -11,7 +11,6 @@ GameObject:
   - 33: {fileID: 3300002}
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300002}
-  - 54: {fileID: 5400000}
   - 114: {fileID: 11400014}
   m_Layer: 0
   m_Name: MaterialTarget
@@ -103,7 +102,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.96405125, y: 4.9640522, z: .124101304}
+  m_LocalScale: {x: 4.96405125, y: 4.9640522, z: 1.42327118}
   m_Children: []
   m_Father: {fileID: 400108}
 --- !u!4 &400108
@@ -137,8 +136,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 109.15049, y: 20.4907074, z: 254.749527}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 126.707626, y: 7.55326748, z: 343.886627}
+  m_LocalScale: {x: 1, y: 1, z: .635338426}
   m_Children:
   - {fileID: 400108}
   - {fileID: 400110}
@@ -247,21 +246,6 @@ Skybox:
   m_GameObject: {fileID: 100110}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: a2126534b3a11b34e977105bd9e3cc03, type: 2}
---- !u!54 &5400000
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  serializedVersion: 2
-  m_Mass: 1000
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -361,14 +345,18 @@ MonoBehaviour:
   jumping:
     enabled: 1
     baseHeight: 1
-    extraHeight: 4.0999999
+    extraHeight: .5
     perpAmount: 0
-    steepPerpAmount: .5
+    steepPerpAmount: 0
+    jumping: 0
+    holdingJumpButton: 0
+    lastStartTime: 0
+    lastButtonDownTime: -100
   movingPlatform:
-    enabled: 1
+    enabled: 0
     movementTransfer: 2
   sliding:
-    enabled: 1
+    enabled: 0
     slidingSpeed: 15
     sidewaysControl: 1
     speedControl: .400000006

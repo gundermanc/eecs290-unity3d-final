@@ -101,14 +101,14 @@ public class CharacterMotor : MonoBehaviour {
 		// Very handy for organization!
 		// Are we jumping? (Initiated with jump button and not grounded yet)
 		// To see if we are just in the air (initiated by jumping OR falling) see the grounded variable.
-		[System.NonSerialized]
+		//[System.NonSerialized]
 		public bool jumping = false;
-		[System.NonSerialized]
+		//[System.NonSerialized]
 		public bool holdingJumpButton = false;
 		// the time we jumped at (Used to determine for how long to apply extra jump power after jumping.)
-		[System.NonSerialized]
+		//[System.NonSerialized]
 		public float lastStartTime = 0.0f;
-		[System.NonSerialized]
+		//[System.NonSerialized]
 		public float lastButtonDownTime = -100f;
 		[System.NonSerialized]
 		public Vector3 jumpDir = Vector3.up;
