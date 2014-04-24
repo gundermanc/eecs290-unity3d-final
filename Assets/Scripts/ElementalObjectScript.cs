@@ -10,6 +10,7 @@ public class ElementalObjectScript : MonoBehaviour {
 	public float defense = 1.0f;
 	public float moveSpeed = 1.0f;
 	public Element thisType;
+	public int teamNumber;
 	
 	//Decreases the health of the object
 	public void Hurt(int amount){

@@ -909,6 +909,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400120}
   - 137: {fileID: 13700000}
+  - 114: {fileID: 11400014}
   m_Layer: 0
   m_Name: Ice Golem
   m_TagString: Untagged
@@ -999,7 +1000,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -.0871557519, y: 0, z: 0, w: .99619472}
-  m_LocalPosition: {x: -.0117645264, y: -.409667969, z: .784759521}
+  m_LocalPosition: {x: -.0117645264, y: -.217296571, z: 1.27590942}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400126}
@@ -1727,8 +1728,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100122}
   m_LocalRotation: {x: -.5, y: .5, z: .5, w: .5}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.28065491, y: 5.28065491, z: 4.22452688}
+  m_LocalPosition: {x: 0, y: -.309556574, z: 0}
+  m_LocalScale: {x: 3.3881669, y: 3.3881669, z: 2.710536}
   m_Children:
   - {fileID: 400118}
   - {fileID: 400116}
@@ -1753,8 +1754,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.56978607, z: .0839538574}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: .935776234, z: .0532523207}
+  m_LocalScale: {x: .634304643, y: .634304643, z: .634304643}
   m_Children:
   - {fileID: 400000}
   m_Father: {fileID: 400128}
@@ -1765,8 +1766,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 127.347687, y: 20.1605225, z: 258.23526}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 135.916458, y: 20.740572, z: 257.87262}
+  m_LocalScale: {x: 1.5765295, y: 1.5765295, z: 1.5765295}
   m_Children:
   - {fileID: 400124}
   - {fileID: 400126}
@@ -1894,6 +1895,7 @@ MonoBehaviour:
   defense: 1
   moveSpeed: 1
   thisType: 0
+  teamNumber: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1905,7 +1907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce0e2dd73e9040548b1465cd67ee1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileSpeed: 0
+  ProjectileSpeed: 1000
   ProjectileSpawnLocation: {fileID: 100000}
   Projectile: {fileID: 100000, guid: 79bce83937e43d042843a359e671ca99, type: 2}
   RespawnPoint: {fileID: 0}
@@ -1914,6 +1916,7 @@ MonoBehaviour:
   NormalAttackCooldown: 0
   specialCooldownOne: 0
   specialCooldownTwo: 0
+  teamNumber: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2020,6 +2023,17 @@ MonoBehaviour:
   maximumX: 360
   minimumY: 0
   maximumY: 0
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c13ef2fd4cde422d836e6962a79a47e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
