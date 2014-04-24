@@ -1767,6 +1767,7 @@ MonoBehaviour:
   defense: 1
   moveSpeed: 1
   thisType: 2
+  teamNumber: 0
 --- !u!54 &587455186
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2614,6 +2615,7 @@ MonoBehaviour:
   defense: 1
   moveSpeed: 1
   thisType: 0
+  teamNumber: 1
 --- !u!54 &808768181
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2883,6 +2885,7 @@ MonoBehaviour:
   defense: 1
   moveSpeed: 1
   thisType: 0
+  teamNumber: 0
 --- !u!54 &853773343
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4218,6 +4221,7 @@ MonoBehaviour:
   defense: 1
   moveSpeed: 1
   thisType: 2
+  teamNumber: 1
 --- !u!54 &1318188423
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5456,6 +5460,7 @@ MonoBehaviour:
   defense: 1
   moveSpeed: 1
   thisType: 1
+  teamNumber: 0
 --- !u!54 &1670648498
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6045,6 +6050,7 @@ MonoBehaviour:
   defense: 1
   moveSpeed: 1
   thisType: 1
+  teamNumber: 1
 --- !u!54 &1776637252
 Rigidbody:
   m_ObjectHideFlags: 0

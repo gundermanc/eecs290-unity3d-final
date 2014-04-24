@@ -804,6 +804,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400106}
   - 137: {fileID: 13700000}
+  - 114: {fileID: 11400014}
   m_Layer: 0
   m_Name: Body_01
   m_TagString: Untagged
@@ -893,7 +894,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -.0871557519, y: 0, z: 0, w: .99619472}
-  m_LocalPosition: {x: -.013885498, y: -.354717255, z: .920837402}
+  m_LocalPosition: {x: -.013885499, y: -.300924331, z: .987182617}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400112}
@@ -1538,8 +1539,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100108}
   m_LocalRotation: {x: -.5, y: .5, z: .5, w: .5}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.49999976, y: 2.49999976, z: 2}
+  m_LocalPosition: {x: 0, y: -.699555159, z: 0}
+  m_LocalScale: {x: 1.3624754, y: 1.3624754, z: 1.08998048}
   m_Children:
   - {fileID: 400104}
   m_Father: {fileID: 400110}
@@ -1563,8 +1564,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.95494843, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: .83302474, z: .0825638771}
+  m_LocalScale: {x: .547330201, y: .547330201, z: .547330201}
   m_Children:
   - {fileID: 400000}
   m_Father: {fileID: 400114}
@@ -1575,8 +1576,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 131.146179, y: 20.1515732, z: 258.186981}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 138.07637, y: 20.902916, z: 257.530212}
+  m_LocalScale: {x: 1.82705057, y: 1.82705057, z: 1.82705057}
   m_Children:
   - {fileID: 400110}
   - {fileID: 400112}
@@ -1786,6 +1787,7 @@ MonoBehaviour:
   NormalAttackCooldown: 0
   specialCooldownOne: 0
   specialCooldownTwo: 0
+  teamNumber: 0
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1802,6 +1804,7 @@ MonoBehaviour:
   defense: 1
   moveSpeed: 1
   thisType: 2
+  teamNumber: 0
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1822,6 +1825,17 @@ MonoBehaviour:
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: -1
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c13ef2fd4cde422d836e6962a79a47e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
