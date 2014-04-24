@@ -17,9 +17,12 @@ public class PlayerControler : MonoBehaviour {
 	private float normalAttackCooldownTimer;	//Stores the time left until the next normal attack can be done
 	private float specialOneCooldownTimer;		//Stores the time left until the next special #1 attack can be done
 	private float specialTwoCooldownTimer;		//Stores the time left until the next special #2 attack can be done
-	//private float waitTime = 1.0f; 			Was used for debugging; delete for final version
-	//private float timer = 0.0f;				Was used for debugging; delete for final version
-
+	private bool dead;
+	private float deathtime;
+	private int deathcount;
+	private Camera killcam;
+	private Vector3 killcamstart;
+	private Vector3 killcamend;
 
 
 	// Use this for initialization
@@ -27,6 +30,12 @@ public class PlayerControler : MonoBehaviour {
 		speedDebuffed = false;
 		fatiguedOut = false;
 		normalAttackCooldownTimer = 0.0f;
+		dead = false;
+		deathtime = -1f;
+		deathcount = 0;
+		killcam = (Camera) Camera.Instantiate(GameObject.FindWithTag("MainCamera").camera, new Vector3(0, 0, 0), GameObject.FindWithTag("MainCamera").transform.rotation);
+		killcam.GetComponent<OnScreenDisplayManager> ().enabled = false;
+		killcam.GetComponent<GameManager> ().enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -43,6 +52,12 @@ public class PlayerControler : MonoBehaviour {
 		*/
 
 		//When stamina is depleted, player becomes fatigued and slows down
+		if (dead && deathtime != -1f && Time.timeSinceLevelLoad - deathtime > 15) {
+			Respawn();
+		}
+		if (dead) {
+			killcam.transform.position = Vector3.Slerp(killcamstart, killcamend, (Time.timeSinceLevelLoad - deathtime)/15f);		
+		}
 		if (stamina <= 0) {
 			this.gameObject.GetComponent<ElementalObjectScript>().resetMoveSpeed();
 			this.gameObject.GetComponent<ElementalObjectScript>().changeMoveSpeed(-0.5f);
@@ -141,11 +156,20 @@ public class PlayerControler : MonoBehaviour {
 		}
 	}
 	public void Die(){
-		Respawn ();
+		dead = true;
+		deathtime = Time.timeSinceLevelLoad;
+		OnScreenDisplayManager.PostMessage ("DEAD. You will respawn in front of your tower in 15 seconds.", Color.red);
+		deathcount++;
+		killcamstart = new Vector3(transform.position.x, transform.position.y + 20, transform.position.z);
+		killcamend = new Vector3(transform.position.x, transform.position.y + 40, transform.position.z);
+		killcam.depth = 10;
+		transform.position = new Vector3(0,0,-10);
 	}
 	
 	public void Respawn(){
+		dead = false;
 		gameObject.transform.position = RespawnPoint.position;
 		gameObject.transform.rotation = RespawnPoint.rotation;
+		killcam.depth = -1;
 	}
 }
