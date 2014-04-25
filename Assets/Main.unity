@@ -464,7 +464,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 86563194}
+  observed: {fileID: 86563191}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -495,7 +495,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 709849400}
   m_GameObject: {fileID: 86563190}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f22573394fdcf4f3897190950d4f61d4, type: 3}
   m_Name: 
@@ -1163,6 +1163,14 @@ Prefab:
       propertyPath: subId
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 022affb8cebb8466187b2435964c34fe, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 022affb8cebb8466187b2435964c34fe, type: 2}
+      propertyPath: observed
+      value: 
+      objectReference: {fileID: 1766213809}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 022affb8cebb8466187b2435964c34fe, type: 2}
   m_RootGameObject: {fileID: 1766213808}
@@ -1493,7 +1501,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 556826237}
+  observed: {fileID: 556826234}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -1524,7 +1532,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1426576272}
   m_GameObject: {fileID: 556826233}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f22573394fdcf4f3897190950d4f61d4, type: 3}
   m_Name: 
@@ -1716,7 +1724,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 573816650}
+  observed: {fileID: 573816649}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -1728,7 +1736,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1899649623}
   m_GameObject: {fileID: 573816646}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f22573394fdcf4f3897190950d4f61d4, type: 3}
   m_Name: 
@@ -2477,6 +2485,14 @@ Prefab:
       propertyPath: subId
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
+      propertyPath: observed
+      value: 
+      objectReference: {fileID: 86563191}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
   m_RootGameObject: {fileID: 86563190}
@@ -4129,6 +4145,14 @@ Prefab:
       propertyPath: subId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 2bbc69ffe10794a6e9c32fa2291d6ec3, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 2bbc69ffe10794a6e9c32fa2291d6ec3, type: 2}
+      propertyPath: observed
+      value: 
+      objectReference: {fileID: 2093564124}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bbc69ffe10794a6e9c32fa2291d6ec3, type: 2}
   m_RootGameObject: {fileID: 2093564123}
@@ -4768,6 +4792,14 @@ Prefab:
       propertyPath: subId
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
+      propertyPath: observed
+      value: 
+      objectReference: {fileID: 1851416334}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
   m_RootGameObject: {fileID: 1851416333}
@@ -5028,6 +5060,14 @@ Prefab:
       propertyPath: subId
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
+      propertyPath: observed
+      value: 
+      objectReference: {fileID: 556826234}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
   m_RootGameObject: {fileID: 556826233}
@@ -6175,7 +6215,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 1766213812}
+  observed: {fileID: 1766213809}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -6206,7 +6246,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 449481907}
   m_GameObject: {fileID: 1766213808}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f22573394fdcf4f3897190950d4f61d4, type: 3}
   m_Name: 
@@ -6763,7 +6803,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 1851416337}
+  observed: {fileID: 1851416334}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -6775,7 +6815,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1391223336}
   m_GameObject: {fileID: 1851416333}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f22573394fdcf4f3897190950d4f61d4, type: 3}
   m_Name: 
@@ -6963,6 +7003,14 @@ Prefab:
       propertyPath: subId
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
+      propertyPath: observed
+      value: 
+      objectReference: {fileID: 573816649}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
   m_RootGameObject: {fileID: 573816646}
@@ -7598,7 +7646,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 2093564127}
+  observed: {fileID: 2093564124}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -7629,7 +7677,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1264445539}
   m_GameObject: {fileID: 2093564123}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f22573394fdcf4f3897190950d4f61d4, type: 3}
   m_Name: 
