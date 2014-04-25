@@ -11,6 +11,7 @@ public class ElementalObjectScript : MonoBehaviour {
 	public float moveSpeed = 1.0f;
 	public Element thisType;
 	public int teamNumber;
+	private bool dead = false;
 	
 	//Decreases the health of the object
 	public void Hurt(int amount){
@@ -18,7 +19,7 @@ public class ElementalObjectScript : MonoBehaviour {
 		Debug.Log("Damage Dealt: "+damageDealt);
 		if (Health - damageDealt > 0) {
 			Health -= damageDealt;
-		} else {
+		} else if(!dead) {
 			if(transform.tag == "Player"){
 				transform.GetComponent<PlayerControler>().Die();
 				Health = 100;
@@ -26,6 +27,7 @@ public class ElementalObjectScript : MonoBehaviour {
 				Debug.Log("Death flag.");
 				transform.parent.GetComponent<TowerScript>().Death();
 			}
+			dead = true;
 		}
 	}
 	

@@ -6,14 +6,18 @@ public class TowerScript : Photon.MonoBehaviour {
 	public bool dead = false;
 	public int teamNumber;
 	public float timeOfDeath;
-	public float timeToDestory;
+	public float timeToDestroy;
 	public float lerpSpeed;
+	public GameObject dustCloud;
+	private GameObject cloud;
 
 	public void Death(){
 		dead = true;
 		timeOfDeath = Time.time;
 		// tell the GameManager that a tower has died
 		GameObject.Find("World Camera").GetComponent<GameManager>().TowerDied(teamNumber, (int)elementType);
+		cloud = Instantiate (dustCloud, new Vector3(transform.position.x, 0, transform.position.z), Quaternion.identity) as GameObject;
+		cloud.GetComponent<ParticleSystem> ().Play ();
 	}
 
 	void Update(){
@@ -21,8 +25,11 @@ public class TowerScript : Photon.MonoBehaviour {
 			GetComponentInChildren<BoxCollider>().enabled = false;
 			transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, (transform.position.y - 0.05f), transform.position.z), lerpSpeed);
 		}
-		if(timeOfDeath > Time.time - timeToDestory){
-			PhotonNetwork.Destroy(this.photonView);
+		if(timeOfDeath != 0 && timeToDestroy < Time.time - timeOfDeath){
+			cloud.GetComponent<ParticleSystem>().Stop();
+			Destroy (cloud);
+			Destroy(gameObject);
+			//PhotonNetwork.Destroy(this.photonView);
 		}
 	}
 }

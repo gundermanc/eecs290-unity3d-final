@@ -483,8 +483,9 @@ MonoBehaviour:
   dead: 0
   teamNumber: 0
   timeOfDeath: 0
-  timeToDestory: 0
+  timeToDestroy: 30
   lerpSpeed: 1
+  dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
 --- !u!1 &128951683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,8 +1455,9 @@ MonoBehaviour:
   dead: 0
   teamNumber: 1
   timeOfDeath: 0
-  timeToDestory: 0
+  timeToDestroy: 30
   lerpSpeed: 1
+  dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
 --- !u!1 &562686592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,8 +1624,9 @@ MonoBehaviour:
   dead: 0
   teamNumber: 0
   timeOfDeath: 0
-  timeToDestory: 0
+  timeToDestroy: 30
   lerpSpeed: 1
+  dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
 --- !u!114 &573816649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5925,8 +5928,9 @@ MonoBehaviour:
   dead: 0
   teamNumber: 1
   timeOfDeath: 0
-  timeToDestory: 0
+  timeToDestroy: 30
   lerpSpeed: 1
+  dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
 --- !u!1 &1773554700
 GameObject:
   m_ObjectHideFlags: 0
@@ -6457,8 +6461,9 @@ MonoBehaviour:
   dead: 0
   teamNumber: 1
   timeOfDeath: 0
-  timeToDestory: 0
+  timeToDestroy: 30
   lerpSpeed: 1
+  dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
 --- !u!114 &1851416336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7273,8 +7278,9 @@ MonoBehaviour:
   dead: 0
   teamNumber: 0
   timeOfDeath: 0
-  timeToDestory: 0
+  timeToDestroy: 30
   lerpSpeed: 1
+  dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
 --- !u!1 &2109000685
 GameObject:
   m_ObjectHideFlags: 0
