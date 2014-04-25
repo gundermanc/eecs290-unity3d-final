@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using PhotonHashTable = ExitGames.Client.Photon.Hashtable;
 
 public class NetworkingScript : Photon.MonoBehaviour {
 	// Use this for initialization
@@ -29,17 +30,39 @@ public class NetworkingScript : Photon.MonoBehaviour {
 	}
 	
 	void OnJoinedRoom(){
-		playerNumber = PhotonNetwork.playerList.Length;
-
-		// this assigns team 1 or team 2
 		int groupNumber;
-		if(playerNumber < 4){
-			groupNumber = 0;
-		} else {
+		playerNumber = PhotonNetwork.playerList.Length; 
+
+		// this assigns team 1 or team 2 based on which team has more players
+		int balance = 0;
+		foreach (PhotonPlayer player in PhotonNetwork.otherPlayers) {
+			if ((int) player.customProperties["Team Number"] == 1)
+				balance++;
+			else if((int) player.customProperties["Team Number"] == 0)
+				balance--;
+		}
+		if (balance < 0) {
+			OnScreenDisplayManager.PostMessage("You have been assigned to TEAM BLUE", Color.blue);
 			groupNumber = 1;
+		} else {
+			OnScreenDisplayManager.PostMessage("You have been assigned to TEAM RED", Color.red);
+
+			groupNumber = 0;
 		}
 
-		int sortingHat = playerNumber % 3;
+		//Assigns player type based on which is needed to keep the teams reasonably balanced
+		int[] types = {0, 1, 2};
+		foreach (PhotonPlayer player in PhotonNetwork.otherPlayers) {
+			if ((int) player.customProperties["Team Number"] == groupNumber){
+				types[(int) player.customProperties["Type"]] += 3;
+			}
+		}
+		int sortingHat = Mathf.Min (types) % 3;
+		Debug.Log (sortingHat);
+
+		PhotonHashTable PlayerProperties = new PhotonHashTable() {{"Team Number", groupNumber}, {"Type", sortingHat}};
+		PhotonNetwork.player.SetCustomProperties (PlayerProperties);
+
 		if(sortingHat == (int)Element.Rock){
 			if(groupNumber == 0){
 				spawnPoint = spawnPoints[1];
@@ -47,7 +70,7 @@ public class NetworkingScript : Photon.MonoBehaviour {
 				spawnPoint = spawnPoints[4];
 			}
 
-			thisPlayer = PhotonNetwork.Instantiate("RockPlayerV2", spawnPoint.position, Quaternion.identity, groupNumber);
+			thisPlayer = PhotonNetwork.Instantiate("RockPlayerV2", spawnPoint.position, spawnPoint.rotation, 0);
 
 
 		} else if(sortingHat == (int)Element.Paper){
@@ -57,7 +80,7 @@ public class NetworkingScript : Photon.MonoBehaviour {
 				spawnPoint = spawnPoints[3];
 			}
 
-			thisPlayer = PhotonNetwork.Instantiate("PaperPlayerV2", spawnPoint.position, Quaternion.identity, groupNumber);
+			thisPlayer = PhotonNetwork.Instantiate("PaperPlayerV2", spawnPoint.position, spawnPoint.rotation, 0);
 		} else {
 			if(groupNumber == 0){
 				spawnPoint = spawnPoints[2];
@@ -65,7 +88,7 @@ public class NetworkingScript : Photon.MonoBehaviour {
 				spawnPoint = spawnPoints[5];
 			}
 
-			thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayerV2", spawnPoint.position, Quaternion.identity, groupNumber);
+			thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayerV2", spawnPoint.position, spawnPoint.rotation, 0);
 		}
 
 		thisPlayer.GetComponent<PlayerControler>().RespawnPoint = spawnPoint;

@@ -450,8 +450,7 @@ Transform:
 --- !u!114 &86563192
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400014, guid: 57186b4974b2e7744ac9b06a8b367763,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 86563190}
   m_Enabled: 1
@@ -463,7 +462,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 86563193}
+  observed: {fileID: 86563191}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -1434,7 +1433,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 556826236}
+  observed: {fileID: 556826234}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
