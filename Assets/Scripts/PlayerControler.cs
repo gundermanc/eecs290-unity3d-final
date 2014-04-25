@@ -24,6 +24,7 @@ public class PlayerControler : MonoBehaviour {
 	private Camera killcam;
 	private Vector3 killcamstart;
 	private Vector3 killcamend;
+	private int respawnreport;
 
 
 	// Use this for initialization
@@ -37,6 +38,7 @@ public class PlayerControler : MonoBehaviour {
 		killcam = (Camera) Camera.Instantiate(GameObject.FindWithTag("MainCamera").camera, new Vector3(0, 0, 0), GameObject.FindWithTag("MainCamera").transform.rotation);
 		killcam.GetComponent<OnScreenDisplayManager> ().enabled = false;
 		killcam.GetComponent<GameManager> ().enabled = false;
+		respawnreport = 0;
 	}
 	
 	// Update is called once per frame
@@ -57,7 +59,11 @@ public class PlayerControler : MonoBehaviour {
 			Respawn();
 		}
 		if (dead) {
-			killcam.transform.position = Vector3.Slerp(killcamstart, killcamend, (Time.timeSinceLevelLoad - deathtime)/15f);		
+			killcam.transform.position = Vector3.Slerp(killcamstart, killcamend, (Time.timeSinceLevelLoad - deathtime)/15f);
+			if (Mathf.Floor(Time.timeSinceLevelLoad - deathtime) > respawnreport){
+				respawnreport++;
+				OnScreenDisplayManager.PostMessage("Respawning in: " + (15-respawnreport).ToString(), Color.red);
+			}
 		}
 		if (stamina <= 0) {
 			this.gameObject.GetComponent<ElementalObjectScript>().resetMoveSpeed();
@@ -173,5 +179,6 @@ public class PlayerControler : MonoBehaviour {
 		gameObject.transform.position = RespawnPoint.position;
 		gameObject.transform.rotation = RespawnPoint.rotation;
 		killcam.depth = -1;
+		respawnreport = 0;
 	}
 }

@@ -5,20 +5,34 @@ public class ProjectileScript : MonoBehaviour {
 	public Element ProjectileType;
 	public float baseDamage;
 	public int teamNumber;
+	public float destroytimer;
+	private bool active;
+	private float createtime;
+	private GameObject explosion;
+
 	// Use this for initialization
 	void Start () {
+		createtime = Time.timeSinceLevelLoad;
+		active = true;
 	}
-	
+
+	void Update(){
+		if (Time.timeSinceLevelLoad - createtime > destroytimer)
+			Remove ();
+	}
+
 	/*@param: Target - the collider object with which to check to see if a collision has occured with
 	 * This function checks to see if the projectile has collided with a player or a tower.
 	 * It then plays a particle system and deals damage according to the "elemental type".
 	 */
 	void OnCollisionEnter(Collision Target){
 
-		if(Target.collider.tag == "Player" || Target.collider.tag == "Tower"){
+		if((Target.collider.tag == "Player" || Target.collider.tag == "Tower") && active){
 			if(teamNumber != Target.transform.GetComponent<ElementalObjectScript>().teamNumber){
-				if (Target.collider.tag == "Tower")
-					GetComponentInChildren<ParticleSystem>().Play();
+				if (Target.collider.tag == "Tower"){
+					explosion = PhotonNetwork.Instantiate("WayRadExplosion", transform.position, Quaternion.identity, 0) as GameObject;
+					explosion.GetComponent<ParticleSystem>().Play();
+				}
 				Element enemyType = Target.transform.GetComponent<ElementalObjectScript>().getElementalType();
 
 
@@ -35,6 +49,7 @@ public class ProjectileScript : MonoBehaviour {
 					Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)(baseDamage*2.0f));
 				}
 			}
+			active = false;
 		}
 	}
 
@@ -86,5 +101,9 @@ public class ProjectileScript : MonoBehaviour {
 			return result;
 		}
 		return result;
+	}
+
+	private void Remove(){
+		PhotonNetwork.Destroy (this.gameObject);
 	}
 }
