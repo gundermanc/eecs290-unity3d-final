@@ -27,6 +27,10 @@ public class ProjectileScript : MonoBehaviour {
 	 */
 	void OnCollisionEnter(Collision Target){
 
+		if (Target.collider.tag == "Ground") {
+			active = false;	
+		}
+
 		if((Target.collider.tag == "Player" || Target.collider.tag == "Tower") && active){
 			if(teamNumber != Target.transform.GetComponent<ElementalObjectScript>().teamNumber){
 				if (Target.collider.tag == "Tower"){
