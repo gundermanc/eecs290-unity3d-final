@@ -428,7 +428,6 @@ GameObject:
   - 4: {fileID: 86563191}
   - 114: {fileID: 86563193}
   - 114: {fileID: 86563192}
-  - 114: {fileID: 86563194}
   m_Layer: 0
   m_Name: ScissorsTowerNorth
   m_TagString: Tower
@@ -488,18 +487,6 @@ MonoBehaviour:
   timeToDestroy: 30
   lerpSpeed: 1
   dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
---- !u!114 &86563194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 90a270ce8ec404c78851154a31e40f66,
-    type: 2}
-  m_PrefabInternal: {fileID: 709849400}
-  m_GameObject: {fileID: 86563190}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f22573394fdcf4f3897190950d4f61d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &128951683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1158,8 @@ Prefab:
       propertyPath: observed
       value: 
       objectReference: {fileID: 1766213809}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: 022affb8cebb8466187b2435964c34fe, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 022affb8cebb8466187b2435964c34fe, type: 2}
   m_RootGameObject: {fileID: 1766213808}
   m_IsPrefabParent: 0
@@ -1465,7 +1453,6 @@ GameObject:
   - 4: {fileID: 556826234}
   - 114: {fileID: 556826236}
   - 114: {fileID: 556826235}
-  - 114: {fileID: 556826237}
   m_Layer: 0
   m_Name: ScissorsTowerSouth
   m_TagString: Tower
@@ -1525,18 +1512,6 @@ MonoBehaviour:
   timeToDestroy: 30
   lerpSpeed: 1
   dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
---- !u!114 &556826237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 408e73d0f928c4523bd7151dd8ff7459,
-    type: 2}
-  m_PrefabInternal: {fileID: 1426576272}
-  m_GameObject: {fileID: 556826233}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f22573394fdcf4f3897190950d4f61d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &562686592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1669,7 +1644,6 @@ GameObject:
   - 4: {fileID: 573816647}
   - 114: {fileID: 573816649}
   - 114: {fileID: 573816648}
-  - 114: {fileID: 573816650}
   m_Layer: 0
   m_Name: RockTowerNorth
   m_TagString: Tower
@@ -1724,23 +1698,11 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 573816649}
+  observed: {fileID: 573816647}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: 0
---- !u!114 &573816650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 37aba5efb74c24c8bb94d45a6c630950,
-    type: 2}
-  m_PrefabInternal: {fileID: 1899649623}
-  m_GameObject: {fileID: 573816646}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f22573394fdcf4f3897190950d4f61d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &580053965
 GameObject:
   m_ObjectHideFlags: 0
@@ -2493,7 +2455,8 @@ Prefab:
       propertyPath: observed
       value: 
       objectReference: {fileID: 86563191}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
   m_RootGameObject: {fileID: 86563190}
   m_IsPrefabParent: 0
@@ -4153,7 +4116,8 @@ Prefab:
       propertyPath: observed
       value: 
       objectReference: {fileID: 2093564124}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: 2bbc69ffe10794a6e9c32fa2291d6ec3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2bbc69ffe10794a6e9c32fa2291d6ec3, type: 2}
   m_RootGameObject: {fileID: 2093564123}
   m_IsPrefabParent: 0
@@ -4800,7 +4764,8 @@ Prefab:
       propertyPath: observed
       value: 
       objectReference: {fileID: 1851416334}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
   m_RootGameObject: {fileID: 1851416333}
   m_IsPrefabParent: 0
@@ -5068,7 +5033,8 @@ Prefab:
       propertyPath: observed
       value: 
       objectReference: {fileID: 556826234}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
   m_RootGameObject: {fileID: 556826233}
   m_IsPrefabParent: 0
@@ -6179,7 +6145,6 @@ GameObject:
   - 4: {fileID: 1766213809}
   - 114: {fileID: 1766213811}
   - 114: {fileID: 1766213810}
-  - 114: {fileID: 1766213812}
   m_Layer: 0
   m_Name: PaperTowerSouth
   m_TagString: Tower
@@ -6239,18 +6204,6 @@ MonoBehaviour:
   timeToDestroy: 30
   lerpSpeed: 1
   dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
---- !u!114 &1766213812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 022affb8cebb8466187b2435964c34fe,
-    type: 2}
-  m_PrefabInternal: {fileID: 449481907}
-  m_GameObject: {fileID: 1766213808}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f22573394fdcf4f3897190950d4f61d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1773554700
 GameObject:
   m_ObjectHideFlags: 0
@@ -6748,7 +6701,6 @@ GameObject:
   - 4: {fileID: 1851416334}
   - 114: {fileID: 1851416336}
   - 114: {fileID: 1851416335}
-  - 114: {fileID: 1851416337}
   m_Layer: 0
   m_Name: RockTowerSouth
   m_TagString: Tower
@@ -6808,18 +6760,6 @@ MonoBehaviour:
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: 0
---- !u!114 &1851416337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 4316d810c996e40b6a3636b389f31222,
-    type: 2}
-  m_PrefabInternal: {fileID: 1391223336}
-  m_GameObject: {fileID: 1851416333}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f22573394fdcf4f3897190950d4f61d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1855214550
 GameObject:
   m_ObjectHideFlags: 0
@@ -7010,8 +6950,9 @@ Prefab:
     - target: {fileID: 11400004, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
       propertyPath: observed
       value: 
-      objectReference: {fileID: 573816649}
-    m_RemovedComponents: []
+      objectReference: {fileID: 573816647}
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
   m_RootGameObject: {fileID: 573816646}
   m_IsPrefabParent: 0
@@ -7610,7 +7551,6 @@ GameObject:
   - 4: {fileID: 2093564124}
   - 114: {fileID: 2093564126}
   - 114: {fileID: 2093564125}
-  - 114: {fileID: 2093564127}
   m_Layer: 0
   m_Name: PaperTowerNorth
   m_TagString: Tower
@@ -7670,18 +7610,6 @@ MonoBehaviour:
   timeToDestroy: 30
   lerpSpeed: 1
   dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
---- !u!114 &2093564127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 2bbc69ffe10794a6e9c32fa2291d6ec3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1264445539}
-  m_GameObject: {fileID: 2093564123}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f22573394fdcf4f3897190950d4f61d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2109000685
 GameObject:
   m_ObjectHideFlags: 0
