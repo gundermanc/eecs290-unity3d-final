@@ -1727,9 +1727,9 @@ GameObject:
   - 33: {fileID: 587455190}
   - 23: {fileID: 587455189}
   - 111: {fileID: 587455188}
-  - 65: {fileID: 587455187}
   - 54: {fileID: 587455186}
   - 114: {fileID: 587455185}
+  - 64: {fileID: 587455187}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Tower
@@ -1783,19 +1783,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &587455187
-BoxCollider:
+--- !u!64 &587455187
+MeshCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500006, guid: 57186b4974b2e7744ac9b06a8b367763,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 587455183}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .610000014, y: .689818799, z: 1.26864624}
-  m_Center: {x: .00466923416, y: -.0464243107, z: .631266713}
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 51916b3a62ae2bb49ba650dc8332c2d1, type: 3}
 --- !u!111 &587455188
 Animation:
   m_ObjectHideFlags: 0
@@ -2575,9 +2575,9 @@ GameObject:
   - 33: {fileID: 808768185}
   - 23: {fileID: 808768184}
   - 111: {fileID: 808768183}
-  - 65: {fileID: 808768182}
   - 54: {fileID: 808768181}
   - 114: {fileID: 808768180}
+  - 64: {fileID: 808768182}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Tower
@@ -2631,19 +2631,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &808768182
-BoxCollider:
+--- !u!64 &808768182
+MeshCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500014, guid: 57186b4974b2e7744ac9b06a8b367763,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808768178}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .610000014, y: .689818799, z: 1.26864624}
-  m_Center: {x: .00466923416, y: -.0464243107, z: .631266713}
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 51916b3a62ae2bb49ba650dc8332c2d1, type: 3}
 --- !u!111 &808768183
 Animation:
   m_ObjectHideFlags: 0
@@ -2845,9 +2845,9 @@ GameObject:
   - 33: {fileID: 853773347}
   - 23: {fileID: 853773346}
   - 111: {fileID: 853773345}
-  - 65: {fileID: 853773344}
   - 54: {fileID: 853773343}
   - 114: {fileID: 853773342}
+  - 64: {fileID: 853773344}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Tower
@@ -2901,19 +2901,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &853773344
-BoxCollider:
+--- !u!64 &853773344
+MeshCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500004, guid: 57186b4974b2e7744ac9b06a8b367763,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 853773340}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .610000014, y: .689818799, z: 1.26864624}
-  m_Center: {x: .00466923416, y: -.0464243107, z: .631266713}
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 51916b3a62ae2bb49ba650dc8332c2d1, type: 3}
 --- !u!111 &853773345
 Animation:
   m_ObjectHideFlags: 0
@@ -4181,9 +4181,9 @@ GameObject:
   - 33: {fileID: 1318188427}
   - 23: {fileID: 1318188426}
   - 111: {fileID: 1318188425}
-  - 65: {fileID: 1318188424}
   - 54: {fileID: 1318188423}
   - 114: {fileID: 1318188422}
+  - 64: {fileID: 1318188424}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Tower
@@ -4237,19 +4237,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &1318188424
-BoxCollider:
+--- !u!64 &1318188424
+MeshCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500012, guid: 57186b4974b2e7744ac9b06a8b367763,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1318188420}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .610000014, y: .689818799, z: 1.26864624}
-  m_Center: {x: .00466923416, y: -.0464243107, z: .631266713}
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 51916b3a62ae2bb49ba650dc8332c2d1, type: 3}
 --- !u!111 &1318188425
 Animation:
   m_ObjectHideFlags: 0
@@ -5420,9 +5420,9 @@ GameObject:
   - 33: {fileID: 1670648502}
   - 23: {fileID: 1670648501}
   - 111: {fileID: 1670648500}
-  - 65: {fileID: 1670648499}
   - 54: {fileID: 1670648498}
   - 114: {fileID: 1670648497}
+  - 64: {fileID: 1670648503}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Tower
@@ -5476,19 +5476,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &1670648499
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500002, guid: 57186b4974b2e7744ac9b06a8b367763,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1670648495}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .610000014, y: .689818799, z: 1.26864624}
-  m_Center: {x: .00466923416, y: -.0464243107, z: .631266713}
 --- !u!111 &1670648500
 Animation:
   m_ObjectHideFlags: 0
@@ -5534,6 +5521,19 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1670648495}
+  m_Mesh: {fileID: 4300000, guid: 51916b3a62ae2bb49ba650dc8332c2d1, type: 3}
+--- !u!64 &1670648503
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1670648495}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 51916b3a62ae2bb49ba650dc8332c2d1, type: 3}
 --- !u!1 &1677174755
 GameObject:
@@ -6010,9 +6010,9 @@ GameObject:
   - 33: {fileID: 1776637256}
   - 23: {fileID: 1776637255}
   - 111: {fileID: 1776637254}
-  - 65: {fileID: 1776637253}
   - 54: {fileID: 1776637252}
   - 114: {fileID: 1776637251}
+  - 64: {fileID: 1776637253}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Tower
@@ -6066,19 +6066,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &1776637253
-BoxCollider:
+--- !u!64 &1776637253
+MeshCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500016, guid: 57186b4974b2e7744ac9b06a8b367763,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1776637249}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .610000014, y: .689818799, z: 1.26864624}
-  m_Center: {x: .00466923416, y: -.0464243107, z: .631266713}
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 51916b3a62ae2bb49ba650dc8332c2d1, type: 3}
 --- !u!111 &1776637254
 Animation:
   m_ObjectHideFlags: 0
