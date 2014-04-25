@@ -22,7 +22,6 @@ public class TowerScript : Photon.MonoBehaviour {
 
 	void Update(){
 		if(dead){
-			GetComponentInChildren<BoxCollider>().enabled = false;
 			transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, (transform.position.y - 0.05f), transform.position.z), lerpSpeed);
 		}
 		if(timeOfDeath != 0 && timeToDestroy < Time.time - timeOfDeath){
