@@ -2393,7 +2393,7 @@ internal class NetworkingPeer : LoadbalancingPeer, IPhotonPeerListener
         {
             if (!viewZero.isMine && (!this.mLocalActor.isMasterClient || mActors.ContainsKey(ownerActorNr)))
             {
-                Debug.LogError("Failed to 'network-remove' GameObject. Client is neither owner nor masterClient taking over for owner who left: " + viewZero);
+                //Debug.LogError("Failed to 'network-remove' GameObject. Client is neither owner nor masterClient taking over for owner who left: " + viewZero);
                 return;
             }
 
