@@ -12,6 +12,13 @@ public class ElementalObjectScript : MonoBehaviour {
 	public Element thisType;
 	public int teamNumber;
 	private bool dead = false;
+
+	public void RPCHurt(int ID, int amount, bool parent){
+		if (parent)
+			transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All,ID, amount);
+		else
+			transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All,ID, amount);
+	}
 	
 	//Decreases the health of the object
 	[RPC]

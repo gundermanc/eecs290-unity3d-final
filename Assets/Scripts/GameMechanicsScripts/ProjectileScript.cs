@@ -40,27 +40,27 @@ public class ProjectileScript : MonoBehaviour {
 					explosion = PhotonNetwork.Instantiate("WayRadExplosion", transform.position, Quaternion.identity, 0) as GameObject;
 					explosion.GetComponent<ParticleSystem>().Play();
 					audio.PlayOneShot(explosionSound);
-
+					//
 					if(collisionResult < 0){
-						Target.transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*.5f)));
+						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*.5f)), true);
 					}
 					if (collisionResult == 0) {
-						Target.transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*1.0f)));
+						Target.transform.parent.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*1f)), true);
 					}
 					if (collisionResult > 0) {
-						Target.transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*2.0f)));
+						Target.transform.parent.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*2f)), true);
 					}
 				} else {
 					//Debug.Log("Element Comparer Result: "+collisionResult);
 
 					if(collisionResult < 0){
-						Target.transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*.5f)));
+						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*.5f)), false);
 					}
 					if (collisionResult == 0) {
-						Target.transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*1.0f)));
+						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*1f)), false);
 					}
 					if (collisionResult > 0) {
-						Target.transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*2.0f)));
+						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*2f)), false);
 					}
 				}
 			}
