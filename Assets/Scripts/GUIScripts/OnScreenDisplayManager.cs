@@ -373,15 +373,14 @@ public class OnScreenDisplayManager : MonoBehaviour {
 			GameManager.SetupGame ();
 		}
 
-		screenDimensions.x += 75;
-		screenDimensions.y += 100;
-		screenDimensions.yMax = screenDimensions.y + 75;
-		screenDimensions.width = 300;
+		float buttonWidth = (screenDimensions.width - 40) / 3;
+		screenDimensions.y += 85;
+		screenDimensions.width = buttonWidth;
 		//Instructions game button
 		if (GUI.Button (screenDimensions, "<size=30>Instructions</size>")) {
 			GameManager.StartGame();
 		}
-		screenDimensions.x += 320;
+		screenDimensions.x += buttonWidth + 20;
 		//Toggle sound game button, toggles sound on/off: on by default
 		if (GUI.Button (screenDimensions, soundSettingStringFalse)) {
 			if (soundOn == false) {
@@ -390,7 +389,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 				soundOn = false;
 			}
 		}
-		screenDimensions.x += 320;
+		screenDimensions.x += buttonWidth + 20;
 		//Exit game button, only works on build
 		if (GUI.Button (screenDimensions, "<size=30>Exit Game</size>")) {
 			Application.Quit();
