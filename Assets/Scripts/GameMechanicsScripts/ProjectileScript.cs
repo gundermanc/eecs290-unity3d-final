@@ -42,13 +42,13 @@ public class ProjectileScript : MonoBehaviour {
 					audio.PlayOneShot(explosionSound);
 
 					if(collisionResult < 0){
-						Target.transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*.5f)));
+						Target.transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*.5f)));
 					}
 					if (collisionResult == 0) {
-						Target.transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*1.0f)));
+						Target.transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*1.0f)));
 					}
 					if (collisionResult > 0) {
-						Target.transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*2.0f)));
+						Target.transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*2.0f)));
 					}
 				} else {
 					//Debug.Log("Element Comparer Result: "+collisionResult);
