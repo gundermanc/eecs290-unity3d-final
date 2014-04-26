@@ -58,7 +58,6 @@ public class NetworkingScript : Photon.MonoBehaviour {
 			}
 		}
 		int sortingHat = Mathf.Min (types) % 3;
-		Debug.Log (sortingHat);
 
 		PhotonHashTable PlayerProperties = new PhotonHashTable() {{"Team Number", groupNumber}, {"Type", sortingHat}};
 		PhotonNetwork.player.SetCustomProperties (PlayerProperties);

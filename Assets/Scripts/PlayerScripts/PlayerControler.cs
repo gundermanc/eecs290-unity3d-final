@@ -18,6 +18,7 @@ public class PlayerControler : MonoBehaviour {
 	private float normalAttackCooldownTimer;	//Stores the time left until the next normal attack can be done
 	private float specialOneCooldownTimer;		//Stores the time left until the next special #1 attack can be done
 	private float specialTwoCooldownTimer;		//Stores the time left until the next special #2 attack can be done
+	private bool toDie;
 	private bool dead;
 	private float deathtime;
 	private int deathcount;
@@ -32,6 +33,7 @@ public class PlayerControler : MonoBehaviour {
 		speedDebuffed = false;
 		fatiguedOut = false;
 		normalAttackCooldownTimer = 0.0f;
+		toDie = false;
 		dead = false;
 		deathtime = -1f;
 		deathcount = 0;
@@ -55,6 +57,9 @@ public class PlayerControler : MonoBehaviour {
 		*/
 
 		//When stamina is depleted, player becomes fatigued and slows down
+		//if (gameObject.GetComponent<ElementalObjectScript>().Health <= 0) {
+		//	Die ();	
+		//}
 		if (dead && deathtime != -1f && Time.timeSinceLevelLoad - deathtime > 15) {
 			Respawn();
 		}
@@ -160,25 +165,34 @@ public class PlayerControler : MonoBehaviour {
 			}
 		}
 		if(Input.GetKeyUp(KeyCode.H)) {
-			Die();
+			//Die();
 		}
 	}
-	public void Die(){
-		dead = true;
-		deathtime = Time.timeSinceLevelLoad;
-		OnScreenDisplayManager.PostMessage ("DEAD. You will respawn in front of your tower in 15 seconds.", Color.red);
-		deathcount++;
-		killcamstart = new Vector3(transform.position.x, transform.position.y + 20, transform.position.z);
-		killcamend = new Vector3(transform.position.x, transform.position.y + 40, transform.position.z);
-		killcam.depth = 10;
-		transform.position = new Vector3(0,0,-10);
+
+	[RPC]
+	public void Die(int ID){
+		if (gameObject.GetComponent<PhotonView> ().viewID == ID) {
+			killcam.depth = 10;
+			dead = true;
+			deathtime = Time.timeSinceLevelLoad;
+			OnScreenDisplayManager.PostMessage ("DEAD. You will respawn in front of your tower in 15 seconds.", Color.red);
+			deathcount++;
+			killcamstart = new Vector3 (transform.position.x, transform.position.y + 20, transform.position.z);
+			killcamend = new Vector3 (transform.position.x, transform.position.y + 40, transform.position.z);
+			transform.position = new Vector3 (0, 0, -10);
+		}
 	}
-	
+
+	public void Kill(){
+		gameObject.GetComponent<PhotonView>().RPC("Die", PhotonTargets.All, gameObject.GetComponent<PhotonView> ().viewID);
+	}
+
 	public void Respawn(){
 		dead = false;
 		gameObject.transform.position = RespawnPoint.position;
 		gameObject.transform.rotation = RespawnPoint.rotation;
 		killcam.depth = -1;
 		respawnreport = 0;
+		toDie = false;
 	}
 }
