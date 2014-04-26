@@ -2,7 +2,18 @@ fileFormatVersion: 2
 guid: 92252a69cfb1cf048ba1abf5c0e36dfb
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - healthBarTexture: {fileID: 2800000, guid: 1f1c28b9b69176e4c8aeddb8f5034406, type: 3}
+  - healthBarBackgroundTexture: {fileID: 2800000, guid: 7b4df8051a280174eafd6619ccdfe119,
+      type: 3}
+  - fatigueBarTexture: {fileID: 2800000, guid: 4f6974c30eaca71449e20033bffbc1cf, type: 3}
+  - fatigueBarBackgroundTexture: {fileID: 2800000, guid: 7b4df8051a280174eafd6619ccdfe119,
+      type: 3}
+  - batteryBarTexture: {instanceID: 0}
+  - batteryBarBackgroundTexture: {instanceID: 0}
+  - bloodDecalsTexture: {instanceID: 0}
+  - logoTexture: {instanceID: 0}
+  - overlayTexture: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

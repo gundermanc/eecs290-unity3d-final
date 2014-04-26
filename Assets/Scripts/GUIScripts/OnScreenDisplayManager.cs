@@ -20,11 +20,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	public Texture fatigueBarBackgroundTexture;	// the texture for the background of the empty ammo bar
 	private Rect fatigueBarRect;					// the rectangle which the FULL ammo bar will occupy
 	private Rect fatigueBarBackgroundRect;			// the rectangle which the empty ammo bar will occupy
-	
-	public Texture batteryBarTexture;			// the texture file to use for the battery bar
-	public Texture batteryBarBackgroundTexture;	// the texture for the background of the empty battery bar
-	private Rect batteryBarRect;				// the rectangle which the FULL battery bar will occupy
-	private Rect batteryBarBackgroundRect;		// the rectangle which the empty battery bar will occupy
+
 	public int messageDisplayTime = 5;			// the number of seconds to display a message
 	public Texture bloodDecalsTexture;			// the texture for the game over blood graphics
 	public Texture logoTexture;
@@ -52,7 +48,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	 * Run at initialization
 	 */
 	void Start () {
-		/* Initializes the various bars to help you keep track of HP, Ammo, and Battery
+		/* Initializes the various bars to help you keep track of HP, Fatigue
 		 * The "x" and "y" refer to the top-left co-ordinates of any rectangle
 		 * The "width" and "height" refer to the actual size of the rectangle
 		 * Each bar has both a rectangle for the actual meter as well as one for the background behind the bar
@@ -75,15 +71,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		fatigueBarBackgroundRect.y = 60;
 		fatigueBarBackgroundRect.width = 160;
 		fatigueBarBackgroundRect.height = 35;
-		
-		batteryBarRect.x = 17;
-		batteryBarRect.y = 110;
-		batteryBarRect.width = 155; 
-		batteryBarRect.height = 25;
-		batteryBarBackgroundRect.x = 15;
-		batteryBarBackgroundRect.y = 105;
-		batteryBarBackgroundRect.width = 160;
-		batteryBarBackgroundRect.height = 35;
+
 		// class is a singleton. save a static reference
 		instance = this;
 		messageQueue = new LinkedList<Message> ();
@@ -209,8 +197,8 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		GUIStyle regularStyle = GUI.skin.GetStyle ("Label");
 		regularStyle.alignment = TextAnchor.UpperLeft;
 		
-		//DrawHealthBar ();
-		//DrawFatigueBar ();
+		DrawHealthBar ();
+		DrawFatigueBar ();
 		DrawMessages ();
 	}
 	
@@ -313,7 +301,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 
 	private void UpdateConnectionState () {
 		if(PhotonNetwork.connectionStateDetailed != lastState) {
-			OnScreenDisplayManager.PostMessage("Network: " + PhotonNetwork.connectionStateDetailed.ToString());
+			OnScreenDisplayManager.PostMessage("Network: " + PhotonNetwork.connectionStateDetailed.ToString(), Color.yellow);
 		}
 		lastState = PhotonNetwork.connectionStateDetailed;
 	}

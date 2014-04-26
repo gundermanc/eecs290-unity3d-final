@@ -167,6 +167,9 @@ public class PlayerControler : MonoBehaviour {
 		if(Input.GetKeyUp(KeyCode.H)) {
 			//Die();
 		}
+
+		// update Chris's stamina bar
+		OnScreenDisplayManager.SetFatigue ((int)stamina);
 	}
 
 	[RPC]
