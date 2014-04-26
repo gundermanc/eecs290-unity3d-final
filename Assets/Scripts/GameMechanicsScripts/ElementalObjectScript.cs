@@ -67,7 +67,7 @@ public class ElementalObjectScript : MonoBehaviour {
 	}
 
 	public void Update () {
-		// update Chris's OnScreenDisplayManager.
+		 //update Chris's OnScreenDisplayManager.
 		OnScreenDisplayManager.SetHealthPoints (Health, false);
 	}
 }
