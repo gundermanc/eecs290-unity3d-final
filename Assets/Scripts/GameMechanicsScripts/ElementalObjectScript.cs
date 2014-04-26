@@ -16,7 +16,7 @@ public class ElementalObjectScript : MonoBehaviour {
 	//Decreases the health of the object
 	public void Hurt(int amount){
 		int damageDealt = Mathf.CeilToInt(amount / defense);
-		Debug.Log("Damage Dealt: "+teamNumber);
+		Debug.Log("Damage Dealt: "+damageDealt);
 		Health -= damageDealt;
 		if(Health <= 0 && !dead) {
 			if(transform.tag == "Player"){
