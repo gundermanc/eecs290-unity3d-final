@@ -40,7 +40,7 @@ public class ProjectileScript : MonoBehaviour {
 					explosion = PhotonNetwork.Instantiate("WayRadExplosion", transform.position, Quaternion.identity, 0) as GameObject;
 					explosion.GetComponent<ParticleSystem>().Play();
 					audio.PlayOneShot(explosionSound);
-
+					//
 					if(collisionResult < 0){
 						Target.transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*.5f)));
 					}
