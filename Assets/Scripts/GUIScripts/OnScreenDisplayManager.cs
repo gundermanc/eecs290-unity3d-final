@@ -107,6 +107,10 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	}
 	
 	void Update() {
+
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			GameManager.StartGame();
+		}
 		
 		// don't discard any messages while the game is paused
 		if (GameManager.IsPaused ()) {
