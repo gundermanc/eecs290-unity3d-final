@@ -55,7 +55,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		 * The "width" and "height" refer to the actual size of the rectangle
 		 * Each bar has both a rectangle for the actual meter as well as one for the background behind the bar
 		 */
-		
+
 		healthBarRect.x = 17;
 		healthBarRect.y = 20;
 		healthBarRect.width = 155; 
@@ -501,7 +501,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		GUI.Label (healthBarRect, "<b>" + healthPoints + "HP</b>");
 		GUI.color = Color.white;
 	}
-	
+
 	/**
 	 * Draws the ammo bar for the HUD
 	 */
