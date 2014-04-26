@@ -28,9 +28,6 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	private const string gameTitle = "Rock, Paper, Scissors"; //text for the game title
 	
 	// private constants
-	private const string welcomeMessage = "The first person shooter."; //Text string for the welcome message
-	private const string instructions1 = "Left click to swing your sword, right click throw throwing knives"; //Instructions on how to play the game
-	private const string instructions2 = "Press Esc to pause and M to view the minimap fullscreen."; //Instructions continued
 	private const int pauseMenuMargins = 70; //Coordinates for the rectangle used in the pause menu
 	private const int shadowOffset = -2; //Value used to draw a shadow rectangle
 	
@@ -40,6 +37,9 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	private int maxAmmoCount = 100; //Maximum amount of ammo the player can have at one time
 	private LinkedList<Message> messageQueue; //A linked list containing all the queue'd messages to be displayed on screen
 	private PeerState lastState = PeerState.Disconnected;
+	private bool soundOn = false; //Sound is set to off by default
+	private string soundSettingStringFalse = "<size=30>Toggle Sound (Off)</size>";
+	private string soundSettingStringTrue = "<size=30>Toggle Sound (On)</size>";
 
 	// singleton instance reference
 	private static OnScreenDisplayManager instance; 
@@ -107,6 +107,10 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	}
 	
 	void Update() {
+
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			GameManager.StartGame();
+		}
 		
 		// don't discard any messages while the game is paused
 		if (GameManager.IsPaused ()) {
@@ -291,11 +295,32 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		screenDimensions.y += logoRect.height;
 		screenDimensions.yMax = screenDimensions.y + 75;
 		
-		// exit game button
+		//Start game button
 		if (GUI.Button (screenDimensions, "<size=30>Start Game</size>")) {
-			
-			// this works...just not in the editor. you have to actually build the project first
 			GameManager.StartGame();
+		}
+
+		screenDimensions.x += 75;
+		screenDimensions.y += 100;
+		screenDimensions.yMax = screenDimensions.y + 75;
+		screenDimensions.width = 300;
+		//Instructions game button
+		if (GUI.Button (screenDimensions, "<size=30>Instructions</size>")) {
+			GameManager.StartGame();
+		}
+		screenDimensions.x += 320;
+		//Toggle sound game button, toggles sound on/off: on by default
+		if (GUI.Button (screenDimensions, soundSettingStringFalse)) {
+			if (soundOn == false) {
+				soundOn = true;
+			} else {
+				soundOn = false;
+			}
+		}
+		screenDimensions.x += 320;
+		//Exit game button, only works on build
+		if (GUI.Button (screenDimensions, "<size=30>Exit Game</size>")) {
+			Application.Quit();
 		}
 	}
 
@@ -420,7 +445,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		GUI.color = Color.black;
 		GUIStyle centeredStyle = GUI.skin.GetStyle ("Label");
 		centeredStyle.alignment = TextAnchor.MiddleCenter;
-		GUI.Label (fatigueBarRect, "<b>" + ammoCount + " Fatigue</b>");
+		GUI.Label (fatigueBarRect, "<b>" + ammoCount + " Stamina</b>");
 		GUI.color = Color.white;
 	}
 	

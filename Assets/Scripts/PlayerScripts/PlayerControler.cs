@@ -30,8 +30,8 @@ public class PlayerControler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		speedDebuffed = false;
-		fatiguedOut = false;
+		speedDebuffed = false;				//By default the player has not been debuffed
+		fatiguedOut = false;				//By default they are not out of stamina
 		normalAttackCooldownTimer = 0.0f;
 		toDie = false;
 		dead = false;
@@ -45,16 +45,6 @@ public class PlayerControler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		/* A code to send debug messages every second for testing purposes; delete for final version
-		 * timer += Time.deltaTime;
-		
-		if (timer > waitTime)
-		{
-			timer = 0.0f;
-			Debug.Log("Stamina is currently: "+stamina +fatiguedOut);
-		}
-		*/
 
 		//When stamina is depleted, player becomes fatigued and slows down
 		//if (gameObject.GetComponent<ElementalObjectScript>().Health <= 0) {

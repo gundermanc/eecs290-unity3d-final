@@ -6,6 +6,7 @@ public class ProjectileScript : MonoBehaviour {
 	public float baseDamage;
 	public int teamNumber;
 	public float destroytimer;
+	public AudioClip explosionSound;
 	private bool active;
 	private float createtime;
 	private GameObject explosion;
@@ -36,6 +37,7 @@ public class ProjectileScript : MonoBehaviour {
 				if (Target.collider.tag == "Tower"){
 					explosion = PhotonNetwork.Instantiate("WayRadExplosion", transform.position, Quaternion.identity, 0) as GameObject;
 					explosion.GetComponent<ParticleSystem>().Play();
+					audio.PlayOneShot(explosionSound);
 				}
 				Element enemyType = Target.transform.GetComponent<ElementalObjectScript>().getElementalType();
 
