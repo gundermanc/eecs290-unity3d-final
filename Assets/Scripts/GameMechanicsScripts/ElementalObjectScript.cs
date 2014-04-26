@@ -14,18 +14,21 @@ public class ElementalObjectScript : MonoBehaviour {
 	private bool dead = false;
 	
 	//Decreases the health of the object
-	public void Hurt(int amount){
-		int damageDealt = Mathf.CeilToInt(amount / defense);
-		Debug.Log("Damage Dealt: "+damageDealt);
-		Health -= damageDealt;
-		if(Health <= 0 && !dead) {
-			if(transform.tag == "Player"){
-				Health = 100;
-				gameObject.transform.GetComponent<PlayerControler>().Kill();
-			} else {
-				Debug.Log("Death flag.");
-				transform.parent.GetComponent<PhotonView>().RPC("Death", PhotonTargets.All, transform.parent.GetComponent<PhotonView> ().viewID);
-				dead = true;
+	[RPC]
+	public void Hurt(int ID, int amount){
+		if (gameObject.GetComponent<PhotonView> ().viewID == ID) {
+			int damageDealt = Mathf.CeilToInt(amount / defense);
+			Debug.Log("Damage Dealt: "+damageDealt);
+			Health -= damageDealt;
+			if(Health <= 0 && !dead) {
+				if(transform.tag == "Player"){
+					Health = 100;
+					gameObject.transform.GetComponent<PlayerControler>().Kill();
+				} else {
+					Debug.Log("Death flag.");
+					transform.parent.GetComponent<PhotonView>().RPC("Death", PhotonTargets.All, transform.parent.GetComponent<PhotonView> ().viewID);
+					dead = true;
+				}
 			}
 		}
 	}
