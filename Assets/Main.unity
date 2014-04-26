@@ -4601,6 +4601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92252a69cfb1cf048ba1abf5c0e36dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reticle: {fileID: 2800000, guid: 18bafb3dbdcfe6f4282277484cec0118, type: 3}
   healthBarTexture: {fileID: 2800000, guid: 1f1c28b9b69176e4c8aeddb8f5034406, type: 3}
   healthBarBackgroundTexture: {fileID: 2800000, guid: 7b4df8051a280174eafd6619ccdfe119,
     type: 3}
