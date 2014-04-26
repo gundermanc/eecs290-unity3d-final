@@ -50,7 +50,8 @@ public class NetworkingScript : Photon.MonoBehaviour {
 			groupNumber = 0;
 		}
 
-		OnScreenDisplayManager.PostMessage("There are currently " + PhotonNetwork.playerList.Length + " players in this game.")
+		OnScreenDisplayManager.PostMessage ("There are currently " 
+		                                    + PhotonNetwork.playerList.Length + " players in this game.");
 
 		//Assigns player type based on which is needed to keep the teams reasonably balanced
 		int[] types = {0, 1, 2};
