@@ -46,13 +46,13 @@ public class ProjectileScript : MonoBehaviour {
 				//Debug.Log("Element Comparer Result: "+collisionResult);
 
 				if(collisionResult < 0){
-					Target.transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>(), ((int)(baseDamage*.5f)));
+					Target.transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*.5f)));
 				}
 				if (collisionResult == 0) {
-					Target.transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>(), ((int)(baseDamage*1.0f)));
+					Target.transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*1.0f)));
 				}
 				if (collisionResult > 0) {
-					Target.transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>(), ((int)(baseDamage*2.0f)));
+					Target.transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*2.0f)));
 				}
 			}
 			active = false;
