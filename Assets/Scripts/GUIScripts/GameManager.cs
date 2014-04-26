@@ -90,6 +90,13 @@ public class GameManager : MonoBehaviour {
 	public static GameMode GetGameMode() {
 		return mode;
 	}
+
+	/**
+	 * Brings up game setup screen
+	 */
+	public static void SetupGame () {
+		mode = GameMode.GameSetup;
+	}
 	
 	/**
 	 * Pauses the game.
@@ -166,6 +173,7 @@ public class GameManager : MonoBehaviour {
 	 */
 	public enum GameMode {
 		StartMenu,			// at the start screen
+		GameSetup,			// setting up your game to play
 		Paused,				// at the pause screen
 		UnPaused,			// in normal game play
 		Dead,				// at the death screen

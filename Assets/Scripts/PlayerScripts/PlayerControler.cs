@@ -38,8 +38,6 @@ public class PlayerControler : MonoBehaviour {
 		deathtime = -1f;
 		deathcount = 0;
 		killcam = (Camera) Camera.Instantiate(GameObject.FindWithTag("MainCamera").camera, new Vector3(0, 0, 0), GameObject.FindWithTag("MainCamera").transform.rotation);
-		killcam.GetComponent<OnScreenDisplayManager> ().enabled = false;
-		killcam.GetComponent<GameManager> ().enabled = false;
 		respawnreport = 0;
 	}
 	

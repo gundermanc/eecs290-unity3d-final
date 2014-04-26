@@ -85,10 +85,14 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		// draw the GUI appropriate for the current game state.
 		switch(GameManager.GetGameMode()) {
 		case GameManager.GameMode.Paused: //If the game mode is paused
+			DrawPlayersList ();
 			DrawPauseMenu();			  //Draw the pause menu
 			break;
 		case GameManager.GameMode.StartMenu:
 			DrawGameStart();	  //Draw the start menu
+			break;
+		case GameManager.GameMode.GameSetup:
+			DrawGameSetup ();
 			break;
 		case GameManager.GameMode.Dead:   //Draw the "game over" screen
 			DrawBloodDecals ();
@@ -193,6 +197,41 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		instance.messageQueue.AddLast(new Message(DateTime.Now, message.ToString(),
 		                                          color));
 	}
+
+	/**
+	 * Draws the game setup screen
+	 */
+	private void DrawGameSetup () {
+		
+		// create a label GUI style that is centered
+		GUIStyle centeredStyle = GUI.skin.GetStyle ("Box");
+		centeredStyle.alignment = TextAnchor.MiddleCenter;
+
+		Rect menuRect = new Rect (100, 100, Screen.width - 200, Screen.height - 200);
+
+		// draw title
+		DrawLabelWithShadow (menuRect, "<size=40>Multiplayer Lobby</size>");
+
+		String userName = "";
+		// draw username field
+		Rect usernameRect = new Rect (menuRect);
+		usernameRect.y += 90;
+		usernameRect.height = 50;
+		centeredStyle = GUI.skin.GetStyle ("Box");
+		centeredStyle.alignment = TextAnchor.UpperLeft;
+		GUI.Label (usernameRect, "<size=20>Screen name</size>");
+		usernameRect.y += 50;
+		PhotonNetwork.player.name = GUI.TextField (usernameRect, PhotonNetwork.player.name);
+
+		Rect startRect = new Rect (usernameRect);
+		startRect.y = Screen.height - 300;
+		startRect.height = 100;
+		if(GUI.Button (startRect, "Start Game")) {
+			if(!PhotonNetwork.player.name.Equals("")) {
+				GameManager.StartGame ();
+			}
+		}
+	}
 	
 	/**
 	 * Draw the game Heads up display.
@@ -205,7 +244,41 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		DrawFatigueBar ();
 		DrawMessages ();
 	}
-	
+
+	/**
+	 * Draws the list of currently connected players
+	 */
+	private void DrawPlayersList () {
+
+		// create a label GUI style that is centered
+		GUIStyle centeredStyle = GUI.skin.GetStyle ("Box");
+		centeredStyle.alignment = TextAnchor.MiddleCenter;
+
+		centeredStyle = GUI.skin.GetStyle ("Label");
+		centeredStyle.alignment = TextAnchor.MiddleCenter;
+
+		bool isBox = true;
+		float width = ((Screen.width - (2 * pauseMenuMargins)) / 2)
+						- pauseMenuMargins;
+		Rect drawRect = new Rect (pauseMenuMargins + pauseMenuMargins + width, pauseMenuMargins, width, 50);
+
+		
+		DrawLabelWithShadow (drawRect, "<size=40><i>Players List</i></size>");
+		
+		// restart game button
+		drawRect.y += 100;
+		foreach (PhotonPlayer player in PhotonNetwork.playerList) {
+			if(isBox) {
+				GUI.Box (drawRect, "<size=40>" + player.name + "</size>");
+			} else {
+				DrawLabelWithShadow (drawRect, "<size=40>" + player.name + "</size>");
+			}
+			drawRect.y += 50;
+			isBox = !isBox;
+		}
+	}
+
+
 	/**
 	 * Draw the blood decals, used for the game over screen 
 	 */
@@ -245,8 +318,8 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		
 		// get pause menu rectange, minus the margins specified in the constant pauseMenuMargins
 		Rect screenDimensions = new Rect (pauseMenuMargins, pauseMenuMargins, 
-		                                  Screen.width - (2 * pauseMenuMargins),
-		                                  Screen.height- (2 * pauseMenuMargins));
+		                                  ((Screen.width - (2 * pauseMenuMargins)) / 2) - pauseMenuMargins,
+		                                  (Screen.height- (2 * pauseMenuMargins)));
 		
 		DrawLabelWithShadow (screenDimensions, "<size=40><i>Paused</i></size>");
 		
@@ -297,7 +370,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		
 		//Start game button
 		if (GUI.Button (screenDimensions, "<size=30>Start Game</size>")) {
-			GameManager.StartGame();
+			GameManager.SetupGame ();
 		}
 
 		screenDimensions.x += 75;
