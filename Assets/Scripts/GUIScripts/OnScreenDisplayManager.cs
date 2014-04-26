@@ -11,6 +11,8 @@ using System.Text;
 public class OnScreenDisplayManager : MonoBehaviour {
 	
 	// script parameters
+	public Texture2D reticle;                   //the texture frile for use for the reticle
+
 	public Texture healthBarTexture;			// the texture file to use for the health bar
 	public Texture healthBarBackgroundTexture;	// the texture for the background of the empty health bar
 	private Rect healthBarRect;					// the rectangle which the FULL health bar will occupy
@@ -235,6 +237,11 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	private void DrawHUD() {
 		GUIStyle regularStyle = GUI.skin.GetStyle ("Label");
 		regularStyle.alignment = TextAnchor.UpperLeft;
+
+		//draw the reticle
+		float xcorner = (Screen.width / 2) - 40;
+		float ycorner = (Screen.height / 2) - 40;
+		GUI.DrawTexture (new Rect(xcorner, ycorner, 80, 80), reticle);
 		
 		DrawHealthBar ();
 		DrawFatigueBar ();
