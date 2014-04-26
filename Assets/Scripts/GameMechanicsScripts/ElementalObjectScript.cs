@@ -24,7 +24,7 @@ public class ElementalObjectScript : MonoBehaviour {
 				gameObject.transform.GetComponent<PlayerControler>().Kill();
 			} else {
 				Debug.Log("Death flag.");
-				transform.parent.GetComponent<TowerScript>().Death();
+				transform.parent.GetComponent<PhotonView>().RPC("Death", PhotonTargets.All, transform.parent.GetComponent<PhotonView> ().viewID);
 				dead = true;
 			}
 		}

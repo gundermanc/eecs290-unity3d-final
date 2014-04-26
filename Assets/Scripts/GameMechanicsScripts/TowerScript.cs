@@ -11,13 +11,16 @@ public class TowerScript : Photon.MonoBehaviour {
 	public GameObject dustCloud;
 	private GameObject cloud;
 
-	public void Death(){
-		dead = true;
-		timeOfDeath = Time.time;
-		// tell the GameManager that a tower has died
-		GameObject.Find("World Camera").GetComponent<GameManager>().TowerDied(teamNumber, (int)elementType);
-		cloud = Instantiate (dustCloud, new Vector3(transform.position.x, 0, transform.position.z), Quaternion.identity) as GameObject;
-		cloud.GetComponent<ParticleSystem> ().Play ();
+	[RPC]
+	public void Death(int ID){
+		if (gameObject.GetComponent<PhotonView> ().viewID == ID) {
+			dead = true;
+			timeOfDeath = Time.time;
+			// tell the GameManager that a tower has died
+			GameObject.Find("World Camera").GetComponent<GameManager>().TowerDied(teamNumber, (int)elementType);
+			cloud = Instantiate (dustCloud, new Vector3(transform.position.x, 0, transform.position.z), Quaternion.identity) as GameObject;
+			cloud.GetComponent<ParticleSystem> ().Play ();
+		}
 	}
 
 	void Update(){
