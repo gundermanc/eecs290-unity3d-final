@@ -26,4 +26,5 @@ MonoBehaviour:
   - OnAwakeRPC
   - DestroyRpc
   - Die
+  - Death
   DisableAutoOpenWizard: 0
