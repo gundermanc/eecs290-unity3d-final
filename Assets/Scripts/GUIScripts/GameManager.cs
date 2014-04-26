@@ -103,6 +103,10 @@ public class GameManager : MonoBehaviour {
 				obj.enabled = false;
 			}
 		}
+
+		// show mouse
+		Screen.lockCursor = false;
+		Screen.showCursor = true;
 	}
 	
 	/**
@@ -117,6 +121,10 @@ public class GameManager : MonoBehaviour {
 				obj.enabled = true;
 			}
 		}
+
+		// hide mouse
+		Screen.lockCursor = true;
+		Screen.showCursor = false;
 	}
 	
 	/**
