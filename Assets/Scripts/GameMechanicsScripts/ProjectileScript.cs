@@ -43,19 +43,19 @@ public class ProjectileScript : MonoBehaviour {
 					audio.PlayOneShot(explosionSound);
 					//
 					if(collisionResult < 0){
-						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*.5f)), true);
+						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, (int)(baseDamage*.5f), true);
 					}
 					if (collisionResult == 0) {
-						Target.transform.parent.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*1f)), true);
+						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, (int)(baseDamage*1f), true);
 					}
 					if (collisionResult > 0) {
-						Target.transform.parent.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*2f)), true);
+						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, (int)(baseDamage*2f), true);
 					}
 				} else {
 					//Debug.Log("Element Comparer Result: "+collisionResult);
 
 					if(collisionResult < 0){
-						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*.5f)), false);
+						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, (int)(baseDamage*.5f), false);
 					}
 					if (collisionResult == 0) {
 						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*1f)), false);
