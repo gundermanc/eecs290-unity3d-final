@@ -33,6 +33,7 @@ public class ProjectileScript : MonoBehaviour {
 		}
 
 		if((Target.collider.tag == "Player" || Target.collider.tag == "Tower") && active){
+			active = false;
 			if(teamNumber != Target.transform.GetComponent<ElementalObjectScript>().teamNumber){
 				Element enemyType = Target.transform.GetComponent<ElementalObjectScript>().getElementalType();
 				int collisionResult = ElementComparer(ProjectileType, enemyType);
@@ -64,7 +65,6 @@ public class ProjectileScript : MonoBehaviour {
 					}
 				}
 			}
-			active = false;
 		}
 	}
 
