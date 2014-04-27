@@ -78,6 +78,9 @@ public class ElementalObjectScript : MonoBehaviour {
 
 	public void Update () {
 		 //update Chris's OnScreenDisplayManager.
-		OnScreenDisplayManager.SetHealthPoints (Health, false);
+		if (gameObject.tag == "Player") {
+			if (gameObject.transform.GetComponent<PhotonView> ().isMine)
+				OnScreenDisplayManager.SetHealthPoints (Health, false);
+		}
 	}
 }
