@@ -428,6 +428,7 @@ GameObject:
   - 4: {fileID: 86563191}
   - 114: {fileID: 86563193}
   - 114: {fileID: 86563192}
+  - 114: {fileID: 86563194}
   m_Layer: 0
   m_Name: ScissorsTowerNorth
   m_TagString: Tower
@@ -463,7 +464,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 86563191}
+  observed: {fileID: 86563193}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -487,6 +488,23 @@ MonoBehaviour:
   timeToDestroy: 30
   lerpSpeed: 1
   dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
+--- !u!114 &86563194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 86563190}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
+  thisType: 0
+  teamNumber: 0
 --- !u!1 &128951683
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +755,86 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 232994014}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &236536457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 236536462}
+  - 20: {fileID: 236536461}
+  - 124: {fileID: 236536460}
+  - 92: {fileID: 236536459}
+  - 81: {fileID: 236536458}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &236536458
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 236536457}
+  m_Enabled: 1
+--- !u!92 &236536459
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 236536457}
+  m_Enabled: 1
+--- !u!124 &236536460
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 236536457}
+  m_Enabled: 1
+--- !u!20 &236536461
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 236536457}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: .300000012
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_HDR: 0
+  m_OcclusionCulling: 1
+--- !u!4 &236536462
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 236536457}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &309443100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,6 +1551,7 @@ GameObject:
   - 4: {fileID: 556826234}
   - 114: {fileID: 556826236}
   - 114: {fileID: 556826235}
+  - 114: {fileID: 556826237}
   m_Layer: 0
   m_Name: ScissorsTowerSouth
   m_TagString: Tower
@@ -1488,7 +1587,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 556826234}
+  observed: {fileID: 556826236}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -1512,6 +1611,23 @@ MonoBehaviour:
   timeToDestroy: 30
   lerpSpeed: 1
   dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
+--- !u!114 &556826237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 556826233}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
+  thisType: 0
+  teamNumber: 0
 --- !u!1 &562686592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,6 +1760,7 @@ GameObject:
   - 4: {fileID: 573816647}
   - 114: {fileID: 573816649}
   - 114: {fileID: 573816648}
+  - 114: {fileID: 573816650}
   m_Layer: 0
   m_Name: RockTowerNorth
   m_TagString: Tower
@@ -1698,11 +1815,28 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 573816647}
+  observed: {fileID: 573816648}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: 0
+--- !u!114 &573816650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573816646}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
+  thisType: 0
+  teamNumber: 0
 --- !u!1 &580053965
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,7 +2553,7 @@ Prefab:
     - target: {fileID: 11400002, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
       propertyPath: observed
       value: 
-      objectReference: {fileID: 86563191}
+      objectReference: {fileID: 86563193}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
@@ -4777,7 +4911,7 @@ Prefab:
     - target: {fileID: 11400008, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
       propertyPath: observed
       value: 
-      objectReference: {fileID: 1851416334}
+      objectReference: {fileID: 1851416335}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
@@ -5046,7 +5180,7 @@ Prefab:
     - target: {fileID: 11400004, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
       propertyPath: observed
       value: 
-      objectReference: {fileID: 556826234}
+      objectReference: {fileID: 556826236}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
@@ -6199,6 +6333,7 @@ GameObject:
   - 4: {fileID: 1766213809}
   - 114: {fileID: 1766213811}
   - 114: {fileID: 1766213810}
+  - 114: {fileID: 1766213812}
   m_Layer: 0
   m_Name: PaperTowerSouth
   m_TagString: Tower
@@ -6258,6 +6393,23 @@ MonoBehaviour:
   timeToDestroy: 30
   lerpSpeed: 1
   dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
+--- !u!114 &1766213812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1766213808}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
+  thisType: 0
+  teamNumber: 0
 --- !u!1 &1773554700
 GameObject:
   m_ObjectHideFlags: 0
@@ -6755,6 +6907,7 @@ GameObject:
   - 4: {fileID: 1851416334}
   - 114: {fileID: 1851416336}
   - 114: {fileID: 1851416335}
+  - 114: {fileID: 1851416337}
   m_Layer: 0
   m_Name: RockTowerSouth
   m_TagString: Tower
@@ -6809,11 +6962,28 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 1851416334}
+  observed: {fileID: 1851416335}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: 0
+--- !u!114 &1851416337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1851416333}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
+  thisType: 0
+  teamNumber: 0
 --- !u!1 &1855214550
 GameObject:
   m_ObjectHideFlags: 0
@@ -7004,7 +7174,7 @@ Prefab:
     - target: {fileID: 11400004, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
       propertyPath: observed
       value: 
-      objectReference: {fileID: 573816647}
+      objectReference: {fileID: 573816648}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
@@ -7605,6 +7775,7 @@ GameObject:
   - 4: {fileID: 2093564124}
   - 114: {fileID: 2093564126}
   - 114: {fileID: 2093564125}
+  - 114: {fileID: 2093564127}
   m_Layer: 0
   m_Name: PaperTowerNorth
   m_TagString: Tower
@@ -7664,6 +7835,23 @@ MonoBehaviour:
   timeToDestroy: 30
   lerpSpeed: 1
   dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
+--- !u!114 &2093564127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2093564123}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
+  thisType: 0
+  teamNumber: 0
 --- !u!1 &2109000685
 GameObject:
   m_ObjectHideFlags: 0
