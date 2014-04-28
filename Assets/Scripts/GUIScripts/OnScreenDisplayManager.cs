@@ -358,16 +358,16 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		                                  Screen.height- (2 * pauseMenuMargins));
 		
 		screenDimensions.y += 100;
-
+		
 		Rect logoRect = new Rect ();
 		logoRect.width = 807;
 		logoRect.height = 278;
 		logoRect.x = (Screen.width - logoRect.width) / 2;
 		logoRect.y = (screenDimensions.y);
-
+		
 		GUI.DrawTexture (new Rect(0, 0, Screen.width, Screen.height), overlayTexture);
 		GUI.DrawTexture (logoRect, logoTexture);
-
+		
 		screenDimensions.y += logoRect.height;
 		screenDimensions.yMax = screenDimensions.y + 75;
 		
@@ -375,16 +375,15 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		if (GUI.Button (screenDimensions, "<size=30>Start Game</size>")) {
 			GameManager.SetupGame ();
 		}
-
-		screenDimensions.x += 75;
-		screenDimensions.y += 100;
-		screenDimensions.yMax = screenDimensions.y + 75;
-		screenDimensions.width = 300;
+		
+		float buttonWidth = (screenDimensions.width - 40) / 3;
+		screenDimensions.y += 85;
+		screenDimensions.width = buttonWidth;
 		//Instructions game button
 		if (GUI.Button (screenDimensions, "<size=30>Instructions</size>")) {
 			GameManager.StartGame();
 		}
-		screenDimensions.x += 320;
+		screenDimensions.x += buttonWidth + 20;
 		//Toggle sound game button, toggles sound on/off: on by default
 		if (GUI.Button (screenDimensions, soundSettingStringFalse)) {
 			if (soundOn == false) {
@@ -393,7 +392,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 				soundOn = false;
 			}
 		}
-		screenDimensions.x += 320;
+		screenDimensions.x += buttonWidth + 20;
 		//Exit game button, only works on build
 		if (GUI.Button (screenDimensions, "<size=30>Exit Game</size>")) {
 			Application.Quit();
