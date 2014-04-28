@@ -159,8 +159,20 @@ public class GameManager : MonoBehaviour {
 	public static void RestartGame() {
 
 	}
-
-	public void TeamMessage(int team, string message, Color c){
+	
+	public void TeamChat(string message){
+		int team = 0;
+		foreach (GameObject p in GameObject.FindGameObjectsWithTag ("Player")) {
+			if (p.GetComponent<PhotonView>().isMine){
+				team = p.GetComponent<PlayerControler>().teamNumber;
+			}
+		}
+		foreach(GameObject p in GameObject.FindGameObjectsWithTag ("Player")){
+			p.GetComponent<PlayerControler>().SendTeamMessage(team, message);
+		}
+	}
+	
+	public static void TeamMessage(int team, string message, Color c){
 		foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player")) {
 			if (p.GetComponent<PhotonView>().isMine){
 				if (p.GetComponent<PlayerControler>().teamNumber == team){
@@ -184,9 +196,9 @@ public class GameManager : MonoBehaviour {
 	 */
 	public static void EndLevel(int team) {
 		//Sends sympathetic message to losing team
-		instance.TeamMessage ((team+1)%2, "All of your towers are down! Better luck next time!", Color.red);
+		TeamMessage ((team+1)%2, "All of your towers are down! Better luck next time!", Color.red);
 		//Sends congratulatory message to the winning team
-		instance.TeamMessage (team, "YOU WIN!!!", Color.green);
+		TeamMessage (team, "YOU WIN!!!", Color.green);
 	}
 	
 	/**
