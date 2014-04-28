@@ -628,11 +628,11 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		healthBarRect = new Rect (healthBarBackgroundRect);
 		healthBarRect.x += 5;
 		healthBarRect.width -= 10;
-		healthBarRect.width *= (team0RockTowerHealth / 100);
+		healthBarRect.width *= (team0RockTowerHealth / 100f);
 		healthBarRect.y += 5;
 		healthBarRect.height -= 10;
 		GUI.DrawTexture (healthBarRect, healthBarTexture);
-		GUI.Label (healthBarRect, "<color=#000000><b>RED Rock Tower</b></color>");
+		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>RED Rock Tower</b></color>");
 		
 		healthBarBackgroundRect.y += 55;
 
@@ -641,11 +641,11 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		healthBarRect = new Rect (healthBarBackgroundRect);
 		healthBarRect.x += 5;
 		healthBarRect.width -= 10;
-		healthBarRect.width *= (team0PaperTowerHealth / 100);
+		healthBarRect.width *= (team0PaperTowerHealth / 100f);
 		healthBarRect.y += 5;
 		healthBarRect.height -= 10;
 		GUI.DrawTexture (healthBarRect, healthBarTexture);
-		GUI.Label (healthBarRect, "<color=#000000><b>RED Paper Tower</b></color>");
+		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>RED Paper Tower</b></color>");
 
 		healthBarBackgroundRect.y += 55;
 
@@ -654,11 +654,11 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		healthBarRect = new Rect (healthBarBackgroundRect);
 		healthBarRect.x += 5;
 		healthBarRect.width -= 10;
-		healthBarRect.width *= (team0ScissorsTowerHealth / 100);
+		healthBarRect.width *= (team0ScissorsTowerHealth / 100f);
 		healthBarRect.y += 5;
 		healthBarRect.height -= 10;
 		GUI.DrawTexture (healthBarRect, healthBarTexture);
-		GUI.Label (healthBarRect, "<color=#000000><b>RED Scissors Tower</b></color>");
+		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>RED Scissors Tower</b></color>");
 
 		healthBarBackgroundRect.y += 55;
 
@@ -667,11 +667,11 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		healthBarRect = new Rect (healthBarBackgroundRect);
 		healthBarRect.x += 5;
 		healthBarRect.width -= 10;
-		healthBarRect.width *= (team1RockTowerHealth / 100);
+		healthBarRect.width *= (team1RockTowerHealth / 100f);
 		healthBarRect.y += 5;
 		healthBarRect.height -= 10;
 		GUI.DrawTexture (healthBarRect, healthBarTexture);
-		GUI.Label (healthBarRect, "<color=#000000><b>BLUE Rock Tower</b></color>");
+		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>BLUE Rock Tower</b></color>");
 		
 		healthBarBackgroundRect.y += 55;
 		
@@ -680,11 +680,11 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		healthBarRect = new Rect (healthBarBackgroundRect);
 		healthBarRect.x += 5;
 		healthBarRect.width -= 10;
-		healthBarRect.width *= (team1PaperTowerHealth / 100);
+		healthBarRect.width *= (team1PaperTowerHealth / 100f);
 		healthBarRect.y += 5;
 		healthBarRect.height -= 10;
 		GUI.DrawTexture (healthBarRect, healthBarTexture);
-		GUI.Label (healthBarRect, "<color=#000000><b>BLUE Paper Tower</b></color>");
+		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>BLUE Paper Tower</b></color>");
 		
 		healthBarBackgroundRect.y += 55;
 		
@@ -693,11 +693,11 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		healthBarRect = new Rect (healthBarBackgroundRect);
 		healthBarRect.x += 5;
 		healthBarRect.width -= 10;
-		healthBarRect.width *= (team1ScissorsTowerHealth / 100);
+		healthBarRect.width *= (team1ScissorsTowerHealth / 100f);
 		healthBarRect.y += 5;
 		healthBarRect.height -= 10;
 		GUI.DrawTexture (healthBarRect, healthBarTexture);
-		GUI.Label (healthBarRect, "<color=#000000><b>BLUE Scissors Tower</b></color>");
+		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>BLUE Scissors Tower</b></color>");
 	}
 	
 	/**
