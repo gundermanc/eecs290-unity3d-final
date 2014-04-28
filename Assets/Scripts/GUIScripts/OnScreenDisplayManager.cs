@@ -448,12 +448,8 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		}
 		screenDimensions.x += buttonWidth + 20;
 		//Toggle sound game button, toggles sound on/off: on by default
-		if (GUI.Button (screenDimensions, soundSettingStringFalse)) {
-			if (soundOn == false) {
-				soundOn = true;
-			} else {
-				soundOn = false;
-			}
+		if (GUI.Button (screenDimensions, !AudioListener.pause ? soundSettingStringTrue : soundSettingStringFalse)) {
+			AudioListener.pause = !AudioListener.pause;
 		}
 		screenDimensions.x += buttonWidth + 20;
 		//Exit game button, only works on build
