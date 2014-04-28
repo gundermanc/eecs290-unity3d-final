@@ -48,6 +48,13 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	private PeerState lastState = PeerState.Disconnected;
 	private bool soundOn = false; //Sound is set to off by default
 
+	private int team0RockTowerHealth = 100;
+	private int team0PaperTowerHealth = 100;
+	private int team0ScissorsTowerHealth = 100;
+	private int team1RockTowerHealth = 100;
+	private int team1PaperTowerHealth = 100;
+	private int team1ScissorsTowerHealth = 100;
+
 	private string teamMessage = "";
 
 	// singleton instance reference
@@ -175,6 +182,52 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		}
 		instance.ammoCount = ammo;
 	}
+
+
+
+
+	public static void SetTeam0RockTowerHealth(int hp) {
+		if(hp < 0 || hp  > 100) {
+			Debug.LogError("Invalid tower health.");
+		}
+		instance.team0RockTowerHealth = hp;
+	}
+
+	public static void SetTeam0PaperTowerHealth(int hp) {
+		if(hp < 0 || hp > 100) {
+			Debug.LogError("Invalid tower health.");
+		}
+		instance.team0PaperTowerHealth = hp;
+	}
+
+	public static void SetTeam0ScissorsTowerHealth(int hp) {
+		if(hp < 0 || hp > 100) {
+			Debug.LogError("Invalid tower health.");
+		}
+		instance.team0ScissorsTowerHealth = hp;
+	}
+
+	public static void SetTeam1RockTowerHealth(int hp) {
+		if(hp < 0 || hp > 100) {
+			Debug.LogError("Invalid tower health.");
+		}
+		instance.team1RockTowerHealth = hp;
+	}
+	
+	public static void SetTeam1PaperTowerHealth(int hp) {
+		if(hp < 0 || hp > 100) {
+			Debug.LogError("Invalid tower health.");
+		}
+		instance.team1PaperTowerHealth = hp;
+	}
+	
+	public static void SetTeam1ScissorsTowerHealth(int hp) {
+		if(hp < 0 || hp > 100) {
+			Debug.LogError("Invalid tower health.");
+		}
+		instance.team1ScissorsTowerHealth = hp;
+	}
+
 	
 	/** 
 	 * Sets the max ammo count for the OnScreenDisplay
@@ -285,7 +338,8 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		float xcorner = (Screen.width / 2) - 40;
 		float ycorner = (Screen.height / 2) - 40;
 		GUI.DrawTexture (new Rect(xcorner, ycorner, 80, 80), reticle);
-		
+
+		DrawTowerHealthBars ();
 		DrawHealthBar ();
 		DrawFatigueBar ();
 		DrawMessages ();
@@ -559,6 +613,91 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		centeredStyle.alignment = TextAnchor.MiddleCenter;
 		GUI.Label (healthBarRect, "<b>" + healthPoints + "HP</b>");
 		GUI.color = Color.white;
+	}
+
+	private void DrawTowerHealthBars() {
+		
+		GUIStyle centeredStyle = GUI.skin.GetStyle ("Label");
+		centeredStyle.alignment = TextAnchor.UpperCenter;
+
+		Rect healthBarBackgroundRect = new Rect (Screen.width - 193, 10, 173, 35);
+		Rect healthBarRect;
+
+		// team 0 rock tower health bar
+		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
+		healthBarRect = new Rect (healthBarBackgroundRect);
+		healthBarRect.x += 5;
+		healthBarRect.width -= 10;
+		healthBarRect.width *= (team0RockTowerHealth / 100);
+		healthBarRect.y += 5;
+		healthBarRect.height -= 10;
+		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.Label (healthBarRect, "<color=#000000><b>RED Rock Tower</b></color>");
+		
+		healthBarBackgroundRect.y += 55;
+
+		// team 0 paper tower health bar
+		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
+		healthBarRect = new Rect (healthBarBackgroundRect);
+		healthBarRect.x += 5;
+		healthBarRect.width -= 10;
+		healthBarRect.width *= (team0PaperTowerHealth / 100);
+		healthBarRect.y += 5;
+		healthBarRect.height -= 10;
+		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.Label (healthBarRect, "<color=#000000><b>RED Paper Tower</b></color>");
+
+		healthBarBackgroundRect.y += 55;
+
+		// team 0 scissors tower health bar
+		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
+		healthBarRect = new Rect (healthBarBackgroundRect);
+		healthBarRect.x += 5;
+		healthBarRect.width -= 10;
+		healthBarRect.width *= (team0ScissorsTowerHealth / 100);
+		healthBarRect.y += 5;
+		healthBarRect.height -= 10;
+		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.Label (healthBarRect, "<color=#000000><b>RED Scissors Tower</b></color>");
+
+		healthBarBackgroundRect.y += 55;
+
+		// team 1 rock tower health bar
+		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
+		healthBarRect = new Rect (healthBarBackgroundRect);
+		healthBarRect.x += 5;
+		healthBarRect.width -= 10;
+		healthBarRect.width *= (team1RockTowerHealth / 100);
+		healthBarRect.y += 5;
+		healthBarRect.height -= 10;
+		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.Label (healthBarRect, "<color=#000000><b>BLUE Rock Tower</b></color>");
+		
+		healthBarBackgroundRect.y += 55;
+		
+		// team 1 paper tower health bar
+		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
+		healthBarRect = new Rect (healthBarBackgroundRect);
+		healthBarRect.x += 5;
+		healthBarRect.width -= 10;
+		healthBarRect.width *= (team1PaperTowerHealth / 100);
+		healthBarRect.y += 5;
+		healthBarRect.height -= 10;
+		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.Label (healthBarRect, "<color=#000000><b>BLUE Paper Tower</b></color>");
+		
+		healthBarBackgroundRect.y += 55;
+		
+		// team 1 scissors tower health bar
+		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
+		healthBarRect = new Rect (healthBarBackgroundRect);
+		healthBarRect.x += 5;
+		healthBarRect.width -= 10;
+		healthBarRect.width *= (team1ScissorsTowerHealth / 100);
+		healthBarRect.y += 5;
+		healthBarRect.height -= 10;
+		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.Label (healthBarRect, "<color=#000000><b>BLUE Scissors Tower</b></color>");
 	}
 	
 	/**
