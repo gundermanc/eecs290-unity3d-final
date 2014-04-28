@@ -618,7 +618,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	private void DrawTowerHealthBars() {
 		
 		GUIStyle centeredStyle = GUI.skin.GetStyle ("Label");
-		centeredStyle.alignment = TextAnchor.UpperCenter;
+		centeredStyle.alignment = TextAnchor.MiddleCenter;
 
 		Rect healthBarBackgroundRect = new Rect (Screen.width - 193, 10, 173, 35);
 		Rect healthBarRect;
