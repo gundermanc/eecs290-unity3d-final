@@ -28,4 +28,5 @@ MonoBehaviour:
   - Die
   - Death
   - Hurt
+  - RPCTeamMessage
   DisableAutoOpenWizard: 0
