@@ -367,13 +367,13 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		// restart game button
 		screenDimensions.y += 100;
 		screenDimensions.yMax = screenDimensions.y + 75;
-		if (GUI.Button (screenDimensions, "<size=30>Restart</size>")) {
+		/*if (GUI.Button (screenDimensions, "<size=30>Restart</size>")) {
 			GameManager.RestartGame();
 		}
 		
 		// exit game button
 		screenDimensions.y += 100;
-		screenDimensions.yMax = screenDimensions.y + 75;
+		screenDimensions.yMax = screenDimensions.y + 75;*/
 		if (GUI.Button (screenDimensions, "<size=30>Quit</size>")) {
 			
 			// this works...just not in the editor. you have to actually build the project first
@@ -384,11 +384,12 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		screenDimensions.y += 100;
 		DrawLabelWithShadow (screenDimensions, "<size=30>Team Message</size>");
 		screenDimensions.y += 50;
-		screenDimensions.height = 50;
+		screenDimensions.height = 200;
 		GUIStyle textFieldStyle = GUI.skin.GetStyle ("TextArea");
 		textFieldStyle.fontSize = 22;
 		this.teamMessage = GUI.TextArea (screenDimensions, this.teamMessage);
-		screenDimensions.y += 100;
+		screenDimensions.y += 250;
+		screenDimensions.height = 50;
 
 		if (GUI.Button (screenDimensions, "<size=30>Send Message</size>")) {
 			Debug.Log("Send message: " + this.teamMessage);

@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour {
 	 * Restarts the game at the first level with full health, battery, and ammo.
 	 */
 	public static void RestartGame() {
-		Application.LoadLevel (0);
+		Debug.LogError ("Game restart not supported.");
 	}
 
 	public void TeamMessage(int team, string message, Color c){
