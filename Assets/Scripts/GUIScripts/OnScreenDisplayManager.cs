@@ -378,7 +378,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 			if(isBox) {
 				GUI.Box (drawRect, "<size=40>" + player.name + team + "</size>");
 			} else {
-				DrawLabelWithShadow (drawRect, "<size=40>" + player.name + team + "</size>");
+				GUI.Label (drawRect, "<size=40>" + player.name + team + "</size>");
 			}
 			drawRect.y += 50;
 			isBox = !isBox;
