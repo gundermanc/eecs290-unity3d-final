@@ -5,21 +5,15 @@ public class ProjectileScript : MonoBehaviour {
 	public Element ProjectileType;
 	public float baseDamage;
 	public int teamNumber;
-	public float destroytimer;
-	public AudioClip explosionSound;
 	private bool active;
-	private float createtime;
 	private GameObject explosion;
 
 	// Use this for initialization
 	void Start () {
-		createtime = Time.timeSinceLevelLoad;
 		active = true;
 	}
 
 	void Update(){
-		if (Time.timeSinceLevelLoad - createtime > destroytimer)
-			Remove ();
 	}
 
 	/*@param: Target - the collider object with which to check to see if a collision has occured with
@@ -42,7 +36,6 @@ public class ProjectileScript : MonoBehaviour {
 						explosion = PhotonNetwork.Instantiate("WayRadExplosion", transform.position, Quaternion.identity, 0) as GameObject;
 						explosion.GetComponent<ParticleSystem>().Play();
 					}
-					audio.PlayOneShot(explosionSound);
 					//
 					if(collisionResult < 0){
 						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, (int)(baseDamage*.5f), true);

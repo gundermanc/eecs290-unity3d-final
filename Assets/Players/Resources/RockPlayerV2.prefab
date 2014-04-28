@@ -2033,9 +2033,9 @@ MonoBehaviour:
   RespawnPoint: {fileID: 0}
   elementalType: 0
   stamina: 100
-  NormalAttackCooldown: 0
-  specialCooldownOne: 0
-  specialCooldownTwo: 0
+  NormalAttackCooldown: .25
+  specialCooldownOne: 3.5
+  specialCooldownTwo: 3
   teamNumber: 0
 --- !u!114 &11400006
 MonoBehaviour:
@@ -2098,8 +2098,8 @@ MonoBehaviour:
     maxFallSpeed: 20
   jumping:
     enabled: 1
-    baseHeight: 1
-    extraHeight: .5
+    baseHeight: 1.70000005
+    extraHeight: 0
     perpAmount: 0
     steepPerpAmount: .5
     jumping: 0

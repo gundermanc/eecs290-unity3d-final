@@ -150,6 +150,7 @@ public class GameManager : MonoBehaviour {
 				obj.enabled = true;
 			}
 			thisPlayer.GetComponent<PlayerControler> ().enabled = true;
+			thisPlayer.GetComponent<ElementalObjectScript> ().resetMoveSpeed ();
 		}
 
 		// hide mouse

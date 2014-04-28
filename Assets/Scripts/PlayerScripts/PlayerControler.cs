@@ -77,6 +77,9 @@ public class PlayerControler : MonoBehaviour {
 				specialOneCooldownTimer = specialCooldownOne;
 				//Rock-Type Attack
 				if (elementalType == Element.Rock) {
+					GameObject newProjectile;
+					newProjectile = PhotonNetwork.Instantiate("RockProMega", ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 				}
 				//Paper-Type Attack: Create a static paper-stack wall that blocks objects and disappears after time.
 				if (elementalType == Element.Paper) {
@@ -86,7 +89,27 @@ public class PlayerControler : MonoBehaviour {
 				if (elementalType == Element.Scissors) {
 				}
 			}
-		} else {			
+
+		} else {		
+			if (Input.GetKey(KeyCode.E) && Input.GetKeyDown(KeyCode.Mouse0)) {
+				//If the cooldown is reset (0), then proceed with the attack and set the cooldown time
+				if (specialTwoCooldownTimer == 0) {
+					specialTwoCooldownTimer = specialCooldownTwo;
+					//Rock-Type Attack
+					if (elementalType == Element.Rock) {
+						GameObject newProjectile;
+						newProjectile = PhotonNetwork.Instantiate("RockProMega", ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+					}
+					//Paper-Type Attack: Create a static paper-stack wall that blocks objects and disappears after time.
+					if (elementalType == Element.Paper) {
+						GameObject newPaperWall = PhotonNetwork.Instantiate("PaperWall", gameObject.transform.position + gameObject.transform.forward*5 + Vector3.up*3, gameObject.transform.rotation, 0) as GameObject;
+					}
+					//Scissors-Type Attack
+					if (elementalType == Element.Scissors) {
+					}
+				}
+			} else {
 			//Launches a normal projectile if the attack cooldown timer is reset, i.e. at 0, and the mouse is left-clicked
 			if(Input.GetKeyDown(KeyCode.Mouse0) && normalAttackCooldownTimer == 0){
 				//Sets the timer to the cooldown value specified for the character
@@ -104,6 +127,7 @@ public class PlayerControler : MonoBehaviour {
 				}
 				newProjectile.GetComponent<ProjectileScript>().teamNumber = teamNumber;
 			}
+		}
 		}
 
 		//Normal attack cooldown timer slowly decreases over time until it hits 0
@@ -123,6 +147,15 @@ public class PlayerControler : MonoBehaviour {
 		if (specialOneCooldownTimer < 0) {
 			specialOneCooldownTimer = 0;
 		}
+
+		//Special attack one cooldown timer slowly decreases over time until it hits 0
+		if (specialTwoCooldownTimer > 0) {
+			specialTwoCooldownTimer -= Time.deltaTime;
+		}
+		//In case above timer goes under 0, reset it back to 0
+		if (specialTwoCooldownTimer < 0) {
+			specialTwoCooldownTimer = 0;
+		}
 		
 		//Allows sprinting by holding left-shift
 		if(Input.GetKeyDown(KeyCode.LeftShift)) {
@@ -131,7 +164,13 @@ public class PlayerControler : MonoBehaviour {
 				this.gameObject.GetComponent<ElementalObjectScript>().changeMoveSpeed(1);
 			}
 		}
-		
+
+		//What's this doing here
+		if(Input.GetKeyDown(KeyCode.O)) {
+			this.gameObject.GetComponent<ElementalObjectScript>().changeMoveSpeed(2);
+			this.gameObject.GetComponent<CharacterMotor>().jumping.baseHeight = 20.0f;
+		}
+
 		//Decreases stamina over time if left-shift is being held and the stamina is greater than or equal to 0
 		if(Input.GetKey(KeyCode.LeftShift) && (stamina >= 0)) {
 			stamina = stamina - Time.deltaTime * 10;

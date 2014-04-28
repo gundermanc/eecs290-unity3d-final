@@ -297,7 +297,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f3dab8a34f0849429fcbd1da2fba36b, type: 3}
   m_Name: 
@@ -317,8 +317,6 @@ MonoBehaviour:
   ProjectileType: 2
   baseDamage: 10
   teamNumber: 0
-  destroytimer: 5
-  explosionSound: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
