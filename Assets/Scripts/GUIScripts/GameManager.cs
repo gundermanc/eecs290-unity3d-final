@@ -104,6 +104,20 @@ public class GameManager : MonoBehaviour {
 	public static void SetupGame () {
 		mode = GameMode.GameSetup;
 	}
+
+	/**
+	 * Brings up instructions screen
+	 */
+	public static void InstructionsScreen() {
+		mode = GameMode.Instructions;
+	}
+
+	/**
+	 * Brings up start screen
+	 */
+	public static void StartScreen() {
+		mode = GameMode.StartMenu;
+	}
 	
 	/**
 	 * Pauses the game.
@@ -195,6 +209,7 @@ public class GameManager : MonoBehaviour {
 	public enum GameMode {
 		StartMenu,			// at the start screen
 		GameSetup,			// setting up your game to play
+		Instructions,		// instructions screen
 		Paused,				// at the pause screen
 		UnPaused,			// in normal game play
 		Dead,				// at the death screen
