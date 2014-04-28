@@ -38,8 +38,10 @@ public class ProjectileScript : MonoBehaviour {
 				Element enemyType = Target.transform.GetComponent<ElementalObjectScript>().getElementalType();
 				int collisionResult = ElementComparer(ProjectileType, enemyType);
 				if (Target.collider.tag == "Tower"){
-					explosion = PhotonNetwork.Instantiate("WayRadExplosion", transform.position, Quaternion.identity, 0) as GameObject;
-					explosion.GetComponent<ParticleSystem>().Play();
+					if (GameObject.FindGameObjectsWithTag("Explosion").Length < 3){
+						explosion = PhotonNetwork.Instantiate("WayRadExplosion", transform.position, Quaternion.identity, 0) as GameObject;
+						explosion.GetComponent<ParticleSystem>().Play();
+					}
 					audio.PlayOneShot(explosionSound);
 					//
 					if(collisionResult < 0){
