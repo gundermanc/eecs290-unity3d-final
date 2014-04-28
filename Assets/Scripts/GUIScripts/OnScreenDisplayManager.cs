@@ -314,10 +314,17 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		// restart game button
 		drawRect.y += 100;
 		foreach (PhotonPlayer player in PhotonNetwork.playerList) {
-			if(isBox) {
-				GUI.Box (drawRect, "<size=40>" + player.name + "</size>");
+			string team;
+			if(((int)player.allProperties["Team Number"]) == 0) {
+				team = ", <color=#FF0000>TEAM RED</color>";
 			} else {
-				DrawLabelWithShadow (drawRect, "<size=40>" + player.name + "</size>");
+				team = ", <color=#0000FF>TEAM BLUE</color>";
+			}
+
+			if(isBox) {
+				GUI.Box (drawRect, "<size=40>" + player.name + team + "</size>");
+			} else {
+				DrawLabelWithShadow (drawRect, "<size=40>" + player.name + team + "</size>");
 			}
 			drawRect.y += 50;
 			isBox = !isBox;
