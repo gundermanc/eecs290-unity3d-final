@@ -104,6 +104,20 @@ public class GameManager : MonoBehaviour {
 	public static void SetupGame () {
 		mode = GameMode.GameSetup;
 	}
+
+	/**
+	 * Brings up instructions screen
+	 */
+	public static void InstructionsScreen() {
+		mode = GameMode.Instructions;
+	}
+
+	/**
+	 * Brings up start screen
+	 */
+	public static void StartScreen() {
+		mode = GameMode.StartMenu;
+	}
 	
 	/**
 	 * Pauses the game.
@@ -157,7 +171,7 @@ public class GameManager : MonoBehaviour {
 	 * Restarts the game at the first level with full health, battery, and ammo.
 	 */
 	public static void RestartGame() {
-
+		Application.LoadLevel (0);
 	}
 	
 	public void TeamChat(string message){
@@ -181,13 +195,6 @@ public class GameManager : MonoBehaviour {
 			}	
 		}
 	}	
-
-	/**
-	 * Called when the player died. Displays end game UIs.
-	 */
-	public static void PlayerDied() {
-
-	}
 	
 	/**
 	 * Called when player reaches the end of a level. Dispatches EndLevel GUIs
@@ -207,9 +214,9 @@ public class GameManager : MonoBehaviour {
 	public enum GameMode {
 		StartMenu,			// at the start screen
 		GameSetup,			// setting up your game to play
+		Instructions,		// instructions screen
 		Paused,				// at the pause screen
 		UnPaused,			// in normal game play
-		Dead,				// at the death screen
 		EndLevel,			// at the end level screen
 		EndGame				// at the end game screen
 	}
