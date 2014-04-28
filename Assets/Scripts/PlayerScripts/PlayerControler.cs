@@ -12,7 +12,7 @@ public class PlayerControler : MonoBehaviour {
 	public float NormalAttackCooldown;			//The minimum wait time between two consecutive normal shooting attacks 
 	public float specialCooldownOne;			//The minimum wait time between two consecutive special #1 attacks
 	public float specialCooldownTwo;			//The minimum wait time between two consecutive special #2 attacks
-	public int teamNumber;
+	public int teamNumber;						//Identifies the team that the player is on
 	private bool speedDebuffed;					//Marks the player as debuffed, preventing sprinting
 	private bool fatiguedOut;					//Marks the player as fatigued, slowing them down and preventing sprinting
 	private float normalAttackCooldownTimer;	//Stores the time left until the next normal attack can be done

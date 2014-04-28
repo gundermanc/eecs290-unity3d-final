@@ -176,13 +176,15 @@ public class GameManager : MonoBehaviour {
 	
 	public void TeamChat(string message){
 		int team = 0;
+		string name = "Anonymous";
 		foreach (GameObject p in GameObject.FindGameObjectsWithTag ("Player")) {
 			if (p.GetComponent<PhotonView>().isMine){
 				team = p.GetComponent<PlayerControler>().teamNumber;
+				name = p.GetComponent<PhotonView>().owner.name;//p.GetComponent<PlayerControler>().name;
 			}
 		}
 		foreach(GameObject p in GameObject.FindGameObjectsWithTag ("Player")){
-			p.GetComponent<PlayerControler>().SendTeamMessage(team, message);
+			p.GetComponent<PlayerControler>().SendTeamMessage(team, "Message from " + name + ": " +message);
 		}
 	}
 	
