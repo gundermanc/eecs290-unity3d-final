@@ -394,6 +394,8 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		if (GUI.Button (screenDimensions, "<size=30>Send Message</size>")) {
 			GameObject.Find("GameManager").GetComponent<GameManager>()
 				.TeamChat("Message from team: " + this.teamMessage);
+			this.teamMessage = "";
+			GameManager.UnPause ();
 		}
 	}
 	
