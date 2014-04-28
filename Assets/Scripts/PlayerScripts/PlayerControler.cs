@@ -18,6 +18,7 @@ public class PlayerControler : MonoBehaviour {
 	private float normalAttackCooldownTimer;	//Stores the time left until the next normal attack can be done
 	private float specialOneCooldownTimer;		//Stores the time left until the next special #1 attack can be done
 	private float specialTwoCooldownTimer;		//Stores the time left until the next special #2 attack can be done
+	private bool toDie;
 	private bool dead;
 	private float deathtime;
 	private int deathcount;
@@ -32,6 +33,7 @@ public class PlayerControler : MonoBehaviour {
 		speedDebuffed = false;				//By default the player has not been debuffed
 		fatiguedOut = false;				//By default they are not out of stamina
 		normalAttackCooldownTimer = 0.0f;
+		toDie = false;
 		dead = false;
 		deathtime = -1f;
 		deathcount = 0;
@@ -176,11 +178,23 @@ public class PlayerControler : MonoBehaviour {
 		gameObject.GetComponent<PhotonView>().RPC("Die", PhotonTargets.All, gameObject.GetComponent<PhotonView> ().viewID);
 	}
 
+	public void SendTeamMessage(int team, string message){
+		gameObject.GetComponent<PhotonView>().RPC ("RPCTeamMessage", PhotonTargets.All, team, message);
+	}
+
+	[RPC]
+	public void RPCTeamMessage(int team, string message){
+		if (teamNumber == team && gameObject.GetPhotonView().isMine){
+			OnScreenDisplayManager.PostMessage(message, Color.green);
+		}
+	}
+
 	public void Respawn(){
 		dead = false;
 		gameObject.transform.position = RespawnPoint.position;
 		gameObject.transform.rotation = RespawnPoint.rotation;
 		killcam.depth = -1;
 		respawnreport = 0;
+		toDie = false;
 	}
 }
