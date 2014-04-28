@@ -94,8 +94,8 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		// draw the GUI appropriate for the current game state.
 		switch(GameManager.GetGameMode()) {
 		case GameManager.GameMode.Paused: //If the game mode is paused
-			DrawPlayersList ();
-			DrawPauseMenu();			  //Draw the pause menu
+			DrawPauseMenu();			
+			DrawPlayersList ();			
 			break;
 		case GameManager.GameMode.Instructions:
 			DrawInstructionsScreen ();
@@ -113,7 +113,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 			DrawWinLevelScreen();
 			break;
 		case GameManager.GameMode.EndGame: //Draw the screen that congratulates the player for when all levels have been completed
-			DrawWinScreen("Congratulations! You beat all of the levels.");
+			Debug.Log ("No end game implemented.");
 			break;
 		}
 	}
@@ -353,6 +353,9 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		// create a label GUI style that is centered
 		GUIStyle centeredStyle = GUI.skin.GetStyle ("Label");
 		centeredStyle.alignment = TextAnchor.UpperCenter;
+
+		// draw overlay
+		GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), overlayTexture);
 		
 		// get pause menu rectange, minus the margins specified in the constant pauseMenuMargins
 		Rect screenDimensions = new Rect (pauseMenuMargins, pauseMenuMargins, 
