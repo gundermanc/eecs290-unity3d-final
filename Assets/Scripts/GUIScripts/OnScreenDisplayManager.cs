@@ -40,8 +40,9 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	private LinkedList<Message> messageQueue; //A linked list containing all the queue'd messages to be displayed on screen
 	private PeerState lastState = PeerState.Disconnected;
 	private bool soundOn = false; //Sound is set to off by default
-	private string soundSettingStringFalse = "<size=30>Toggle Sound (Off)</size>";
-	private string soundSettingStringTrue = "<size=30>Toggle Sound (On)</size>";
+	private const string soundSettingStringFalse = "<size=30>Toggle Sound (Off)</size>";
+	private const string soundSettingStringTrue = "<size=30>Toggle Sound (On)</size>";
+	private string teamMessage = "";
 
 	// singleton instance reference
 	private static OnScreenDisplayManager instance; 
@@ -340,6 +341,19 @@ public class OnScreenDisplayManager : MonoBehaviour {
 			
 			// this works...just not in the editor. you have to actually build the project first
 			Application.Quit ();
+		}
+
+		// team message box
+		screenDimensions.y += 100;
+		DrawLabelWithShadow (screenDimensions, "<size=30>Team Message</size>");
+		screenDimensions.y += 50;
+		screenDimensions.height = 50;
+		this.teamMessage = GUI.TextArea (screenDimensions, this.teamMessage);
+		screenDimensions.y += 100;
+
+		if (GUI.Button (screenDimensions, "<size=30>Send Message</size>")) {
+			Debug.Log("Send message: " + this.teamMessage);
+			// TeamMessage call here
 		}
 	}
 	
