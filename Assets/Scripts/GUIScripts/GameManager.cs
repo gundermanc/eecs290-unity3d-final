@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour {
 	 * Restarts the game at the first level with full health, battery, and ammo.
 	 */
 	public static void RestartGame() {
-
+		Application.LoadLevel (0);
 	}
 
 	public void TeamMessage(int team, string message, Color c){
@@ -183,13 +183,6 @@ public class GameManager : MonoBehaviour {
 			}	
 		}
 	}	
-
-	/**
-	 * Called when the player died. Displays end game UIs.
-	 */
-	public static void PlayerDied() {
-
-	}
 	
 	/**
 	 * Called when player reaches the end of a level. Dispatches EndLevel GUIs
@@ -212,7 +205,6 @@ public class GameManager : MonoBehaviour {
 		Instructions,		// instructions screen
 		Paused,				// at the pause screen
 		UnPaused,			// in normal game play
-		Dead,				// at the death screen
 		EndLevel,			// at the end level screen
 		EndGame				// at the end game screen
 	}

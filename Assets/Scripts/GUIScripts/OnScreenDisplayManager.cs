@@ -106,10 +106,6 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		case GameManager.GameMode.GameSetup:
 			DrawGameSetup ();
 			break;
-		case GameManager.GameMode.Dead:   //Draw the "game over" screen
-			DrawBloodDecals ();
-			DrawWinScreen("You died you <b>SCRUB!</b>");
-			break;
 		case GameManager.GameMode.UnPaused: //Draw the usual display for when the game is unpaused and is being played
 			DrawHUD();
 			break;
@@ -326,14 +322,6 @@ public class OnScreenDisplayManager : MonoBehaviour {
 			drawRect.y += 50;
 			isBox = !isBox;
 		}
-	}
-
-
-	/**
-	 * Draw the blood decals, used for the game over screen 
-	 */
-	private void DrawBloodDecals() {
-		GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), bloodDecalsTexture);
 	}
 	
 	/**
