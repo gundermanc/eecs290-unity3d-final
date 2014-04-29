@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour {
 		foreach (GameObject p in GameObject.FindGameObjectsWithTag ("Player")) {
 			if (p.GetComponent<PhotonView>().isMine){
 				team = p.GetComponent<PlayerControler>().teamNumber;
-				name = p.GetComponent<PhotonView>().owner.name;//p.GetComponent<PlayerControler>().name;
+				name = p.GetComponent<PhotonView>().owner.name;
 			}
 		}
 		foreach(GameObject p in GameObject.FindGameObjectsWithTag ("Player")){
