@@ -34,10 +34,10 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	private const int shadowOffset = -2; //Value used to draw a shadow rectangle
 	private const string soundSettingStringFalse = "<size=30>Toggle Sound (Off)</size>";
 	private const string soundSettingStringTrue = "<size=30>Toggle Sound (On)</size>";
-	private const string instructionsText = "Rock beats Scissors beats Paper beats Rock.Become a fighter with the elements and fight a 3-on-3"
-				+ " battle against your enemies. Your goal: take down the opposing team's towers before they take yours down.\n\n"
-				+ "Arrow Keys, WASD - Movement\nMouse - Rotate Camera\nLeft-Click - Default Attack\nLeft-Click + Hold Q - Special Attack 1"
-				+ "Left-Click + Hold E - Special Attack 2\nLeft-Click + Hold Q and E - Ultimate Special Attack\nHold Shift - Sprint"
+	private const string instructionsText = "Rock beats Scissors beats Paper beats Rock. Become a fighter with the elements and fight a 3-on-3"
+				+ " battle against your enemies. Your goal: take down the opposing team's towers before they take down yours.\n\n"
+			+ "Arrow Keys, WASD - Movement\nMouse - Rotate Camera\nLeft-Click - Default Attack\nHold Q + Left-Click - Special Attack 1\n"
+				+ "Hold E + Left-Click - Special Attack 2\nHold Shift - Sprint\n"
 				+ "Space - Jump\nEscape - Pause\n\n";
 
 	// private fields
@@ -282,6 +282,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		menuRect.y += menuRect.height + 20;
 		menuRect.height = 50;
 		if (GUI.Button (menuRect, "<size=30>Return</size>")) {
+			GameObject.Find("World Camera").GetComponent<WorldCameraScript>().playSoundEffect("UISound2");
 			GameManager.StartScreen ();
 		}
 	}
@@ -322,6 +323,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		startRect.height = 100;
 		if(GUI.Button (startRect, "<size=30>Start Game</size>")) {
 			if(!PhotonNetwork.player.name.Equals("")) {
+				GameObject.Find("World Camera").GetComponent<WorldCameraScript>().disableAL();
 				GameManager.StartGame ();
 			}
 		}
@@ -457,6 +459,8 @@ public class OnScreenDisplayManager : MonoBehaviour {
 				.TeamChat(this.teamMessage);
 			this.teamMessage = "";
 			GameManager.UnPause ();
+			GameObject thisPlayer = NetworkingScript.GetThisPlayer ();
+			thisPlayer.GetComponentInChildren<MainCameraScript>().playSoundEffect("MessageSound");
 		}
 	}
 	
@@ -491,6 +495,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		//Start game button
 		if (GUI.Button (screenDimensions, "<size=30>Multiplayer Lobby</size>")) {
 			GameManager.SetupGame ();
+			GameObject.Find("World Camera").GetComponent<WorldCameraScript>().playSoundEffect("UISound1");
 		}
 		
 		float buttonWidth = (screenDimensions.width - 40) / 3;
@@ -498,12 +503,14 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		screenDimensions.width = buttonWidth;
 		//Instructions game button
 		if (GUI.Button (screenDimensions, "<size=30>Instructions</size>")) {
+			GameObject.Find("World Camera").GetComponent<WorldCameraScript>().playSoundEffect("UISound1");
 			GameManager.InstructionsScreen ();
 		}
 		screenDimensions.x += buttonWidth + 20;
 		//Toggle sound game button, toggles sound on/off: on by default
 		if (GUI.Button (screenDimensions, !AudioListener.pause ? soundSettingStringTrue : soundSettingStringFalse)) {
 			AudioListener.pause = !AudioListener.pause;
+			GameObject.Find("World Camera").GetComponent<WorldCameraScript>().playSoundEffect("UISound1");
 		}
 		screenDimensions.x += buttonWidth + 20;
 		//Exit game button, only works on build

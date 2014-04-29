@@ -6,9 +6,6 @@ using System.Collections;
  * @author Christian Gunderman
  */
 public class GameManager : MonoBehaviour {
-	
-	/** The sound played when the player dies */
-	public AudioClip deathSound;
 
 	public bool[,] teamTowersDead = new bool[2,3];
 	

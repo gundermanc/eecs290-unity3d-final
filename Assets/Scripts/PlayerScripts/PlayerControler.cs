@@ -21,6 +21,7 @@ public class PlayerControler : MonoBehaviour {
 	private float normalAttackCooldownTimer;	//Stores the time left until the next normal attack can be done
 	private float specialOneCooldownTimer;		//Stores the time left until the next special #1 attack can be done
 	private float specialTwoCooldownTimer;		//Stores the time left until the next special #2 attack can be done
+	private bool hasShotOnce = false;
 	private bool toDie;
 	private bool dead;
 	private float deathtime;
@@ -29,7 +30,6 @@ public class PlayerControler : MonoBehaviour {
 	private Vector3 killcamstart;
 	private Vector3 killcamend;
 	private int respawnreport;
-
 
 	// Use this for initialization
 	void Start () {
@@ -95,7 +95,7 @@ public class PlayerControler : MonoBehaviour {
 				}
 				//Scissors-Type Attack: Temporarily decrease attack speed
 				if (elementalType == Element.Scissors) {
-					GameObject newProjectile = PhotonNetwork.Instantiate("TrimmingScissors", ProjectileSpawnLocation.transform.position + gameObject.transform.forward*2, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+					GameObject newProjectile = PhotonNetwork.Instantiate("TrimmingScissors", ProjectileSpawnLocation.transform.position + gameObject.transform.forward*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 					newProjectile.transform.Rotate(0,90f,0);
 					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 					newProjectile.rigidbody.AddTorque(ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
@@ -134,7 +134,7 @@ public class PlayerControler : MonoBehaviour {
 					}
 					//Scissors-Type Attack: Super Scissors
 					if (elementalType == Element.Scissors) {
-						GameObject newProjectile = PhotonNetwork.Instantiate("SuperScissors", ProjectileSpawnLocation.transform.position + Vector3.down*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						GameObject newProjectile = PhotonNetwork.Instantiate("SuperScissors", ProjectileSpawnLocation.transform.position + Vector3.down*1 + gameObject.transform.forward*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 						newProjectile.transform.Rotate(90f,0,0);
 						newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 						GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Scissors Player threw Super Scissors!", Color.white);
@@ -143,9 +143,12 @@ public class PlayerControler : MonoBehaviour {
 				}
 			} else {
 			//Launches a normal projectile if the attack cooldown timer is reset, i.e. at 0, and the mouse is left-clicked
-			if(Input.GetKeyDown(KeyCode.Mouse0) && normalAttackCooldownTimer == 0){
+			if(Input.GetKeyDown(KeyCode.Mouse0) && (normalAttackCooldownTimer == 0)){
 				//Sets the timer to the cooldown value specified for the character
 				normalAttackCooldownTimer = NormalAttackCooldown;
+				Debug.Log(+normalAttackCooldownTimer);
+				//For hold-click rapid-fire
+				hasShotOnce = true;
 				//Instantiates the projectile
 				GameObject newProjectile;
 				newProjectile = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
@@ -160,6 +163,28 @@ public class PlayerControler : MonoBehaviour {
 				newProjectile.GetComponent<ProjectileScript>().teamNumber = teamNumber;
 			}
 		}
+		}
+
+		if (Input.GetKeyUp(KeyCode.Mouse0)) {
+			hasShotOnce = false;
+		}
+
+		if (Input.GetKey (KeyCode.Mouse0) && (hasShotOnce == true)) {
+			if (normalAttackCooldownTimer == 0) {
+				normalAttackCooldownTimer = NormalAttackCooldown * 2f;
+				//Instantiates the projectile
+				GameObject newProjectile;
+				newProjectile = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+				//Differentiates the physics depending on what type of projectile it is
+				if(elementalType != Element.Paper){
+					newProjectile.transform.Rotate(0,90f,0);
+					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+					newProjectile.rigidbody.AddTorque(ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
+				} else {
+					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+				}
+				newProjectile.GetComponent<ProjectileScript>().teamNumber = teamNumber;
+			}
 		}
 
 		//Normal attack cooldown timer slowly decreases over time until it hits 0
@@ -225,11 +250,8 @@ public class PlayerControler : MonoBehaviour {
 				this.gameObject.GetComponent<ElementalObjectScript>().resetMoveSpeed();
 			}
 		}
-		if(Input.GetKeyUp(KeyCode.H)) {
-			//Die();
-		}
 
-		//Resets speed to normal eventually
+		//Resets speed and defense to normal eventually
 		if(speedDebuffed == true) {
 			if (timeSinceDebuffed > 0.1f) {
 				timeSinceDebuffed -= Time.deltaTime;

@@ -203,7 +203,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5.5, z: .200000003}
+  m_Size: {x: 5, y: 5.5, z: .300000012}
   m_Center: {x: 0, y: .300000012, z: 0}
 --- !u!82 &8200000
 AudioSource:
@@ -317,6 +317,7 @@ MonoBehaviour:
   ProjectileType: 2
   baseDamage: 10
   teamNumber: 0
+  debuffValue: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

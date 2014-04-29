@@ -573,7 +573,7 @@ MonoBehaviour:
   attackSpeed: 1
   defense: 1
   moveSpeed: 1
-  thisType: 0
+  thisType: 2
   teamNumber: 0
 --- !u!1 &128951683
 GameObject:
@@ -1616,7 +1616,7 @@ MonoBehaviour:
   attackSpeed: 1
   defense: 1
   moveSpeed: 1
-  thisType: 0
+  thisType: 2
   teamNumber: 0
 --- !u!1 &562686592
 GameObject:
@@ -2356,6 +2356,11 @@ GameObject:
   - 92: {fileID: 703884733}
   - 124: {fileID: 703884732}
   - 45: {fileID: 703884737}
+  - 81: {fileID: 703884731}
+  - 114: {fileID: 703884736}
+  - 82: {fileID: 703884739}
+  - 82: {fileID: 703884740}
+  - 82: {fileID: 703884738}
   m_Layer: 0
   m_Name: World Camera
   m_TagString: MainCamera
@@ -2363,6 +2368,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!81 &703884731
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703884730}
+  m_Enabled: 0
 --- !u!124 &703884732
 Behaviour:
   m_ObjectHideFlags: 0
@@ -2417,6 +2429,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &703884736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703884730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ef99799c308e0489f7ee6aa1248790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  special: {fileID: 8300000, guid: 2c5b49f6ea30a8f4c99557a8ed68ccc0, type: 3}
+  soundEffects:
+  - {fileID: 8300000, guid: 5cc3135f564f141d8842f64fe67ddb69, type: 3}
+  - {fileID: 8300000, guid: 3818867e0564d45a1b3d2758f5a8f9b6, type: 3}
 --- !u!45 &703884737
 Skybox:
   m_ObjectHideFlags: 0
@@ -2425,6 +2452,180 @@ Skybox:
   m_GameObject: {fileID: 703884730}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: a2126534b3a11b34e977105bd9e3cc03, type: 2}
+--- !u!82 &703884738
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703884730}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 2c5b49f6ea30a8f4c99557a8ed68ccc0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &703884739
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703884730}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 5cc3135f564f141d8842f64fe67ddb69, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .996527791
+      value: 1
+      inSlope: -.0285008959
+      outSlope: -.0285008959
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &703884740
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703884730}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 3818867e0564d45a1b3d2758f5a8f9b6, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .909722209
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &708463447
 GameObject:
   m_ObjectHideFlags: 0
@@ -5472,7 +5673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9770010a89f3942ab42fc72deeb251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSound: {fileID: 0}
 --- !u!4 &1524546047
 Transform:
   m_ObjectHideFlags: 0
@@ -6399,7 +6599,7 @@ MonoBehaviour:
   attackSpeed: 1
   defense: 1
   moveSpeed: 1
-  thisType: 0
+  thisType: 1
   teamNumber: 0
 --- !u!1 &1773554700
 GameObject:
@@ -7841,7 +8041,7 @@ MonoBehaviour:
   attackSpeed: 1
   defense: 1
   moveSpeed: 1
-  thisType: 0
+  thisType: 1
   teamNumber: 0
 --- !u!1 &2109000685
 GameObject:
