@@ -6,9 +6,6 @@ using System.Collections;
  * @author Christian Gunderman
  */
 public class GameManager : MonoBehaviour {
-	
-	/** The sound played when the player dies */
-	public AudioClip deathSound;
 
 	public bool[,] teamTowersDead = new bool[2,3];
 	
@@ -150,6 +147,7 @@ public class GameManager : MonoBehaviour {
 				obj.enabled = true;
 			}
 			thisPlayer.GetComponent<PlayerControler> ().enabled = true;
+			thisPlayer.GetComponent<ElementalObjectScript> ().resetMoveSpeed ();
 		}
 
 		// hide mouse

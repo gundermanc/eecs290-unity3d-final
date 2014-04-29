@@ -13,11 +13,15 @@ public class PlayerControler : MonoBehaviour {
 	public float specialCooldownOne;			//The minimum wait time between two consecutive special #1 attacks
 	public float specialCooldownTwo;			//The minimum wait time between two consecutive special #2 attacks
 	public int teamNumber;						//Identifies the team that the player is on
-	private bool speedDebuffed;					//Marks the player as debuffed, preventing sprinting
+	public Texture2D altTexture;
+	public AudioClip PowerUp;
+	public bool speedDebuffed;					//Marks the player as debuffed, preventing sprinting
+	public float timeSinceDebuffed;				//Stores the time since debuffed
 	private bool fatiguedOut;					//Marks the player as fatigued, slowing them down and preventing sprinting
 	private float normalAttackCooldownTimer;	//Stores the time left until the next normal attack can be done
 	private float specialOneCooldownTimer;		//Stores the time left until the next special #1 attack can be done
 	private float specialTwoCooldownTimer;		//Stores the time left until the next special #2 attack can be done
+	private bool hasShotOnce = false;
 	private bool toDie;
 	private bool dead;
 	private float deathtime;
@@ -27,10 +31,10 @@ public class PlayerControler : MonoBehaviour {
 	private Vector3 killcamend;
 	private int respawnreport;
 
-
 	// Use this for initialization
 	void Start () {
 		speedDebuffed = false;				//By default the player has not been debuffed
+		timeSinceDebuffed = 0.0f;			//Thus the timer is set to 0
 		fatiguedOut = false;				//By default they are not out of stamina
 		normalAttackCooldownTimer = 0.0f;
 		toDie = false;
@@ -75,22 +79,99 @@ public class PlayerControler : MonoBehaviour {
 			//If the cooldown is reset (0), then proceed with the attack and set the cooldown time
 			if (specialOneCooldownTimer == 0) {
 				specialOneCooldownTimer = specialCooldownOne;
-				//Rock-Type Attack
+				//Rock-Type Attack: Shoots faster and more powerful "Mega Rock"
 				if (elementalType == Element.Rock) {
+					GameObject newProjectile;
+					newProjectile = PhotonNetwork.Instantiate("RockProMega", ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+					GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Rock Player shot a Mega Rock!", Color.white);
+					OnScreenDisplayManager.PostMessage("4 second cooldown!");
 				}
 				//Paper-Type Attack: Create a static paper-stack wall that blocks objects and disappears after time.
 				if (elementalType == Element.Paper) {
 					GameObject newPaperWall = PhotonNetwork.Instantiate("PaperWall", gameObject.transform.position + gameObject.transform.forward*5 + Vector3.up*3, gameObject.transform.rotation, 0) as GameObject;
+					GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Paper Player created a Paper Wall!", Color.white);
+					OnScreenDisplayManager.PostMessage("5 second cooldown!");
 				}
-				//Scissors-Type Attack
+				//Scissors-Type Attack: Temporarily decrease attack speed
 				if (elementalType == Element.Scissors) {
+					GameObject newProjectile = PhotonNetwork.Instantiate("TrimmingScissors", ProjectileSpawnLocation.transform.position + gameObject.transform.forward*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+					newProjectile.transform.Rotate(0,90f,0);
+					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+					newProjectile.rigidbody.AddTorque(ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
+					GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Scissors Player used Trim!", Color.white);
+					OnScreenDisplayManager.PostMessage("6 second cooldown!");
 				}
 			}
-		} else {			
+
+		} else {		
+			if (Input.GetKey(KeyCode.E) && Input.GetKeyDown(KeyCode.Mouse0)) {
+				//If the cooldown is reset (0), then proceed with the attack and set the cooldown time
+				if (specialTwoCooldownTimer == 0) {
+					specialTwoCooldownTimer = specialCooldownTwo;
+					//Rock-Type Special: Temporarily increase defense
+					if (elementalType == Element.Rock) {
+						//this.GetComponentInChildren<Renderer>().material.mainTexture = altTexture;
+						this.GetComponentInChildren<ElementalObjectScript>().decreaseDefense(-2);
+						this.gameObject.audio.PlayOneShot(PowerUp);
+						GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Rock Player used Harden! Defense increased for 3 seconds!", Color.white);
+						OnScreenDisplayManager.PostMessage("12 second cooldown!");
+					}
+					//Paper-Type Attack: Create a horizontal line of paper airplanes
+					if (elementalType == Element.Paper) {
+						GameObject paperAirplaneA = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						paperAirplaneA.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						GameObject paperAirplaneB = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + Vector3.left*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						paperAirplaneB.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						GameObject paperAirplaneC = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + Vector3.left*2, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						paperAirplaneC.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						GameObject paperAirplaneD = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + Vector3.right*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						paperAirplaneD.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						GameObject paperAirplaneE = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + Vector3.right*2, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						paperAirplaneE.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Paper Player used Copy Machine!", Color.white);
+						OnScreenDisplayManager.PostMessage("7 second cooldown!");
+					}
+					//Scissors-Type Attack: Super Scissors
+					if (elementalType == Element.Scissors) {
+						GameObject newProjectile = PhotonNetwork.Instantiate("SuperScissors", ProjectileSpawnLocation.transform.position + Vector3.down*1 + gameObject.transform.forward*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						newProjectile.transform.Rotate(90f,0,0);
+						newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Scissors Player threw Super Scissors!", Color.white);
+						OnScreenDisplayManager.PostMessage("8 second cooldown!");
+					}
+				}
+			} else {
 			//Launches a normal projectile if the attack cooldown timer is reset, i.e. at 0, and the mouse is left-clicked
-			if(Input.GetKeyDown(KeyCode.Mouse0) && normalAttackCooldownTimer == 0){
+			if(Input.GetKeyDown(KeyCode.Mouse0) && (normalAttackCooldownTimer == 0)){
 				//Sets the timer to the cooldown value specified for the character
 				normalAttackCooldownTimer = NormalAttackCooldown;
+				Debug.Log(+normalAttackCooldownTimer);
+				//For hold-click rapid-fire
+				hasShotOnce = true;
+				//Instantiates the projectile
+				GameObject newProjectile;
+				newProjectile = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+				//Differentiates the physics depending on what type of projectile it is
+				if(elementalType != Element.Paper){
+					newProjectile.transform.Rotate(0,90f,0);
+					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+					newProjectile.rigidbody.AddTorque(ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
+				} else {
+					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+				}
+				newProjectile.GetComponent<ProjectileScript>().teamNumber = teamNumber;
+			}
+		}
+		}
+
+		if (Input.GetKeyUp(KeyCode.Mouse0)) {
+			hasShotOnce = false;
+		}
+
+		if (Input.GetKey (KeyCode.Mouse0) && (hasShotOnce == true)) {
+			if (normalAttackCooldownTimer == 0) {
+				normalAttackCooldownTimer = NormalAttackCooldown * 2f;
 				//Instantiates the projectile
 				GameObject newProjectile;
 				newProjectile = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
@@ -122,6 +203,17 @@ public class PlayerControler : MonoBehaviour {
 		//In case above timer goes under 0, reset it back to 0
 		if (specialOneCooldownTimer < 0) {
 			specialOneCooldownTimer = 0;
+			OnScreenDisplayManager.PostMessage("Special Attack 1 Ready!", Color.yellow);
+		}
+
+		//Special attack one cooldown timer slowly decreases over time until it hits 0
+		if (specialTwoCooldownTimer > 0) {
+			specialTwoCooldownTimer -= Time.deltaTime;
+		}
+		//In case above timer goes under 0, reset it back to 0
+		if (specialTwoCooldownTimer < 0) {
+			specialTwoCooldownTimer = 0;
+			OnScreenDisplayManager.PostMessage("Special Attack 2 Ready!", Color.yellow);
 		}
 		
 		//Allows sprinting by holding left-shift
@@ -131,7 +223,13 @@ public class PlayerControler : MonoBehaviour {
 				this.gameObject.GetComponent<ElementalObjectScript>().changeMoveSpeed(1);
 			}
 		}
-		
+
+		//What's this doing here
+		if(Input.GetKeyDown(KeyCode.O)) {
+			this.gameObject.GetComponent<ElementalObjectScript>().changeMoveSpeed(2);
+			this.gameObject.GetComponent<CharacterMotor>().jumping.baseHeight = 20.0f;
+		}
+
 		//Decreases stamina over time if left-shift is being held and the stamina is greater than or equal to 0
 		if(Input.GetKey(KeyCode.LeftShift) && (stamina >= 0)) {
 			stamina = stamina - Time.deltaTime * 10;
@@ -152,8 +250,18 @@ public class PlayerControler : MonoBehaviour {
 				this.gameObject.GetComponent<ElementalObjectScript>().resetMoveSpeed();
 			}
 		}
-		if(Input.GetKeyUp(KeyCode.H)) {
-			//Die();
+
+		//Resets speed and defense to normal eventually
+		if(speedDebuffed == true) {
+			if (timeSinceDebuffed > 0.1f) {
+				timeSinceDebuffed -= Time.deltaTime;
+			} else {
+				timeSinceDebuffed = 0.0f;
+				speedDebuffed = false;
+				this.gameObject.GetComponent<ElementalObjectScript>().resetMoveSpeed();
+				this.gameObject.GetComponent<ElementalObjectScript>().resetDefense();
+				Debug.Log("Move speed and defense reset");
+			}
 		}
 
 		// update Chris's stamina bar
