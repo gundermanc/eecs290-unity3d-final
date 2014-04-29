@@ -334,7 +334,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 11400006}
+  observed: {fileID: 400004}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -350,7 +350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f547f870992c4ad0b0a94f9cd5becdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  realPosition: {fileID: 400004}
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

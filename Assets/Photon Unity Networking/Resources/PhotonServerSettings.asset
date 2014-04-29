@@ -27,4 +27,5 @@ MonoBehaviour:
   - DestroyRpc
   - Die
   - Death
+  - Hurt
   DisableAutoOpenWizard: 0

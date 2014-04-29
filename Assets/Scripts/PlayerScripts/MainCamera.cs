@@ -8,17 +8,17 @@ public class MainCamera : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		audio.clip = backgroundMusic[Random.Range(0, 2)];
-		audio.Play ();
-		AudioListener.pause = true;
+		audio.Play();
+		this.gameObject.GetComponent<AudioListener>().enabled = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.M)){
-			if (AudioListener.pause == true) {
-				AudioListener.pause = false;
+			if (this.gameObject.GetComponent<AudioListener>().enabled == true) {
+				this.gameObject.GetComponent<AudioListener>().enabled = false;
 			} else {
-				AudioListener.pause = true;
+				this.gameObject.GetComponent<AudioListener>().enabled = true;
 			}
 		}
 	}

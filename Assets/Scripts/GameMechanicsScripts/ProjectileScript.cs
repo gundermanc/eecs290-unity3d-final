@@ -34,25 +34,34 @@ public class ProjectileScript : MonoBehaviour {
 
 		if((Target.collider.tag == "Player" || Target.collider.tag == "Tower") && active){
 			if(teamNumber != Target.transform.GetComponent<ElementalObjectScript>().teamNumber){
+				Element enemyType = Target.transform.GetComponent<ElementalObjectScript>().getElementalType();
+				int collisionResult = ElementComparer(ProjectileType, enemyType);
 				if (Target.collider.tag == "Tower"){
 					explosion = PhotonNetwork.Instantiate("WayRadExplosion", transform.position, Quaternion.identity, 0) as GameObject;
 					explosion.GetComponent<ParticleSystem>().Play();
 					audio.PlayOneShot(explosionSound);
-				}
-				Element enemyType = Target.transform.GetComponent<ElementalObjectScript>().getElementalType();
 
+					if(collisionResult < 0){
+						Target.transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*.5f)));
+					}
+					if (collisionResult == 0) {
+						Target.transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*1.0f)));
+					}
+					if (collisionResult > 0) {
+						Target.transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.parent.GetComponent<PhotonView>().viewID, ((int)(baseDamage*2.0f)));
+					}
+				} else {
+					//Debug.Log("Element Comparer Result: "+collisionResult);
 
-				int collisionResult = ElementComparer(ProjectileType, enemyType);
-				//Debug.Log("Element Comparer Result: "+collisionResult);
-
-				if(collisionResult < 0){
-					Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)(baseDamage*.5f));
-				}
-				if (collisionResult == 0) {
-					Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)(baseDamage*1.0f));
-				}
-				if (collisionResult > 0) {
-					Target.transform.GetComponent<ElementalObjectScript>().Hurt((int)(baseDamage*2.0f));
+					if(collisionResult < 0){
+						Target.transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*.5f)));
+					}
+					if (collisionResult == 0) {
+						Target.transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*1.0f)));
+					}
+					if (collisionResult > 0) {
+						Target.transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All, Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*2.0f)));
+					}
 				}
 			}
 			active = false;
