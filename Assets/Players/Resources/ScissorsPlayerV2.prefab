@@ -1963,10 +1963,12 @@ MonoBehaviour:
   RespawnPoint: {fileID: 0}
   elementalType: 2
   stamina: 100
-  NormalAttackCooldown: .25
+  NormalAttackCooldown: .200000003
   specialCooldownOne: 3
   specialCooldownTwo: 3
   teamNumber: 0
+  altTexture: {fileID: 0}
+  PowerUp: {fileID: 0}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2040,6 +2042,7 @@ MonoBehaviour:
   backgroundMusic:
   - {fileID: 8300000, guid: a845fa46975c83a4f900ff02fd848621, type: 3}
   - {fileID: 8300000, guid: 9d5ee565c3e466744888d02dbc06f376, type: 3}
+  special: {fileID: 0}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

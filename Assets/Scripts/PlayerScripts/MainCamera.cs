@@ -4,6 +4,7 @@ using System.Collections;
 public class MainCamera : MonoBehaviour {
 
 	public AudioClip[] backgroundMusic;
+	public AudioClip special;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,11 @@ public class MainCamera : MonoBehaviour {
 			} else {
 				AudioListener.pause = true;
 			}
+		}
+
+		if(Input.GetKeyDown(KeyCode.B)) {
+			this.audio.Stop ();
+			this.audio.PlayOneShot(special);
 		}
 	}
 }

@@ -13,6 +13,8 @@ public class PlayerControler : MonoBehaviour {
 	public float specialCooldownOne;			//The minimum wait time between two consecutive special #1 attacks
 	public float specialCooldownTwo;			//The minimum wait time between two consecutive special #2 attacks
 	public int teamNumber;						//Identifies the team that the player is on
+	public Texture2D altTexture;
+	public AudioClip PowerUp;
 	private bool speedDebuffed;					//Marks the player as debuffed, preventing sprinting
 	private bool fatiguedOut;					//Marks the player as fatigued, slowing them down and preventing sprinting
 	private float normalAttackCooldownTimer;	//Stores the time left until the next normal attack can be done
@@ -80,12 +82,16 @@ public class PlayerControler : MonoBehaviour {
 					GameObject newProjectile;
 					newProjectile = PhotonNetwork.Instantiate("RockProMega", ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+					GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Rock Player shot a Mega Rock!", Color.white);
+					OnScreenDisplayManager.PostMessage("4 second cooldown!");
 				}
 				//Paper-Type Attack: Create a static paper-stack wall that blocks objects and disappears after time.
 				if (elementalType == Element.Paper) {
 					GameObject newPaperWall = PhotonNetwork.Instantiate("PaperWall", gameObject.transform.position + gameObject.transform.forward*5 + Vector3.up*3, gameObject.transform.rotation, 0) as GameObject;
+					GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Paper Player created a Paper Wall!", Color.white);
+					OnScreenDisplayManager.PostMessage("5 second cooldown!");
 				}
-				//Scissors-Type Attack
+				//Scissors-Type Attack: Temporarily decrease attack speed
 				if (elementalType == Element.Scissors) {
 				}
 			}
@@ -95,17 +101,30 @@ public class PlayerControler : MonoBehaviour {
 				//If the cooldown is reset (0), then proceed with the attack and set the cooldown time
 				if (specialTwoCooldownTimer == 0) {
 					specialTwoCooldownTimer = specialCooldownTwo;
-					//Rock-Type Attack
+					//Rock-Type Special: Temporarily increase defense
 					if (elementalType == Element.Rock) {
-						GameObject newProjectile;
-						newProjectile = PhotonNetwork.Instantiate("RockProMega", ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
-						newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						//this.GetComponentInChildren<Renderer>().material.mainTexture = altTexture;
+						this.GetComponentInChildren<ElementalObjectScript>().decreaseDefense(-2);
+						this.gameObject.audio.PlayOneShot(PowerUp);
+						GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Rock Player used Harden! Defense increased for 3 seconds!", Color.white);
+						OnScreenDisplayManager.PostMessage("12 second cooldown!");
 					}
-					//Paper-Type Attack: Create a static paper-stack wall that blocks objects and disappears after time.
+					//Paper-Type Attack: Create a horizontal line of paper airplanes
 					if (elementalType == Element.Paper) {
-						GameObject newPaperWall = PhotonNetwork.Instantiate("PaperWall", gameObject.transform.position + gameObject.transform.forward*5 + Vector3.up*3, gameObject.transform.rotation, 0) as GameObject;
+						GameObject paperAirplaneA = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						paperAirplaneA.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						GameObject paperAirplaneB = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + Vector3.left*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						paperAirplaneB.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						GameObject paperAirplaneC = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + Vector3.left*2, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						paperAirplaneC.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						GameObject paperAirplaneD = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + Vector3.right*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						paperAirplaneD.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						GameObject paperAirplaneE = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + Vector3.right*2, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						paperAirplaneE.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Paper Player used Copy Machine!", Color.white);
+						OnScreenDisplayManager.PostMessage("7 second cooldown!");
 					}
-					//Scissors-Type Attack
+					//Scissors-Type Attack: Dunno yet
 					if (elementalType == Element.Scissors) {
 					}
 				}
@@ -146,6 +165,7 @@ public class PlayerControler : MonoBehaviour {
 		//In case above timer goes under 0, reset it back to 0
 		if (specialOneCooldownTimer < 0) {
 			specialOneCooldownTimer = 0;
+			OnScreenDisplayManager.PostMessage("Special Attack 1 Ready!", Color.yellow);
 		}
 
 		//Special attack one cooldown timer slowly decreases over time until it hits 0
@@ -155,6 +175,7 @@ public class PlayerControler : MonoBehaviour {
 		//In case above timer goes under 0, reset it back to 0
 		if (specialTwoCooldownTimer < 0) {
 			specialTwoCooldownTimer = 0;
+			OnScreenDisplayManager.PostMessage("Special Attack 2 Ready!", Color.yellow);
 		}
 		
 		//Allows sprinting by holding left-shift
