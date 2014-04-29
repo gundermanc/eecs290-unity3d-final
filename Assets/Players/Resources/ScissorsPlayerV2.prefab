@@ -861,6 +861,7 @@ GameObject:
   - 114: {fileID: 11400018}
   - 82: {fileID: 8200000}
   - 82: {fileID: 8200002}
+  - 82: {fileID: 8200006}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1833,6 +1834,64 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!82 &8200006
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100112}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: b605f10c04c4edf489c9a59d865b06b5, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!92 &9200000
 Behaviour:
   m_ObjectHideFlags: 1
@@ -1964,11 +2023,13 @@ MonoBehaviour:
   elementalType: 2
   stamina: 100
   NormalAttackCooldown: .200000003
-  specialCooldownOne: 3
-  specialCooldownTwo: 3
+  specialCooldownOne: 0
+  specialCooldownTwo: 0
   teamNumber: 0
   altTexture: {fileID: 0}
   PowerUp: {fileID: 0}
+  speedDebuffed: 0
+  timeSinceDebuffed: 0
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2042,7 +2103,7 @@ MonoBehaviour:
   backgroundMusic:
   - {fileID: 8300000, guid: a845fa46975c83a4f900ff02fd848621, type: 3}
   - {fileID: 8300000, guid: 9d5ee565c3e466744888d02dbc06f376, type: 3}
-  special: {fileID: 0}
+  special: {fileID: 8300000, guid: b605f10c04c4edf489c9a59d865b06b5, type: 3}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

@@ -67,12 +67,12 @@ public class NetworkingScript : Photon.MonoBehaviour {
 
 		if(sortingHat == (int)Element.Rock){
 			if(groupNumber == 0){
-				spawnPoint = spawnPoints[1];
+				spawnPoint = spawnPoints[2];
 			} else {
 				spawnPoint = spawnPoints[4];
 			}
 
-			thisPlayer = PhotonNetwork.Instantiate("RockPlayerV2", spawnPoint.position, spawnPoint.rotation, 0);
+			thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayerV2", spawnPoint.position, spawnPoint.rotation, 0);
 
 
 		} else if(sortingHat == (int)Element.Paper){

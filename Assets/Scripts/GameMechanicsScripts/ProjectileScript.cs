@@ -5,6 +5,7 @@ public class ProjectileScript : MonoBehaviour {
 	public Element ProjectileType;
 	public float baseDamage;
 	public int teamNumber;
+	public float debuffValue;
 	private bool active;
 	private GameObject explosion;
 
@@ -57,6 +58,13 @@ public class ProjectileScript : MonoBehaviour {
 					}
 					if (collisionResult > 0) {
 						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*2f)), false);
+					}
+					if (debuffValue == 1) {
+						Target.transform.GetComponent<ElementalObjectScript>().changeMoveSpeed(-0.25f);
+						Target.transform.GetComponent<ElementalObjectScript>().decreaseDefense(0.25f);
+						Target.transform.GetComponent<PlayerControler>().speedDebuffed = true;
+						Target.transform.GetComponent<PlayerControler>().timeSinceDebuffed = 10.0f;
+						OnScreenDisplayManager.PostMessage("You were hit by Trim! Your speed and defense have been debuffed!");
 					}
 				}
 			}

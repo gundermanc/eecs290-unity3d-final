@@ -15,7 +15,8 @@ public class PlayerControler : MonoBehaviour {
 	public int teamNumber;						//Identifies the team that the player is on
 	public Texture2D altTexture;
 	public AudioClip PowerUp;
-	private bool speedDebuffed;					//Marks the player as debuffed, preventing sprinting
+	public bool speedDebuffed;					//Marks the player as debuffed, preventing sprinting
+	public float timeSinceDebuffed;				//Stores the time since debuffed
 	private bool fatiguedOut;					//Marks the player as fatigued, slowing them down and preventing sprinting
 	private float normalAttackCooldownTimer;	//Stores the time left until the next normal attack can be done
 	private float specialOneCooldownTimer;		//Stores the time left until the next special #1 attack can be done
@@ -33,6 +34,7 @@ public class PlayerControler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		speedDebuffed = false;				//By default the player has not been debuffed
+		timeSinceDebuffed = 0.0f;			//Thus the timer is set to 0
 		fatiguedOut = false;				//By default they are not out of stamina
 		normalAttackCooldownTimer = 0.0f;
 		toDie = false;
@@ -77,7 +79,7 @@ public class PlayerControler : MonoBehaviour {
 			//If the cooldown is reset (0), then proceed with the attack and set the cooldown time
 			if (specialOneCooldownTimer == 0) {
 				specialOneCooldownTimer = specialCooldownOne;
-				//Rock-Type Attack
+				//Rock-Type Attack: Shoots faster and more powerful "Mega Rock"
 				if (elementalType == Element.Rock) {
 					GameObject newProjectile;
 					newProjectile = PhotonNetwork.Instantiate("RockProMega", ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
@@ -93,6 +95,12 @@ public class PlayerControler : MonoBehaviour {
 				}
 				//Scissors-Type Attack: Temporarily decrease attack speed
 				if (elementalType == Element.Scissors) {
+					GameObject newProjectile = PhotonNetwork.Instantiate("TrimmingScissors", ProjectileSpawnLocation.transform.position + gameObject.transform.forward*2, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+					newProjectile.transform.Rotate(0,90f,0);
+					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+					newProjectile.rigidbody.AddTorque(ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
+					GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Scissors Player used Trim!", Color.white);
+					OnScreenDisplayManager.PostMessage("6 second cooldown!");
 				}
 			}
 
@@ -124,8 +132,13 @@ public class PlayerControler : MonoBehaviour {
 						GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Paper Player used Copy Machine!", Color.white);
 						OnScreenDisplayManager.PostMessage("7 second cooldown!");
 					}
-					//Scissors-Type Attack: Dunno yet
+					//Scissors-Type Attack: Super Scissors
 					if (elementalType == Element.Scissors) {
+						GameObject newProjectile = PhotonNetwork.Instantiate("SuperScissors", ProjectileSpawnLocation.transform.position + Vector3.down*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						newProjectile.transform.Rotate(90f,0,0);
+						newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Scissors Player threw Super Scissors!", Color.white);
+						OnScreenDisplayManager.PostMessage("8 second cooldown!");
 					}
 				}
 			} else {
@@ -214,6 +227,19 @@ public class PlayerControler : MonoBehaviour {
 		}
 		if(Input.GetKeyUp(KeyCode.H)) {
 			//Die();
+		}
+
+		//Resets speed to normal eventually
+		if(speedDebuffed == true) {
+			if (timeSinceDebuffed > 0.1f) {
+				timeSinceDebuffed -= Time.deltaTime;
+			} else {
+				timeSinceDebuffed = 0.0f;
+				speedDebuffed = false;
+				this.gameObject.GetComponent<ElementalObjectScript>().resetMoveSpeed();
+				this.gameObject.GetComponent<ElementalObjectScript>().resetDefense();
+				Debug.Log("Move speed and defense reset");
+			}
 		}
 
 		// update Chris's stamina bar
