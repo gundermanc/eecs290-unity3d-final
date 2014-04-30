@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
 	private static GameManager instance;
 	/** Stores the current GameMode (pause, play, dead, menu etc. */
 	private static GameMode mode;
+	//Time when the game ends
+	private static float gameEnd;
 	
 	/**
 	 * Script initialization. This is called by unity on object creation.
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour {
 		instance = this;
 		Pause ();
 		mode = GameMode.StartMenu;
+		gameEnd = 0;
 
 		// initiallizes all towers for each team as not dead
 		for(int i = 0; i < teamTowersDead.GetLength(0); i++){
@@ -37,6 +40,11 @@ public class GameManager : MonoBehaviour {
 		// guard case, exit function if this isn't a pause/unpause situation
 		if (!Input.GetKeyDown ("escape")) {
 			return;
+		}
+
+		//10 seconds after the game is done, the level is reloaded
+		if (Time.timeSinceLevelLoad - gameEnd > 10) {
+			Application.LoadLevel(0);
 		}
 		
 		// toggle game paused state
@@ -206,6 +214,11 @@ public class GameManager : MonoBehaviour {
 		TeamMessage ((team+1)%2, "All of your towers are down! Better luck next time!", Color.red);
 		//Sends congratulatory message to the winning team
 		TeamMessage (team, "YOU WIN!!!", Color.green);
+
+		TeamMessage ((team+1)%2, "Game is restarting in 10 seconds.", Color.green);
+		TeamMessage (team, "Game is restarting in 10 seconds.", Color.green);
+		//Sets time when the game was one
+		gameEnd = Time.timeSinceLevelLoad;
 	}
 	
 	/**

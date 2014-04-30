@@ -43,6 +43,8 @@ public class ProjectileScript : MonoBehaviour {
 
 		if((Target.collider.tag == "Player" || Target.collider.tag == "Tower") && active){
 			active = false;
+			Debug.Log (teamNumber);
+			Debug.Log (Target.transform.GetComponent<ElementalObjectScript>().teamNumber);
 			if(teamNumber != Target.transform.GetComponent<ElementalObjectScript>().teamNumber){
 				Element enemyType = Target.transform.GetComponent<ElementalObjectScript>().getElementalType();
 				int collisionResult = ElementComparer(ProjectileType, enemyType);
@@ -66,6 +68,7 @@ public class ProjectileScript : MonoBehaviour {
 				} else {
 					//Debug.Log("Element Comparer Result: "+collisionResult);
 					if(Ishot){
+						Debug.Log ("Got here");
 						if(collisionResult < 0){
 							Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, (int)(baseDamage*.5f), false);
 						}
