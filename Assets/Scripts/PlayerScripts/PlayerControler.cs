@@ -271,7 +271,7 @@ public class PlayerControler : MonoBehaviour {
 
 	[RPC]
 	public void Die(int ID){
-		if (gameObject.GetComponent<PhotonView> ().viewID == ID) {
+		if (gameObject.GetComponent<PhotonView> ().viewID == ID && !dead) {
 			killcam.depth = 10;
 			dead = true;
 			deathtime = Time.timeSinceLevelLoad;

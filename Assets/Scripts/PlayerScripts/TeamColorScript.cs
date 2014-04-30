@@ -4,8 +4,7 @@ using System.Collections;
 public class TeamColorScript : Photon.MonoBehaviour {
 	
 	public void setPlayerMaterial(Material playerMat){
-//		if(photonView.isMine){
-		renderer.material = playerMat;
-
+		renderer.materials[0] = playerMat;
+		renderer.materials[1] = playerMat;
 	}
 }

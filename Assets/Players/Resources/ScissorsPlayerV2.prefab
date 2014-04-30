@@ -2089,6 +2089,9 @@ MonoBehaviour:
   PowerUp: {fileID: 0}
   speedDebuffed: 0
   timeSinceDebuffed: 0
+  teamColors:
+  - {fileID: 2100000, guid: 3fdd727ef002d4da6a74e74e44b0bee1, type: 2}
+  - {fileID: 2100000, guid: 16c436950bcfe433890a5dac3940d97f, type: 2}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
