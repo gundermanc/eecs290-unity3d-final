@@ -153,13 +153,7 @@ public class PlayerControler : MonoBehaviour {
 				GameObject newProjectile;
 				newProjectile = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 				//Differentiates the physics depending on what type of projectile it is
-				if(elementalType != Element.Paper){
-					newProjectile.transform.Rotate(0,90f,0);
-					//newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
-					newProjectile.rigidbody.AddTorque(ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
-				} else {
-					//newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
-				}
+				
 				newProjectile.GetComponent<ProjectileScript>().teamNumber = teamNumber;
 			}
 		}
