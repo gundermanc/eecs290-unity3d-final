@@ -6,12 +6,15 @@ public class ProjectileScript : MonoBehaviour {
 	public float baseDamage;
 	public int teamNumber;
 	public float debuffValue;
+	public float ProjectileSpeed;
+	public GameObject ProjectileSpawnLocation;
 	private bool active;
 	private GameObject explosion;
 
 	// Use this for initialization
 	void Start () {
 		active = true;
+		rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 	}
 
 	void Update(){
