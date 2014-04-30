@@ -306,6 +306,32 @@ Transform:
   m_LocalScale: {x: .0150000006, y: .0119999973, z: .0149999978}
   m_Children: []
   m_Father: {fileID: 1071746612}
+--- !u!1 &210053155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 210053156}
+  m_Layer: 0
+  m_Name: ThirdSouthScissorsTowerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &210053156
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 210053155}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 675, y: 5, z: 515}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 403047796}
 --- !u!1 &253343920
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +412,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 269248817}
+  - 114: {fileID: 269248819}
+  - 114: {fileID: 269248818}
   m_Layer: 0
   m_Name: RockTower
   m_TagString: Tower
@@ -405,6 +433,44 @@ Transform:
   m_Children:
   - {fileID: 1289706917}
   m_Father: {fileID: 1723815784}
+--- !u!114 &269248818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 269248816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subId: 5
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 269248817}
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  instantiationId: 0
+--- !u!114 &269248819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 269248816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e886df3dbf13048a6b7ab6c536fc85d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 0
+  dead: 0
+  teamNumber: 0
+  timeOfDeath: 0
+  timeToDestroy: 0
+  lerpSpeed: 1
+  dustCloud: {fileID: 0}
 --- !u!1 &272798677
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +540,38 @@ MonoBehaviour:
   timeToDestroy: 0
   lerpSpeed: 1
   dustCloud: {fileID: 0}
+--- !u!1 &403047795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 403047796}
+  m_Layer: 0
+  m_Name: SpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &403047796
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 403047795}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 781589172}
+  - {fileID: 1615306871}
+  - {fileID: 1054738472}
+  - {fileID: 540639976}
+  - {fileID: 2005689212}
+  - {fileID: 210053156}
+  m_Father: {fileID: 668047457}
 --- !u!1 &404405369
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,11 +843,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TerrainData: {fileID: 15600000, guid: 80f5957f69f867f4ba18370059d92d27, type: 2}
-  m_TreeDistance: 5000
+  m_TreeDistance: 2000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
+  m_DetailObjectDistance: 250
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
@@ -896,6 +994,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1855616745}
   m_GameObject: {fileID: 503579981}
   m_Mesh: {fileID: 4300000, guid: 51916b3a62ae2bb49ba650dc8332c2d1, type: 3}
+--- !u!1 &540639975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 540639976}
+  m_Layer: 0
+  m_Name: ThirdSouthPaperTowerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &540639976
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 540639975}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 700, y: 5, z: 515}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 403047796}
 --- !u!1 &632789251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1175,7 @@ Transform:
   - {fileID: 1245765187}
   - {fileID: 435441548}
   - {fileID: 1723815784}
+  - {fileID: 403047796}
   m_Father: {fileID: 0}
 --- !u!1 &669951163
 GameObject:
@@ -1124,6 +1249,121 @@ Transform:
   m_LocalScale: {x: 10, y: 21, z: 10}
   m_Children: []
   m_Father: {fileID: 1245765187}
+--- !u!1 &781589171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 781589172}
+  m_Layer: 0
+  m_Name: ThirdNorthPaperTowerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &781589172
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 781589171}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 500, y: 5, z: 515}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 403047796}
+--- !u!1 &846459618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 846459624}
+  - 20: {fileID: 846459623}
+  - 124: {fileID: 846459622}
+  - 92: {fileID: 846459621}
+  - 81: {fileID: 846459620}
+  - 45: {fileID: 846459619}
+  m_Layer: 0
+  m_Name: World Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!45 &846459619
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 846459618}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 16522f49031ff414abdf1f83f1b6a36c, type: 2}
+--- !u!81 &846459620
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 846459618}
+  m_Enabled: 1
+--- !u!92 &846459621
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 846459618}
+  m_Enabled: 1
+--- !u!124 &846459622
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 846459618}
+  m_Enabled: 1
+--- !u!20 &846459623
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 846459618}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: .300000012
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_HDR: 0
+  m_OcclusionCulling: 1
+--- !u!4 &846459624
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 846459618}
+  m_LocalRotation: {x: -.00118498469, y: -.989135861, z: .146782681, w: -.00798736978}
+  m_LocalPosition: {x: 599.067688, y: 53.6260452, z: 840.556702}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &916582887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,6 +1714,32 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 668047457}
+--- !u!1 &1054738471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1054738472}
+  m_Layer: 0
+  m_Name: ThirdNorthScissorsTowerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1054738472
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1054738471}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 475, y: 5, z: 515}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 403047796}
 --- !u!1 &1071746611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,6 +3102,32 @@ Transform:
   m_LocalScale: {x: 10, y: 21, z: 10}
   m_Children: []
   m_Father: {fileID: 1245765187}
+--- !u!1 &1615306870
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1615306871}
+  m_Layer: 0
+  m_Name: ThirdNorthRockTowerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1615306871
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1615306870}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 525, y: 5, z: 515}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 403047796}
 --- !u!1 &1617714399
 GameObject:
   m_ObjectHideFlags: 0
@@ -2964,6 +3256,75 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5.5, z: .200000003}
   m_Center: {x: 0, y: .300000012, z: 0}
+--- !u!1 &1642531472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1642531476}
+  - 33: {fileID: 1642531475}
+  - 65: {fileID: 1642531474}
+  - 23: {fileID: 1642531473}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &1642531473
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642531472}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!65 &1642531474
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642531472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 500, y: 100, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1642531475
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642531472}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1642531476
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642531472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 600, y: -1, z: 455}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &1650696293
 GameObject:
   m_ObjectHideFlags: 0
@@ -3618,6 +3979,18 @@ Prefab:
       propertyPath: subId
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 333303d314b2bb9499373148cb528516, type: 2}
+      propertyPath: m_TreeDistance
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 333303d314b2bb9499373148cb528516, type: 2}
+      propertyPath: m_SplatMapDistance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 333303d314b2bb9499373148cb528516, type: 2}
+      propertyPath: m_DetailObjectDistance
+      value: 250
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 333303d314b2bb9499373148cb528516, type: 2}
   m_RootGameObject: {fileID: 668047456}
@@ -3631,6 +4004,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1878039397}
+  - 114: {fileID: 1878039399}
+  - 114: {fileID: 1878039398}
   m_Layer: 0
   m_Name: RockTower
   m_TagString: Tower
@@ -3650,6 +4025,44 @@ Transform:
   m_Children:
   - {fileID: 1071746612}
   m_Father: {fileID: 1723815784}
+--- !u!114 &1878039398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1878039396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subId: 6
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 1878039397}
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  instantiationId: 0
+--- !u!114 &1878039399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1878039396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e886df3dbf13048a6b7ab6c536fc85d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 0
+  dead: 0
+  teamNumber: 0
+  timeOfDeath: 0
+  timeToDestroy: 0
+  lerpSpeed: 1
+  dustCloud: {fileID: 0}
 --- !u!1 &1883611349
 GameObject:
   m_ObjectHideFlags: 0
@@ -3904,6 +4317,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5.5, z: .200000003}
   m_Center: {x: 0, y: .300000012, z: 0}
+--- !u!1 &2005689211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2005689212}
+  m_Layer: 0
+  m_Name: ThirdSouthRockTowerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2005689212
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2005689211}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 725, y: 5, z: 515}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 403047796}
 --- !u!1 &2069230852
 GameObject:
   m_ObjectHideFlags: 0
