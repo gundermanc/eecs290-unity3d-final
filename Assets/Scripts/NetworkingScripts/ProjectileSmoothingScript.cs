@@ -6,7 +6,7 @@ public class ProjectileSmoothingScript : Photon.MonoBehaviour {
 	float smoothingSpeed;
 	Vector3 realPosition;
 	Quaternion realRotation = Quaternion.identity;
-	Rigidbody realRigidbody;
+	Vector3 realVelocity;
 	// Use this for initialization
 	void Start () {
 		smoothingSpeed = 0.001f;
@@ -20,6 +20,7 @@ public class ProjectileSmoothingScript : Photon.MonoBehaviour {
 			// this will be used for movement smoothing
 			transform.position = Vector3.Lerp(transform.position, realPosition, smoothingSpeed);
 			transform.rotation = Quaternion.Lerp(transform.rotation, realRotation, smoothingSpeed);
+			rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, realVelocity, smoothingSpeed);
 
 		}
 	}
@@ -29,12 +30,13 @@ public class ProjectileSmoothingScript : Photon.MonoBehaviour {
 			// sending actual position to network
 			stream.SendNext(transform.position);
 			stream.SendNext(transform.rotation);
+			stream.SendNext(rigidbody.velocity);
 			//stream.SendNext(rigidbody);
 		} else {
 			// recieving positional info of other players, and updating position locally
 			realPosition = (Vector3)stream.ReceiveNext();
 			realRotation = (Quaternion)stream.ReceiveNext();
-			//realRigidbody = (Rigidbody)stream.ReceiveNext();
+			realVelocity = (Vector3)stream.ReceiveNext();
 		}
 	}
 }

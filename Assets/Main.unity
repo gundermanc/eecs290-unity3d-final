@@ -534,7 +534,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 86563193}
+  observed: {fileID: 86563191}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -1577,7 +1577,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 556826236}
+  observed: {fileID: 556826234}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -1805,7 +1805,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 573816648}
+  observed: {fileID: 573816647}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -2744,7 +2744,7 @@ Prefab:
     - target: {fileID: 11400002, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
       propertyPath: observed
       value: 
-      objectReference: {fileID: 86563193}
+      objectReference: {fileID: 86563191}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
@@ -4934,6 +4934,8 @@ MonoBehaviour:
   fatigueBarTexture: {fileID: 2800000, guid: 4f6974c30eaca71449e20033bffbc1cf, type: 3}
   fatigueBarBackgroundTexture: {fileID: 2800000, guid: 7b4df8051a280174eafd6619ccdfe119,
     type: 3}
+  redTowerBarTexture: {fileID: 2800000, guid: 89fec9198a42d8f4cb0eb5fa91ae7e3c, type: 3}
+  blueTowerBarTexture: {fileID: 2800000, guid: c7daffb763fea38459cc7d6271e9c3ec, type: 3}
   messageDisplayTime: 5
   bloodDecalsTexture: {fileID: 0}
   logoTexture: {fileID: 2800000, guid: 1031bef2a295b9f4e8ad8aea3ed46591, type: 3}
@@ -5103,7 +5105,7 @@ Prefab:
     - target: {fileID: 11400008, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
       propertyPath: observed
       value: 
-      objectReference: {fileID: 1851416335}
+      objectReference: {fileID: 1851416334}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
@@ -5372,7 +5374,7 @@ Prefab:
     - target: {fileID: 11400004, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
       propertyPath: observed
       value: 
-      objectReference: {fileID: 556826236}
+      objectReference: {fileID: 556826234}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
@@ -7153,7 +7155,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 1851416335}
+  observed: {fileID: 1851416334}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -7365,7 +7367,7 @@ Prefab:
     - target: {fileID: 11400004, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
       propertyPath: observed
       value: 
-      objectReference: {fileID: 573816648}
+      objectReference: {fileID: 573816647}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
