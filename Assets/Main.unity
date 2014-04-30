@@ -478,7 +478,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 10, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &70502509
 MeshFilter:
@@ -752,6 +752,7 @@ Transform:
   - {fileID: 1384068309}
   - {fileID: 1184172116}
   - {fileID: 1205817235}
+  - {fileID: 644288138}
   m_Father: {fileID: 0}
 --- !u!1 &232994014
 GameObject:
@@ -2271,7 +2272,7 @@ Transform:
   - {fileID: 1312844631}
   - {fileID: 70502506}
   - {fileID: 1327132195}
-  m_Father: {fileID: 1205817235}
+  m_Father: {fileID: 196641692}
 --- !u!1 &689402634
 GameObject:
   m_ObjectHideFlags: 0
@@ -4286,7 +4287,6 @@ Transform:
   - {fileID: 1851416334}
   - {fileID: 86563191}
   - {fileID: 556826234}
-  - {fileID: 644288138}
   m_Father: {fileID: 196641692}
 --- !u!1 &1209538803
 GameObject:
@@ -4350,7 +4350,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 10, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1209538807
 MeshFilter:
@@ -4547,7 +4547,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 10, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1312844634
 MeshFilter:
@@ -4890,7 +4890,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 10, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1327132198
 MeshFilter:
