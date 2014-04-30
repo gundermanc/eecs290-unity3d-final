@@ -106,8 +106,7 @@ public class NetworkingScript : Photon.MonoBehaviour {
 		thisPlayer.GetComponent<PlayerControler>().enabled = true;
 		thisPlayer.GetComponent<PlayerControler>().teamNumber = groupNumber;
 		thisPlayer.GetComponent<ElementalObjectScript>().teamNumber = groupNumber;
-	//	thisPlayer.GetComponent<MainCamera>().enabled = true;
-	//	thisPlayer.GetComponentInChildren<TeamColorScript>().setPlayerMaterial(teamColors[groupNumber]);
+	
 
 		//Vector3 spawnPoint = new Vector3(Random.Range(0f, 30f), 1000f, Random.Range(0f, 30f));
 	//	GameObject myShip = PhotonNetwork.Instantiate("Ship1", spawnPoint, Quaternion.identity, 0);
