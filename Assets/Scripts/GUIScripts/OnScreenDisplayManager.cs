@@ -23,6 +23,9 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	private Rect fatigueBarRect;					// the rectangle which the FULL ammo bar will occupy
 	private Rect fatigueBarBackgroundRect;			// the rectangle which the empty ammo bar will occupy
 
+	public Texture redTowerBarTexture;				// the texture file to use for the red towers 
+	public Texture blueTowerBarTexture;				// the texture file to use for the blue towers 
+
 	public int messageDisplayTime = 5;			// the number of seconds to display a message
 	public Texture bloodDecalsTexture;			// the texture for the game over blood graphics
 	public Texture logoTexture;
@@ -69,7 +72,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		 * The "width" and "height" refer to the actual size of the rectangle
 		 * Each bar has both a rectangle for the actual meter as well as one for the background behind the bar
 		 */
-		
+
 		healthBarRect.x = 17;
 		healthBarRect.y = 20;
 		healthBarRect.width = 155; 
@@ -638,10 +641,10 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		healthBarRect.width *= (team0RockTowerHealth / 100f);
 		healthBarRect.y += 5;
 		healthBarRect.height -= 10;
-		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.DrawTexture (healthBarRect, redTowerBarTexture);
 		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>RED Rock Tower</b></color>");
 		
-		healthBarBackgroundRect.y += 55;
+		healthBarBackgroundRect.y += 35;
 
 		// team 0 paper tower health bar
 		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
@@ -651,10 +654,10 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		healthBarRect.width *= (team0PaperTowerHealth / 100f);
 		healthBarRect.y += 5;
 		healthBarRect.height -= 10;
-		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.DrawTexture (healthBarRect, redTowerBarTexture);
 		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>RED Paper Tower</b></color>");
 
-		healthBarBackgroundRect.y += 55;
+		healthBarBackgroundRect.y += 35;
 
 		// team 0 scissors tower health bar
 		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
@@ -664,7 +667,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		healthBarRect.width *= (team0ScissorsTowerHealth / 100f);
 		healthBarRect.y += 5;
 		healthBarRect.height -= 10;
-		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.DrawTexture (healthBarRect, redTowerBarTexture);
 		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>RED Scissors Tower</b></color>");
 
 		healthBarBackgroundRect.y += 55;
@@ -677,10 +680,10 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		healthBarRect.width *= (team1RockTowerHealth / 100f);
 		healthBarRect.y += 5;
 		healthBarRect.height -= 10;
-		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.DrawTexture (healthBarRect, blueTowerBarTexture);
 		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>BLUE Rock Tower</b></color>");
 		
-		healthBarBackgroundRect.y += 55;
+		healthBarBackgroundRect.y += 35;
 		
 		// team 1 paper tower health bar
 		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
@@ -690,10 +693,10 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		healthBarRect.width *= (team1PaperTowerHealth / 100f);
 		healthBarRect.y += 5;
 		healthBarRect.height -= 10;
-		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.DrawTexture (healthBarRect, blueTowerBarTexture);
 		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>BLUE Paper Tower</b></color>");
 		
-		healthBarBackgroundRect.y += 55;
+		healthBarBackgroundRect.y += 35;
 		
 		// team 1 scissors tower health bar
 		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
@@ -703,10 +706,10 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		healthBarRect.width *= (team1ScissorsTowerHealth / 100f);
 		healthBarRect.y += 5;
 		healthBarRect.height -= 10;
-		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.DrawTexture (healthBarRect, blueTowerBarTexture);
 		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>BLUE Scissors Tower</b></color>");
 	}
-	
+
 	/**
 	 * Draws the ammo bar for the HUD
 	 */
