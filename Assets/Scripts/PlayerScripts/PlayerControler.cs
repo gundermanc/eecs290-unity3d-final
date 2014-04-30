@@ -82,7 +82,7 @@ public class PlayerControler : MonoBehaviour {
 				//Rock-Type Attack: Shoots faster and more powerful "Mega Rock"
 				if (elementalType == Element.Rock) {
 					GameObject newProjectile;
-					newProjectile = PhotonNetwork.Instantiate("RockProMega", ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+					newProjectile = PhotonNetwork.Instantiate("RockProMega", ProjectileSpawnLocation.transform.position + gameObject.transform.forward*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 					GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Rock Player shot a Mega Rock!", Color.white);
 					OnScreenDisplayManager.PostMessage("4 second cooldown!");
