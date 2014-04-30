@@ -16,7 +16,7 @@ public class ProjectileScript : MonoBehaviour {
 		if(ProjectileType != Element.Paper){
 			transform.Rotate(0,90f,0);
 			rigidbody.AddForce(transform.right * -ProjectileSpeed);
-			newProjectile.rigidbody.AddTorque(transform.right * (ProjectileSpeed));
+			rigidbody.AddTorque(transform.right * (ProjectileSpeed));
 		}
 		else {
 			rigidbody.AddForce(transform.forward * ProjectileSpeed);
