@@ -33,5 +33,35 @@ public class TowerScript : Photon.MonoBehaviour {
 			Destroy(gameObject);
 			//PhotonNetwork.Destroy(this.photonView);
 		}
+
+		int health = (int)(gameObject.GetComponent<ElementalObjectScript> ().Health / 10f);
+
+		if(health < 0) {
+			health = 0;
+		}
+		// update health bars:
+		switch(elementType) {
+		case Element.Rock:
+			if(teamNumber == 0) {
+				OnScreenDisplayManager.SetTeam0RockTowerHealth(health);
+			} else {
+				OnScreenDisplayManager.SetTeam1RockTowerHealth(health);
+			}
+			break;
+		case Element.Paper:
+			if(teamNumber == 0) {
+				OnScreenDisplayManager.SetTeam0PaperTowerHealth(health);
+			} else {
+				OnScreenDisplayManager.SetTeam1PaperTowerHealth(health);
+			}
+			break;
+		case Element.Scissors:
+			if(teamNumber == 0) {
+				OnScreenDisplayManager.SetTeam0ScissorsTowerHealth(health);
+			} else {
+				OnScreenDisplayManager.SetTeam1ScissorsTowerHealth(health);
+			}
+			break;
+		}
 	}
 }

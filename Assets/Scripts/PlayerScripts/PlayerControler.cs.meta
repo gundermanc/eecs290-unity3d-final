@@ -5,6 +5,8 @@ MonoImporter:
   defaultReferences:
   - ProjectileSpawnLocation: {instanceID: 0}
   - Projectile: {instanceID: 0}
+  - RespawnPoint: {instanceID: 0}
+  - altTexture: {fileID: 2800000, guid: 1f1c28b9b69176e4c8aeddb8f5034406, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

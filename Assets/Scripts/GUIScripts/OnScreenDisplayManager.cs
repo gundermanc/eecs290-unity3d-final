@@ -32,7 +32,14 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	// private constants
 	private const int pauseMenuMargins = 70; //Coordinates for the rectangle used in the pause menu
 	private const int shadowOffset = -2; //Value used to draw a shadow rectangle
-	
+	private const string soundSettingStringFalse = "<size=30>Toggle Sound (Off)</size>";
+	private const string soundSettingStringTrue = "<size=30>Toggle Sound (On)</size>";
+	private const string instructionsText = "Rock beats Scissors beats Paper beats Rock. Become a fighter with the elements and fight a 3-on-3"
+				+ " battle against your enemies. Your goal: take down the opposing team's towers before they take down yours.\n\n"
+			+ "Arrow Keys, WASD - Movement\nMouse - Rotate Camera\nLeft-Click - Default Attack\nHold Q + Left-Click - Special Attack 1\n"
+				+ "Hold E + Left-Click - Special Attack 2\nHold Shift - Sprint\n"
+				+ "Space - Jump\nEscape - Pause\n\n";
+
 	// private fields
 	private int healthPoints = 100; //Player character's health points
 	private int ammoCount = 100; //Default ammo count for throwing knives
@@ -40,8 +47,15 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	private LinkedList<Message> messageQueue; //A linked list containing all the queue'd messages to be displayed on screen
 	private PeerState lastState = PeerState.Disconnected;
 	private bool soundOn = false; //Sound is set to off by default
-	private string soundSettingStringFalse = "<size=30>Toggle Sound (Off)</size>";
-	private string soundSettingStringTrue = "<size=30>Toggle Sound (On)</size>";
+
+	private int team0RockTowerHealth = 100;
+	private int team0PaperTowerHealth = 100;
+	private int team0ScissorsTowerHealth = 100;
+	private int team1RockTowerHealth = 100;
+	private int team1PaperTowerHealth = 100;
+	private int team1ScissorsTowerHealth = 100;
+
+	private string teamMessage = "";
 
 	// singleton instance reference
 	private static OnScreenDisplayManager instance; 
@@ -87,18 +101,17 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		// draw the GUI appropriate for the current game state.
 		switch(GameManager.GetGameMode()) {
 		case GameManager.GameMode.Paused: //If the game mode is paused
-			DrawPlayersList ();
-			DrawPauseMenu();			  //Draw the pause menu
+			DrawPauseMenu();			
+			DrawPlayersList ();			
+			break;
+		case GameManager.GameMode.Instructions:
+			DrawInstructionsScreen ();
 			break;
 		case GameManager.GameMode.StartMenu:
 			DrawGameStart();	  //Draw the start menu
 			break;
 		case GameManager.GameMode.GameSetup:
 			DrawGameSetup ();
-			break;
-		case GameManager.GameMode.Dead:   //Draw the "game over" screen
-			DrawBloodDecals ();
-			DrawWinScreen("You died you <b>SCRUB!</b>");
 			break;
 		case GameManager.GameMode.UnPaused: //Draw the usual display for when the game is unpaused and is being played
 			DrawHUD();
@@ -107,7 +120,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 			DrawWinLevelScreen();
 			break;
 		case GameManager.GameMode.EndGame: //Draw the screen that congratulates the player for when all levels have been completed
-			DrawWinScreen("Congratulations! You beat all of the levels.");
+			Debug.Log ("No end game implemented.");
 			break;
 		}
 	}
@@ -169,6 +182,52 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		}
 		instance.ammoCount = ammo;
 	}
+
+
+
+
+	public static void SetTeam0RockTowerHealth(int hp) {
+		if(hp < 0 || hp  > 100) {
+			Debug.LogError("Invalid tower health.");
+		}
+		instance.team0RockTowerHealth = hp;
+	}
+
+	public static void SetTeam0PaperTowerHealth(int hp) {
+		if(hp < 0 || hp > 100) {
+			Debug.LogError("Invalid tower health.");
+		}
+		instance.team0PaperTowerHealth = hp;
+	}
+
+	public static void SetTeam0ScissorsTowerHealth(int hp) {
+		if(hp < 0 || hp > 100) {
+			Debug.LogError("Invalid tower health.");
+		}
+		instance.team0ScissorsTowerHealth = hp;
+	}
+
+	public static void SetTeam1RockTowerHealth(int hp) {
+		if(hp < 0 || hp > 100) {
+			Debug.LogError("Invalid tower health.");
+		}
+		instance.team1RockTowerHealth = hp;
+	}
+	
+	public static void SetTeam1PaperTowerHealth(int hp) {
+		if(hp < 0 || hp > 100) {
+			Debug.LogError("Invalid tower health.");
+		}
+		instance.team1PaperTowerHealth = hp;
+	}
+	
+	public static void SetTeam1ScissorsTowerHealth(int hp) {
+		if(hp < 0 || hp > 100) {
+			Debug.LogError("Invalid tower health.");
+		}
+		instance.team1ScissorsTowerHealth = hp;
+	}
+
 	
 	/** 
 	 * Sets the max ammo count for the OnScreenDisplay
@@ -197,6 +256,38 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	}
 
 	/**
+	 * Draws the Instructions screen stuff
+	 */
+	private void DrawInstructionsScreen () {
+		// create a label GUI style that is centered
+		GUIStyle centeredStyle = GUI.skin.GetStyle ("Box");
+		centeredStyle.alignment = TextAnchor.MiddleCenter;
+		
+		Rect menuRect = new Rect (100, 100, Screen.width - 200, Screen.height - 200);
+
+
+		// draw overlay
+		GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), overlayTexture);
+
+		// draw title
+		DrawLabelWithShadow (menuRect, "<size=40>Instructions</size>");
+
+		menuRect.y += 90;
+		menuRect.height -= 100;
+		centeredStyle = GUI.skin.GetStyle ("Box");
+		centeredStyle.alignment = TextAnchor.UpperLeft;
+
+		GUI.TextArea (menuRect, instructionsText);
+
+		menuRect.y += menuRect.height + 20;
+		menuRect.height = 50;
+		if (GUI.Button (menuRect, "<size=30>Return</size>")) {
+			GameObject.Find("World Camera").GetComponent<WorldCameraScript>().playSoundEffect("UISound2");
+			GameManager.StartScreen ();
+		}
+	}
+
+	/**
 	 * Draws the game setup screen
 	 */
 	private void DrawGameSetup () {
@@ -206,6 +297,9 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		centeredStyle.alignment = TextAnchor.MiddleCenter;
 
 		Rect menuRect = new Rect (100, 100, Screen.width - 200, Screen.height - 200);
+
+		// draw overlay
+		GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), overlayTexture);
 
 		// draw title
 		DrawLabelWithShadow (menuRect, "<size=40>Multiplayer Lobby</size>");
@@ -219,13 +313,17 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		centeredStyle.alignment = TextAnchor.UpperLeft;
 		GUI.Label (usernameRect, "<size=20>Screen name</size>");
 		usernameRect.y += 50;
+
+		GUIStyle textFieldStyle = GUI.skin.GetStyle ("TextField");
+		textFieldStyle.fontSize = 30;
 		PhotonNetwork.player.name = GUI.TextField (usernameRect, PhotonNetwork.player.name);
 
 		Rect startRect = new Rect (usernameRect);
 		startRect.y = Screen.height - 300;
 		startRect.height = 100;
-		if(GUI.Button (startRect, "Start Game")) {
+		if(GUI.Button (startRect, "<size=30>Start Game</size>")) {
 			if(!PhotonNetwork.player.name.Equals("")) {
+				GameObject.Find("World Camera").GetComponent<WorldCameraScript>().disableAL();
 				GameManager.StartGame ();
 			}
 		}
@@ -242,7 +340,8 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		float xcorner = (Screen.width / 2) - 40;
 		float ycorner = (Screen.height / 2) - 40;
 		GUI.DrawTexture (new Rect(xcorner, ycorner, 80, 80), reticle);
-		
+
+		DrawTowerHealthBars ();
 		DrawHealthBar ();
 		DrawFatigueBar ();
 		DrawMessages ();
@@ -271,22 +370,21 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		// restart game button
 		drawRect.y += 100;
 		foreach (PhotonPlayer player in PhotonNetwork.playerList) {
-			if(isBox) {
-				GUI.Box (drawRect, "<size=40>" + player.name + "</size>");
+			string team;
+			if(((int)player.allProperties["Team Number"]) == 0) {
+				team = ", <color=#FF0000>TEAM RED</color>";
 			} else {
-				DrawLabelWithShadow (drawRect, "<size=40>" + player.name + "</size>");
+				team = ", <color=#0000FF>TEAM BLUE</color>";
+			}
+
+			if(isBox) {
+				GUI.Box (drawRect, "<size=40>" + player.name + team + "</size>");
+			} else {
+				GUI.Label (drawRect, "<size=40>" + player.name + team + "</size>");
 			}
 			drawRect.y += 50;
 			isBox = !isBox;
 		}
-	}
-
-
-	/**
-	 * Draw the blood decals, used for the game over screen 
-	 */
-	private void DrawBloodDecals() {
-		GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), bloodDecalsTexture);
 	}
 	
 	/**
@@ -318,6 +416,9 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		// create a label GUI style that is centered
 		GUIStyle centeredStyle = GUI.skin.GetStyle ("Label");
 		centeredStyle.alignment = TextAnchor.UpperCenter;
+
+		// draw overlay
+		GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), overlayTexture);
 		
 		// get pause menu rectange, minus the margins specified in the constant pauseMenuMargins
 		Rect screenDimensions = new Rect (pauseMenuMargins, pauseMenuMargins, 
@@ -329,17 +430,37 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		// restart game button
 		screenDimensions.y += 100;
 		screenDimensions.yMax = screenDimensions.y + 75;
-		if (GUI.Button (screenDimensions, "<size=30>Restart</size>")) {
+		/*if (GUI.Button (screenDimensions, "<size=30>Restart</size>")) {
 			GameManager.RestartGame();
 		}
 		
 		// exit game button
 		screenDimensions.y += 100;
-		screenDimensions.yMax = screenDimensions.y + 75;
+		screenDimensions.yMax = screenDimensions.y + 75;*/
 		if (GUI.Button (screenDimensions, "<size=30>Quit</size>")) {
 			
 			// this works...just not in the editor. you have to actually build the project first
 			Application.Quit ();
+		}
+
+		// team message box
+		screenDimensions.y += 100;
+		DrawLabelWithShadow (screenDimensions, "<size=30>Team Message</size>");
+		screenDimensions.y += 50;
+		screenDimensions.height = 200;
+		GUIStyle textFieldStyle = GUI.skin.GetStyle ("TextArea");
+		textFieldStyle.fontSize = 22;
+		this.teamMessage = GUI.TextArea (screenDimensions, this.teamMessage);
+		screenDimensions.y += 250;
+		screenDimensions.height = 50;
+
+		if (GUI.Button (screenDimensions, "<size=30>Send Message</size>")) {
+			GameObject.Find("GameManager").GetComponent<GameManager>()
+				.TeamChat(this.teamMessage);
+			this.teamMessage = "";
+			GameManager.UnPause ();
+			GameObject thisPlayer = NetworkingScript.GetThisPlayer ();
+			thisPlayer.GetComponentInChildren<MainCameraScript>().playSoundEffect("MessageSound");
 		}
 	}
 	
@@ -358,39 +479,38 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		                                  Screen.height- (2 * pauseMenuMargins));
 		
 		screenDimensions.y += 100;
-
+		
 		Rect logoRect = new Rect ();
 		logoRect.width = 807;
 		logoRect.height = 278;
 		logoRect.x = (Screen.width - logoRect.width) / 2;
 		logoRect.y = (screenDimensions.y);
-
+		
 		GUI.DrawTexture (new Rect(0, 0, Screen.width, Screen.height), overlayTexture);
 		GUI.DrawTexture (logoRect, logoTexture);
-
+		
 		screenDimensions.y += logoRect.height;
 		screenDimensions.yMax = screenDimensions.y + 75;
 		
 		//Start game button
-		if (GUI.Button (screenDimensions, "<size=30>Start Game</size>")) {
+		if (GUI.Button (screenDimensions, "<size=30>Multiplayer Lobby</size>")) {
 			GameManager.SetupGame ();
+			GameObject.Find("World Camera").GetComponent<WorldCameraScript>().playSoundEffect("UISound1");
 		}
-
+		
 		float buttonWidth = (screenDimensions.width - 40) / 3;
 		screenDimensions.y += 85;
 		screenDimensions.width = buttonWidth;
 		//Instructions game button
 		if (GUI.Button (screenDimensions, "<size=30>Instructions</size>")) {
-			GameManager.StartGame();
+			GameObject.Find("World Camera").GetComponent<WorldCameraScript>().playSoundEffect("UISound1");
+			GameManager.InstructionsScreen ();
 		}
 		screenDimensions.x += buttonWidth + 20;
 		//Toggle sound game button, toggles sound on/off: on by default
-		if (GUI.Button (screenDimensions, soundSettingStringFalse)) {
-			if (soundOn == false) {
-				soundOn = true;
-			} else {
-				soundOn = false;
-			}
+		if (GUI.Button (screenDimensions, !AudioListener.pause ? soundSettingStringTrue : soundSettingStringFalse)) {
+			AudioListener.pause = !AudioListener.pause;
+			GameObject.Find("World Camera").GetComponent<WorldCameraScript>().playSoundEffect("UISound1");
 		}
 		screenDimensions.x += buttonWidth + 20;
 		//Exit game button, only works on build
@@ -500,6 +620,91 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		centeredStyle.alignment = TextAnchor.MiddleCenter;
 		GUI.Label (healthBarRect, "<b>" + healthPoints + "HP</b>");
 		GUI.color = Color.white;
+	}
+
+	private void DrawTowerHealthBars() {
+		
+		GUIStyle centeredStyle = GUI.skin.GetStyle ("Label");
+		centeredStyle.alignment = TextAnchor.MiddleCenter;
+
+		Rect healthBarBackgroundRect = new Rect (Screen.width - 193, 10, 173, 35);
+		Rect healthBarRect;
+
+		// team 0 rock tower health bar
+		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
+		healthBarRect = new Rect (healthBarBackgroundRect);
+		healthBarRect.x += 5;
+		healthBarRect.width -= 10;
+		healthBarRect.width *= (team0RockTowerHealth / 100f);
+		healthBarRect.y += 5;
+		healthBarRect.height -= 10;
+		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>RED Rock Tower</b></color>");
+		
+		healthBarBackgroundRect.y += 55;
+
+		// team 0 paper tower health bar
+		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
+		healthBarRect = new Rect (healthBarBackgroundRect);
+		healthBarRect.x += 5;
+		healthBarRect.width -= 10;
+		healthBarRect.width *= (team0PaperTowerHealth / 100f);
+		healthBarRect.y += 5;
+		healthBarRect.height -= 10;
+		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>RED Paper Tower</b></color>");
+
+		healthBarBackgroundRect.y += 55;
+
+		// team 0 scissors tower health bar
+		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
+		healthBarRect = new Rect (healthBarBackgroundRect);
+		healthBarRect.x += 5;
+		healthBarRect.width -= 10;
+		healthBarRect.width *= (team0ScissorsTowerHealth / 100f);
+		healthBarRect.y += 5;
+		healthBarRect.height -= 10;
+		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>RED Scissors Tower</b></color>");
+
+		healthBarBackgroundRect.y += 55;
+
+		// team 1 rock tower health bar
+		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
+		healthBarRect = new Rect (healthBarBackgroundRect);
+		healthBarRect.x += 5;
+		healthBarRect.width -= 10;
+		healthBarRect.width *= (team1RockTowerHealth / 100f);
+		healthBarRect.y += 5;
+		healthBarRect.height -= 10;
+		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>BLUE Rock Tower</b></color>");
+		
+		healthBarBackgroundRect.y += 55;
+		
+		// team 1 paper tower health bar
+		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
+		healthBarRect = new Rect (healthBarBackgroundRect);
+		healthBarRect.x += 5;
+		healthBarRect.width -= 10;
+		healthBarRect.width *= (team1PaperTowerHealth / 100f);
+		healthBarRect.y += 5;
+		healthBarRect.height -= 10;
+		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>BLUE Paper Tower</b></color>");
+		
+		healthBarBackgroundRect.y += 55;
+		
+		// team 1 scissors tower health bar
+		GUI.DrawTexture (healthBarBackgroundRect, healthBarBackgroundTexture);
+		healthBarRect = new Rect (healthBarBackgroundRect);
+		healthBarRect.x += 5;
+		healthBarRect.width -= 10;
+		healthBarRect.width *= (team1ScissorsTowerHealth / 100f);
+		healthBarRect.y += 5;
+		healthBarRect.height -= 10;
+		GUI.DrawTexture (healthBarRect, healthBarTexture);
+		GUI.Label (healthBarBackgroundRect, "<color=#000000><b>BLUE Scissors Tower</b></color>");
 	}
 
 	/**

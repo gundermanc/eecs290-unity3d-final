@@ -202,6 +202,76 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5.5, z: .200000003}
   m_Center: {x: 0, y: .300000012, z: 0}
+--- !u!1 &17544681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 17544682}
+  - 23: {fileID: 17544684}
+  - 102: {fileID: 17544683}
+  m_Layer: 0
+  m_Name: EE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &17544682
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 17544681}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
+  m_LocalPosition: {x: 559.206177, y: -14.5784492, z: 121.595383}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 196641692}
+--- !u!102 &17544683
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 17544681}
+  m_Text: You weren't supposed to get here, you know
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 0
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190269
+--- !u!23 &17544684
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 17544681}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!1 &22110124
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +498,7 @@ GameObject:
   - 4: {fileID: 86563191}
   - 114: {fileID: 86563193}
   - 114: {fileID: 86563192}
+  - 114: {fileID: 86563194}
   m_Layer: 0
   m_Name: ScissorsTowerNorth
   m_TagString: Tower
@@ -463,7 +534,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 86563191}
+  observed: {fileID: 86563193}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -487,6 +558,23 @@ MonoBehaviour:
   timeToDestroy: 30
   lerpSpeed: 1
   dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
+--- !u!114 &86563194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 86563190}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1000
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
+  thisType: 2
+  teamNumber: 0
 --- !u!1 &128951683
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,13 +745,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 486625058}
+  - {fileID: 17544682}
   - {fileID: 1447658802}
   - {fileID: 974135066}
   - {fileID: 1203146293}
   - {fileID: 1384068309}
   - {fileID: 1184172116}
   - {fileID: 1205817235}
-  - {fileID: 644288138}
   m_Father: {fileID: 0}
 --- !u!1 &232994014
 GameObject:
@@ -1453,6 +1541,7 @@ GameObject:
   - 4: {fileID: 556826234}
   - 114: {fileID: 556826236}
   - 114: {fileID: 556826235}
+  - 114: {fileID: 556826237}
   m_Layer: 0
   m_Name: ScissorsTowerSouth
   m_TagString: Tower
@@ -1488,7 +1577,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 556826234}
+  observed: {fileID: 556826236}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
@@ -1512,6 +1601,23 @@ MonoBehaviour:
   timeToDestroy: 30
   lerpSpeed: 1
   dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
+--- !u!114 &556826237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 556826233}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1000
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
+  thisType: 2
+  teamNumber: 0
 --- !u!1 &562686592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,6 +1750,7 @@ GameObject:
   - 4: {fileID: 573816647}
   - 114: {fileID: 573816649}
   - 114: {fileID: 573816648}
+  - 114: {fileID: 573816650}
   m_Layer: 0
   m_Name: RockTowerNorth
   m_TagString: Tower
@@ -1698,11 +1805,28 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 573816647}
+  observed: {fileID: 573816648}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: 0
+--- !u!114 &573816650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573816646}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1000
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
+  thisType: 0
+  teamNumber: 0
 --- !u!1 &580053965
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,7 +2271,7 @@ Transform:
   - {fileID: 1312844631}
   - {fileID: 70502506}
   - {fileID: 1327132195}
-  m_Father: {fileID: 196641692}
+  m_Father: {fileID: 1205817235}
 --- !u!1 &689402634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,6 +2356,11 @@ GameObject:
   - 92: {fileID: 703884733}
   - 124: {fileID: 703884732}
   - 45: {fileID: 703884737}
+  - 81: {fileID: 703884731}
+  - 114: {fileID: 703884736}
+  - 82: {fileID: 703884739}
+  - 82: {fileID: 703884740}
+  - 82: {fileID: 703884738}
   m_Layer: 0
   m_Name: World Camera
   m_TagString: MainCamera
@@ -2239,6 +2368,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!81 &703884731
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703884730}
+  m_Enabled: 0
 --- !u!124 &703884732
 Behaviour:
   m_ObjectHideFlags: 0
@@ -2293,6 +2429,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &703884736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703884730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ef99799c308e0489f7ee6aa1248790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  special: {fileID: 8300000, guid: 2c5b49f6ea30a8f4c99557a8ed68ccc0, type: 3}
+  soundEffects:
+  - {fileID: 8300000, guid: 5cc3135f564f141d8842f64fe67ddb69, type: 3}
+  - {fileID: 8300000, guid: 3818867e0564d45a1b3d2758f5a8f9b6, type: 3}
 --- !u!45 &703884737
 Skybox:
   m_ObjectHideFlags: 0
@@ -2301,6 +2452,180 @@ Skybox:
   m_GameObject: {fileID: 703884730}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: a2126534b3a11b34e977105bd9e3cc03, type: 2}
+--- !u!82 &703884738
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703884730}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 2c5b49f6ea30a8f4c99557a8ed68ccc0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &703884739
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703884730}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 5cc3135f564f141d8842f64fe67ddb69, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .996527791
+      value: 1
+      inSlope: -.0285008959
+      outSlope: -.0285008959
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &703884740
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703884730}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 3818867e0564d45a1b3d2758f5a8f9b6, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .909722209
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &708463447
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,7 +2744,7 @@ Prefab:
     - target: {fileID: 11400002, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
       propertyPath: observed
       value: 
-      objectReference: {fileID: 86563191}
+      objectReference: {fileID: 86563193}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 90a270ce8ec404c78851154a31e40f66, type: 2}
@@ -3961,6 +4286,7 @@ Transform:
   - {fileID: 1851416334}
   - {fileID: 86563191}
   - {fileID: 556826234}
+  - {fileID: 644288138}
   m_Father: {fileID: 196641692}
 --- !u!1 &1209538803
 GameObject:
@@ -4777,7 +5103,7 @@ Prefab:
     - target: {fileID: 11400008, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
       propertyPath: observed
       value: 
-      objectReference: {fileID: 1851416334}
+      objectReference: {fileID: 1851416335}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4316d810c996e40b6a3636b389f31222, type: 2}
@@ -5046,7 +5372,7 @@ Prefab:
     - target: {fileID: 11400004, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
       propertyPath: observed
       value: 
-      objectReference: {fileID: 556826234}
+      objectReference: {fileID: 556826236}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 408e73d0f928c4523bd7151dd8ff7459, type: 2}
@@ -5347,7 +5673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9770010a89f3942ab42fc72deeb251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSound: {fileID: 0}
 --- !u!4 &1524546047
 Transform:
   m_ObjectHideFlags: 0
@@ -6199,6 +6524,7 @@ GameObject:
   - 4: {fileID: 1766213809}
   - 114: {fileID: 1766213811}
   - 114: {fileID: 1766213810}
+  - 114: {fileID: 1766213812}
   m_Layer: 0
   m_Name: PaperTowerSouth
   m_TagString: Tower
@@ -6258,6 +6584,23 @@ MonoBehaviour:
   timeToDestroy: 30
   lerpSpeed: 1
   dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
+--- !u!114 &1766213812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1766213808}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1000
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
+  thisType: 1
+  teamNumber: 0
 --- !u!1 &1773554700
 GameObject:
   m_ObjectHideFlags: 0
@@ -6755,6 +7098,7 @@ GameObject:
   - 4: {fileID: 1851416334}
   - 114: {fileID: 1851416336}
   - 114: {fileID: 1851416335}
+  - 114: {fileID: 1851416337}
   m_Layer: 0
   m_Name: RockTowerSouth
   m_TagString: Tower
@@ -6809,11 +7153,28 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 1851416334}
+  observed: {fileID: 1851416335}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: 0
+--- !u!114 &1851416337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1851416333}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1000
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
+  thisType: 0
+  teamNumber: 0
 --- !u!1 &1855214550
 GameObject:
   m_ObjectHideFlags: 0
@@ -7004,7 +7365,7 @@ Prefab:
     - target: {fileID: 11400004, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
       propertyPath: observed
       value: 
-      objectReference: {fileID: 573816647}
+      objectReference: {fileID: 573816648}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 37aba5efb74c24c8bb94d45a6c630950, type: 2}
@@ -7605,6 +7966,7 @@ GameObject:
   - 4: {fileID: 2093564124}
   - 114: {fileID: 2093564126}
   - 114: {fileID: 2093564125}
+  - 114: {fileID: 2093564127}
   m_Layer: 0
   m_Name: PaperTowerNorth
   m_TagString: Tower
@@ -7664,6 +8026,23 @@ MonoBehaviour:
   timeToDestroy: 30
   lerpSpeed: 1
   dustCloud: {fileID: 100000, guid: be4dc0af0e0866f4c97caaf94cdd01f1, type: 2}
+--- !u!114 &2093564127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2093564123}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288fbd833cc1d411398e4cd3c85a8509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1000
+  attackSpeed: 1
+  defense: 1
+  moveSpeed: 1
+  thisType: 1
+  teamNumber: 0
 --- !u!1 &2109000685
 GameObject:
   m_ObjectHideFlags: 0

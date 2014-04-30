@@ -12,6 +12,13 @@ public class ElementalObjectScript : MonoBehaviour {
 	public Element thisType;
 	public int teamNumber;
 	private bool dead = false;
+
+	public void RPCHurt(int ID, int amount, bool parent){
+		if (parent)
+			transform.parent.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All,ID, amount);
+		else
+			transform.GetComponent<PhotonView>().RPC("Hurt", PhotonTargets.All,ID, amount);
+	}
 	
 	//Decreases the health of the object
 	[RPC]
@@ -26,7 +33,7 @@ public class ElementalObjectScript : MonoBehaviour {
 					gameObject.transform.GetComponent<PlayerControler>().Kill();
 				} else {
 					Debug.Log("Death flag.");
-					transform.parent.GetComponent<PhotonView>().RPC("Death", PhotonTargets.All, transform.parent.GetComponent<PhotonView> ().viewID);
+					transform.GetComponent<PhotonView>().RPC("Death", PhotonTargets.All, transform.GetComponent<PhotonView> ().viewID);
 					dead = true;
 				}
 			}
@@ -70,7 +77,10 @@ public class ElementalObjectScript : MonoBehaviour {
 	}
 
 	public void Update () {
-		// update Chris's OnScreenDisplayManager.
-		OnScreenDisplayManager.SetHealthPoints (Health, false);
+		 //update Chris's OnScreenDisplayManager.
+		if (gameObject.tag == "Player") {
+			if (gameObject.transform.GetComponent<PhotonView> ().isMine)
+				OnScreenDisplayManager.SetHealthPoints (Health, false);
+		}
 	}
 }

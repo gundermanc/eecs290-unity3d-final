@@ -6,9 +6,6 @@ using System.Collections;
  * @author Christian Gunderman
  */
 public class GameManager : MonoBehaviour {
-	
-	/** The sound played when the player dies */
-	public AudioClip deathSound;
 
 	public bool[,] teamTowersDead = new bool[2,3];
 	
@@ -62,6 +59,13 @@ public class GameManager : MonoBehaviour {
 	 * @param the Element type the tower was
 	 */
 	public void TowerDied(int team, int towerType){
+		//Sends team messages, if statement prevents duplicate messages
+		if (!teamTowersDead [team, towerType]) {
+			//Send sympathetic message to team whose tower just got destroyed
+			TeamMessage (team, "Oh no! One of your towers has been destroyed!", Color.red);
+			//Sends congratulatory message to the team that just destroyed a tower
+			TeamMessage ((team + 1) % 2, "Your team just destroyed one of your enemies towers!", Color.green);
+		}
 		teamTowersDead[team, towerType] = true;
 		// checks all tower flags for the team
 		for(int i = 0; i < teamTowersDead.GetLength(team); i++){
@@ -71,7 +75,7 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 		// if the method reaches this point then the teams towers have been destroyed
-		EndLevel();
+		EndLevel((team+1)%1);
 	}
 	
 	/**
@@ -96,6 +100,20 @@ public class GameManager : MonoBehaviour {
 	 */
 	public static void SetupGame () {
 		mode = GameMode.GameSetup;
+	}
+
+	/**
+	 * Brings up instructions screen
+	 */
+	public static void InstructionsScreen() {
+		mode = GameMode.Instructions;
+	}
+
+	/**
+	 * Brings up start screen
+	 */
+	public static void StartScreen() {
+		mode = GameMode.StartMenu;
 	}
 	
 	/**
@@ -129,6 +147,7 @@ public class GameManager : MonoBehaviour {
 				obj.enabled = true;
 			}
 			thisPlayer.GetComponent<PlayerControler> ().enabled = true;
+			thisPlayer.GetComponent<ElementalObjectScript> ().resetMoveSpeed ();
 		}
 
 		// hide mouse
@@ -150,22 +169,43 @@ public class GameManager : MonoBehaviour {
 	 * Restarts the game at the first level with full health, battery, and ammo.
 	 */
 	public static void RestartGame() {
-
+		Debug.LogError ("Game restart not supported.");
 	}
 	
-	/**
-	 * Called when the player died. Displays end game UIs.
-	 */
-	public static void PlayerDied() {
-
+	public void TeamChat(string message){
+		int team = 0;
+		string name = "Anonymous";
+		foreach (GameObject p in GameObject.FindGameObjectsWithTag ("Player")) {
+			if (p.GetComponent<PhotonView>().isMine){
+				team = p.GetComponent<PlayerControler>().teamNumber;
+				name = p.GetComponent<PhotonView>().owner.name;//p.GetComponent<PlayerControler>().name;
+			}
+		}
+		foreach(GameObject p in GameObject.FindGameObjectsWithTag ("Player")){
+			p.GetComponent<PlayerControler>().SendTeamMessage(team, "Message from " + name + ": " +message);
+		}
 	}
+	
+	public static void TeamMessage(int team, string message, Color c){
+		foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player")) {
+			if (p.GetComponent<PhotonView>().isMine){
+				if (p.GetComponent<PlayerControler>().teamNumber == team){
+					OnScreenDisplayManager.PostMessage(message, c);
+				}
+			}	
+		}
+	}	
 	
 	/**
 	 * Called when player reaches the end of a level. Dispatches EndLevel GUIs
 	 * and loads next level.
+	 * @param team - winning team
 	 */
-	public static void EndLevel() {
-		Debug.Log("GAAAMMMEEEE OOVEEERRR!!!!!!");
+	public static void EndLevel(int team) {
+		//Sends sympathetic message to losing team
+		TeamMessage ((team+1)%2, "All of your towers are down! Better luck next time!", Color.red);
+		//Sends congratulatory message to the winning team
+		TeamMessage (team, "YOU WIN!!!", Color.green);
 	}
 	
 	/**
@@ -174,9 +214,9 @@ public class GameManager : MonoBehaviour {
 	public enum GameMode {
 		StartMenu,			// at the start screen
 		GameSetup,			// setting up your game to play
+		Instructions,		// instructions screen
 		Paused,				// at the pause screen
 		UnPaused,			// in normal game play
-		Dead,				// at the death screen
 		EndLevel,			// at the end level screen
 		EndGame				// at the end game screen
 	}
