@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour {
 			foreach(FPSInputController obj in thisPlayer.GetComponentsInChildren<FPSInputController> ()) {
 				obj.enabled = false;
 			}
-			thisPlayer.GetComponent<PlayerControler> ().enabled = false;
+			//thisPlayer.GetComponent<PlayerControler> ().enabled = false;
 		}
 
 		// show mouse

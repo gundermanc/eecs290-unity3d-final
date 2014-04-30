@@ -7,7 +7,7 @@ public class ProjectileScript : MonoBehaviour {
 	public int teamNumber;
 	public float debuffValue;
 	public float ProjectileSpeed;
-	public int whoShot;
+	private bool Ishot = false;
 	private bool active;
 	private GameObject explosion;
 
@@ -24,11 +24,11 @@ public class ProjectileScript : MonoBehaviour {
 		}
 	}
 
-	public void setWhoShot(int ID){
-
+	void Update(){
 	}
 
-	void Update(){
+	public void Claim(){
+		Ishot = true;
 	}
 
 	/*@param: Target - the collider object with which to check to see if a collision has occured with
@@ -52,26 +52,29 @@ public class ProjectileScript : MonoBehaviour {
 						explosion.GetComponent<ParticleSystem>().Play();
 					}
 					//
-					if(collisionResult < 0){
-						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, (int)(baseDamage*.5f), true);
-					}
-					if (collisionResult == 0) {
-						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, (int)(baseDamage*1f), true);
-					}
-					if (collisionResult > 0) {
-						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, (int)(baseDamage*2f), true);
+					if(Ishot){
+						if(collisionResult < 0){
+							Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, (int)(baseDamage*.5f), true);
+						}
+						if (collisionResult == 0) {
+							Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, (int)(baseDamage*1f), true);
+						}
+						if (collisionResult > 0) {
+							Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.parent.GetComponent<PhotonView>().viewID, (int)(baseDamage*2f), true);
+						}
 					}
 				} else {
 					//Debug.Log("Element Comparer Result: "+collisionResult);
-
-					if(collisionResult < 0){
-						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, (int)(baseDamage*.5f), false);
-					}
-					if (collisionResult == 0) {
-						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*1f)), false);
-					}
-					if (collisionResult > 0) {
-						Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*2f)), false);
+					if(Ishot){
+						if(collisionResult < 0){
+							Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, (int)(baseDamage*.5f), false);
+						}
+						if (collisionResult == 0) {
+							Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*1f)), false);
+						}
+						if (collisionResult > 0) {
+							Target.transform.GetComponent<ElementalObjectScript>().RPCHurt(Target.transform.GetComponent<PhotonView>().viewID, ((int)(baseDamage*2f)), false);
+						}
 					}
 					if (debuffValue == 1) {
 						Target.transform.GetComponent<ElementalObjectScript>().changeMoveSpeed(-0.25f);
