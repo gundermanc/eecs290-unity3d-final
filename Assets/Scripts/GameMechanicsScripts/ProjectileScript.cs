@@ -6,12 +6,19 @@ public class ProjectileScript : MonoBehaviour {
 	public float baseDamage;
 	public int teamNumber;
 	public float debuffValue;
+	public float ProjectileSpeed;
 	private bool active;
 	private GameObject explosion;
 
 	// Use this for initialization
 	void Start () {
 		active = true;
+		if(ProjectileType != Element.Paper){
+			rigidbody.AddForce(transform.right * -ProjectileSpeed);
+		}
+		else {
+			rigidbody.AddForce(transform.forward * ProjectileSpeed);
+		}
 	}
 
 	void Update(){
