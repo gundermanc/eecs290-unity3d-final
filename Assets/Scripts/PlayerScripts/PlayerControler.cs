@@ -271,11 +271,13 @@ public class PlayerControler : MonoBehaviour {
 	[RPC]
 	public void Die(int ID){
 		if (gameObject.GetComponent<PhotonView> ().viewID == ID && !dead) {
-			killcam.depth = 10;
+			if (gameObject.GetComponent<PhotonView>().isMine){
+				killcam.depth = 10;
+				OnScreenDisplayManager.PostMessage ("DEAD. You will respawn in front of your tower in 15 seconds.", Color.red);
+			}
 			dead = true;
 			deathtime = Time.timeSinceLevelLoad;
-			OnScreenDisplayManager.PostMessage ("DEAD. You will respawn in front of your tower in 15 seconds.", Color.red);
-			deathcount++;
+ 			deathcount++;
 			killcamstart = new Vector3 (transform.position.x, transform.position.y + 20, transform.position.z);
 			killcamend = new Vector3 (transform.position.x, transform.position.y + 40, transform.position.z);
 			transform.position = new Vector3 (0, 0, -10);
