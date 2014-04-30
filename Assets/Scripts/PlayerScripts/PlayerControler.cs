@@ -31,6 +31,8 @@ public class PlayerControler : MonoBehaviour {
 	private Vector3 killcamend;
 	private int respawnreport;
 
+	public Material[] skyboxMats;
+
 	// Use this for initialization
 	void Start () {
 		speedDebuffed = false;				//By default the player has not been debuffed
@@ -46,6 +48,7 @@ public class PlayerControler : MonoBehaviour {
 		//TODO
 		//IF SOMETHING WITH CAMERAS BREAKS THIS WILL BE THE CULPRATE I CANT SPELL
 		transform.GetComponentInChildren<Camera>().depth = 1;
+		//if()
 	}
 	
 	// Update is called once per frame
@@ -86,7 +89,7 @@ public class PlayerControler : MonoBehaviour {
 				if (elementalType == Element.Rock) {
 					GameObject newProjectile;
 					newProjectile = PhotonNetwork.Instantiate("RockProMega", ProjectileSpawnLocation.transform.position + gameObject.transform.forward*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
-					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+					//newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 					GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Rock Player shot a Mega Rock!", Color.white);
 					OnScreenDisplayManager.PostMessage("4 second cooldown!");
 				}
@@ -99,9 +102,9 @@ public class PlayerControler : MonoBehaviour {
 				//Scissors-Type Attack: Temporarily decrease attack speed
 				if (elementalType == Element.Scissors) {
 					GameObject newProjectile = PhotonNetwork.Instantiate("TrimmingScissors", ProjectileSpawnLocation.transform.position + gameObject.transform.forward*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
-					newProjectile.transform.Rotate(0,90f,0);
-					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
-					newProjectile.rigidbody.AddTorque(ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
+					//newProjectile.transform.Rotate(0,90f,0);
+					//newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+					//newProjectile.rigidbody.AddTorque(ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
 					GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Scissors Player used Trim!", Color.white);
 					OnScreenDisplayManager.PostMessage("6 second cooldown!");
 				}
@@ -139,8 +142,8 @@ public class PlayerControler : MonoBehaviour {
 					//Scissors-Type Attack: Super Scissors
 					if (elementalType == Element.Scissors) {
 						GameObject newProjectile = PhotonNetwork.Instantiate("SuperScissors", ProjectileSpawnLocation.transform.position + Vector3.down*1 + gameObject.transform.forward*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
-						newProjectile.transform.Rotate(90f,0,0);
-						newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+						//newProjectile.transform.Rotate(90f,0,0);
+						//newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 						GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Scissors Player threw Super Scissors!", Color.white);
 						OnScreenDisplayManager.PostMessage("8 second cooldown!");
 					}
@@ -173,6 +176,7 @@ public class PlayerControler : MonoBehaviour {
 				GameObject newProjectile;
 				newProjectile = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 				//Differentiates the physics depending on what type of projectile it is
+				/*
 				if(elementalType != Element.Paper){
 					newProjectile.transform.Rotate(0,90f,0);
 					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
@@ -180,6 +184,7 @@ public class PlayerControler : MonoBehaviour {
 				} else {
 					newProjectile.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 				}
+				*/
 				newProjectile.GetComponent<ProjectileScript>().teamNumber = teamNumber;
 			}
 		}
