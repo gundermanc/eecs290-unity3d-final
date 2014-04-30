@@ -10,10 +10,13 @@ MonoImporter:
   - fatigueBarTexture: {fileID: 2800000, guid: 4f6974c30eaca71449e20033bffbc1cf, type: 3}
   - fatigueBarBackgroundTexture: {fileID: 2800000, guid: 7b4df8051a280174eafd6619ccdfe119,
       type: 3}
+  - redTowerBarTexture: {fileID: 2800000, guid: 89fec9198a42d8f4cb0eb5fa91ae7e3c,
+      type: 3}
+  - blueTowerBarTexture: {fileID: 2800000, guid: c7daffb763fea38459cc7d6271e9c3ec,
+      type: 3}
   - bloodDecalsTexture: {instanceID: 0}
   - logoTexture: {instanceID: 0}
   - overlayTexture: {instanceID: 0}
-  - messageSound: {fileID: 8300000, guid: 09181a754732a4d10a6f10eedee8ce66, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

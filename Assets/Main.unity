@@ -4934,6 +4934,8 @@ MonoBehaviour:
   fatigueBarTexture: {fileID: 2800000, guid: 4f6974c30eaca71449e20033bffbc1cf, type: 3}
   fatigueBarBackgroundTexture: {fileID: 2800000, guid: 7b4df8051a280174eafd6619ccdfe119,
     type: 3}
+  redTowerBarTexture: {fileID: 2800000, guid: 89fec9198a42d8f4cb0eb5fa91ae7e3c, type: 3}
+  blueTowerBarTexture: {fileID: 2800000, guid: c7daffb763fea38459cc7d6271e9c3ec, type: 3}
   messageDisplayTime: 5
   bloodDecalsTexture: {fileID: 0}
   logoTexture: {fileID: 2800000, guid: 1031bef2a295b9f4e8ad8aea3ed46591, type: 3}
