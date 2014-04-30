@@ -147,6 +147,7 @@ public class PlayerControler : MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.Mouse0) && (normalAttackCooldownTimer == 0)){
 				//Sets the timer to the cooldown value specified for the character
 				normalAttackCooldownTimer = NormalAttackCooldown;
+				Debug.Log(+normalAttackCooldownTimer);
 				//For hold-click rapid-fire
 				hasShotOnce = true;
 				//Instantiates the projectile
