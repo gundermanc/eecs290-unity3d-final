@@ -153,7 +153,7 @@ public class PlayerControler : MonoBehaviour {
 				GameObject newProjectile;
 				newProjectile = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 				//Differentiates the physics depending on what type of projectile it is
-				
+					newProjectile.GetComponent<ProjectileScript>().setWhoShot(transform.GetComponent<PhotonView>().viewID);
 				newProjectile.GetComponent<ProjectileScript>().teamNumber = teamNumber;
 			}
 		}
