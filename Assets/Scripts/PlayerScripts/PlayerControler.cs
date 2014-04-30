@@ -31,6 +31,8 @@ public class PlayerControler : MonoBehaviour {
 	private Vector3 killcamend;
 	private int respawnreport;
 
+	public Material[] skyboxMats;
+
 	// Use this for initialization
 	void Start () {
 		speedDebuffed = false;				//By default the player has not been debuffed
@@ -43,6 +45,10 @@ public class PlayerControler : MonoBehaviour {
 		deathcount = 0;
 		killcam = (Camera) Camera.Instantiate(GameObject.FindWithTag("MainCamera").camera, new Vector3(0, 0, 0), GameObject.FindWithTag("MainCamera").transform.rotation);
 		respawnreport = 0;
+		//TODO
+		//IF SOMETHING WITH CAMERAS BREAKS THIS WILL BE THE CULPRATE I CANT SPELL
+		transform.GetComponentInChildren<Camera>().depth = 1;
+		//if()
 	}
 	
 	// Update is called once per frame
@@ -84,7 +90,7 @@ public class PlayerControler : MonoBehaviour {
 							if (elementalType == Element.Rock) {
 									GameObject newProjectile;
 									newProjectile = PhotonNetwork.Instantiate ("RockProMega", ProjectileSpawnLocation.transform.position + gameObject.transform.forward * 1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
-									newProjectile.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+									//newProjectile.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 									newProjectile.transform.GetComponent<ProjectileScript>().Claim ();
 									GameManager.TeamMessage (this.gameObject.GetComponent<ElementalObjectScript> ().teamNumber, "Rock Player shot a Mega Rock!", Color.white);
 									OnScreenDisplayManager.PostMessage ("4 second cooldown!");
@@ -98,15 +104,14 @@ public class PlayerControler : MonoBehaviour {
 							//Scissors-Type Attack: Temporarily decrease attack speed
 							if (elementalType == Element.Scissors) {
 									GameObject newProjectile = PhotonNetwork.Instantiate ("TrimmingScissors", ProjectileSpawnLocation.transform.position + gameObject.transform.forward * 1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
-									newProjectile.transform.Rotate (0, 90f, 0);
-									newProjectile.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
-									newProjectile.rigidbody.AddTorque (ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
+									//newProjectile.transform.Rotate (0, 90f, 0);
+									//newProjectile.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+									//newProjectile.rigidbody.AddTorque (ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
 									newProjectile.transform.GetComponent<ProjectileScript>().Claim ();
 									GameManager.TeamMessage (this.gameObject.GetComponent<ElementalObjectScript> ().teamNumber, "Scissors Player used Trim!", Color.white);
 									OnScreenDisplayManager.PostMessage ("6 second cooldown!");
 							}
 					}
-
 			} else {		
 					if (Input.GetKey (KeyCode.E) && Input.GetKeyDown (KeyCode.Mouse0)) {
 							//If the cooldown is reset (0), then proceed with the attack and set the cooldown time
@@ -124,15 +129,15 @@ public class PlayerControler : MonoBehaviour {
 									if (elementalType == Element.Paper) {
 											Vector3 right = new Vector3 (ProjectileSpawnLocation.transform.forward.z, 0, -ProjectileSpawnLocation.transform.forward.x);
 											GameObject paperAirplaneA = PhotonNetwork.Instantiate (Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
-											paperAirplaneA.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+											//paperAirplaneA.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 											GameObject paperAirplaneB = PhotonNetwork.Instantiate (Projectile.name, ProjectileSpawnLocation.transform.position - right * 1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
-											paperAirplaneB.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+											//paperAirplaneB.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 											GameObject paperAirplaneC = PhotonNetwork.Instantiate (Projectile.name, ProjectileSpawnLocation.transform.position - right * 2, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
-											paperAirplaneC.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+											//paperAirplaneC.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 											GameObject paperAirplaneD = PhotonNetwork.Instantiate (Projectile.name, ProjectileSpawnLocation.transform.position + right * 1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
-											paperAirplaneD.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+											//paperAirplaneD.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 											GameObject paperAirplaneE = PhotonNetwork.Instantiate (Projectile.name, ProjectileSpawnLocation.transform.position + right * 2, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
-											paperAirplaneE.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+											//paperAirplaneE.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 											paperAirplaneA.transform.GetComponent<ProjectileScript>().Claim ();
 											paperAirplaneB.transform.GetComponent<ProjectileScript>().Claim ();
 											paperAirplaneC.transform.GetComponent<ProjectileScript>().Claim ();
@@ -144,8 +149,8 @@ public class PlayerControler : MonoBehaviour {
 									//Scissors-Type Attack: Super Scissors
 									if (elementalType == Element.Scissors) {
 											GameObject newProjectile = PhotonNetwork.Instantiate ("SuperScissors", ProjectileSpawnLocation.transform.position + Vector3.down * 1 + gameObject.transform.forward * 1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
-											newProjectile.transform.Rotate (90f, 0, 0);
-											newProjectile.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+											//newProjectile.transform.Rotate (90f, 0, 0);
+											//newProjectile.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 											newProjectile.transform.GetComponent<ProjectileScript>().Claim ();
 											GameManager.TeamMessage (this.gameObject.GetComponent<ElementalObjectScript> ().teamNumber, "Scissors Player threw Super Scissors!", Color.white);
 											OnScreenDisplayManager.PostMessage ("8 second cooldown!");
@@ -179,13 +184,13 @@ public class PlayerControler : MonoBehaviour {
 							GameObject newProjectile;
 							newProjectile = PhotonNetwork.Instantiate (Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 							//Differentiates the physics depending on what type of projectile it is
-							if (elementalType != Element.Paper) {
-									newProjectile.transform.Rotate (0, 90f, 0);
-									newProjectile.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
-									newProjectile.rigidbody.AddTorque (ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
-							} else {
-									newProjectile.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
-							}
+							//if (elementalType != Element.Paper) {
+									//newProjectile.transform.Rotate (0, 90f, 0);
+									//newProjectile.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+									//newProjectile.rigidbody.AddTorque (ProjectileSpawnLocation.transform.right * (ProjectileSpeed));
+							//} else {
+									//newProjectile.rigidbody.AddForce (ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
+							//}
 							newProjectile.GetComponent<ProjectileScript> ().teamNumber = teamNumber;
 							newProjectile.transform.GetComponent<ProjectileScript>().Claim ();
 					}
