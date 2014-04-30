@@ -99,7 +99,6 @@ public class NetworkingScript : Photon.MonoBehaviour {
 		thisPlayer.GetComponentInChildren<Camera>().enabled = true;
 		thisPlayer.GetComponentInChildren<Camera>().transform.parent = thisPlayer.transform;
 		thisPlayer.GetComponentInChildren<AudioListener>().enabled = true;
-		thisPlayer.GetComponentInChildren<TeamColorScript>().setPlayerMaterial(teamColors[groupNumber]);
 		// need to get all mouse looks not individual ones
 		thisPlayer.GetComponent<MouseLook>().enabled = true;
 		thisPlayer.GetComponent<CharacterMotor>().enabled = true;
