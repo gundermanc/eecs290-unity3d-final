@@ -386,6 +386,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 269248817}
+  - 114: {fileID: 269248819}
+  - 114: {fileID: 269248818}
   m_Layer: 0
   m_Name: RockTower
   m_TagString: Tower
@@ -405,6 +407,44 @@ Transform:
   m_Children:
   - {fileID: 1289706917}
   m_Father: {fileID: 1723815784}
+--- !u!114 &269248818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 269248816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subId: 5
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 269248817}
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  instantiationId: 0
+--- !u!114 &269248819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 269248816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e886df3dbf13048a6b7ab6c536fc85d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 0
+  dead: 0
+  teamNumber: 0
+  timeOfDeath: 0
+  timeToDestroy: 0
+  lerpSpeed: 1
+  dustCloud: {fileID: 0}
 --- !u!1 &272798677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,6 +3671,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1878039397}
+  - 114: {fileID: 1878039399}
+  - 114: {fileID: 1878039398}
   m_Layer: 0
   m_Name: RockTower
   m_TagString: Tower
@@ -3650,6 +3692,44 @@ Transform:
   m_Children:
   - {fileID: 1071746612}
   m_Father: {fileID: 1723815784}
+--- !u!114 &1878039398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1878039396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subId: 6
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 1878039397}
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  instantiationId: 0
+--- !u!114 &1878039399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1878039396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e886df3dbf13048a6b7ab6c536fc85d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 0
+  dead: 0
+  teamNumber: 0
+  timeOfDeath: 0
+  timeToDestroy: 0
+  lerpSpeed: 1
+  dustCloud: {fileID: 0}
 --- !u!1 &1883611349
 GameObject:
   m_ObjectHideFlags: 0
