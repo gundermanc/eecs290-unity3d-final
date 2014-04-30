@@ -7,6 +7,7 @@ public class ProjectileScript : MonoBehaviour {
 	public int teamNumber;
 	public float debuffValue;
 	public float ProjectileSpeed;
+	public int whoShot;
 	private bool active;
 	private GameObject explosion;
 
@@ -21,6 +22,10 @@ public class ProjectileScript : MonoBehaviour {
 		else {
 			rigidbody.AddForce(transform.forward * ProjectileSpeed);
 		}
+	}
+
+	public void setWhoShot(int ID){
+
 	}
 
 	void Update(){
