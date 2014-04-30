@@ -43,6 +43,9 @@ public class PlayerControler : MonoBehaviour {
 		deathcount = 0;
 		killcam = (Camera) Camera.Instantiate(GameObject.FindWithTag("MainCamera").camera, new Vector3(0, 0, 0), GameObject.FindWithTag("MainCamera").transform.rotation);
 		respawnreport = 0;
+		//TODO
+		//IF SOMETHING WITH CAMERAS BREAKS THIS WILL BE THE CULPRATE I CANT SPELL
+		transform.GetComponentInChildren<Camera>().depth = 1;
 	}
 	
 	// Update is called once per frame
