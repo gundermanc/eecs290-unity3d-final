@@ -28,8 +28,6 @@ public class TowerScript : Photon.MonoBehaviour {
 			transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, (transform.position.y - 0.05f), transform.position.z), lerpSpeed);
 		}
 		if(timeOfDeath != 0 && timeToDestroy < Time.time - timeOfDeath){
-			cloud.GetComponent<ParticleSystem>().Stop();
-			Destroy (cloud);
 			Destroy(gameObject);
 			//PhotonNetwork.Destroy(this.photonView);
 		}
