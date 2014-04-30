@@ -428,6 +428,7 @@ MonoBehaviour:
   ProjectileType: 1
   baseDamage: 10
   teamNumber: 0
+  debuffValue: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -443,7 +444,7 @@ MonoBehaviour:
   ownerId: 0
   group: 0
   prefixBackup: -1
-  observed: {fileID: 400000}
+  observed: {fileID: 11400006}
   synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
