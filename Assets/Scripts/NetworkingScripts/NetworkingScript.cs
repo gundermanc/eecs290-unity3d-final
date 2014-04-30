@@ -68,28 +68,28 @@ public class NetworkingScript : Photon.MonoBehaviour {
 		if(sortingHat == (int)Element.Rock){
 			if(groupNumber == 0){
 				spawnPoint = spawnPoints[1];
-				thisPlayer = PhotonNetwork.Instantiate("RockPlayerRed", spawnPoint, spawnPoint.rotation, 0);
+				thisPlayer = PhotonNetwork.Instantiate("RockPlayerRed", spawnPoint.position, spawnPoint.rotation, 0);
 			} else {
 				spawnPoint = spawnPoints[4];
-				thisPlayer = PhotonNetwork.Instantiate("RockPlayerBlue", spawnPoint, spawnPoint.rotation, 0);
+				thisPlayer = PhotonNetwork.Instantiate("RockPlayerBlue", spawnPoint.position, spawnPoint.rotation, 0);
 			}
 
 		} else if(sortingHat == (int)Element.Paper){
 			if(groupNumber == 0){
 				spawnPoint = spawnPoints[0];
-				thisPlayer = PhotonNetwork.Instantiate("PaperPlayerRed", spawnPoint, spawnPoint.rotation, 0);
+				thisPlayer = PhotonNetwork.Instantiate("PaperPlayerRed", spawnPoint.position, spawnPoint.rotation, 0);
 			} else {
 				spawnPoint = spawnPoints[3];
-				thisPlayer = PhotonNetwork.Instantiate("PaperPlayerBlue", spawnPoint, spawnPoint.rotation, 0);
+				thisPlayer = PhotonNetwork.Instantiate("PaperPlayerBlue", spawnPoint.position, spawnPoint.rotation, 0);
 			}
 
 		} else {
 			if(groupNumber == 0){
 				spawnPoint = spawnPoints[2];
-				thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayerRed", spawnPoint, spawnPoint.rotation, 0);
+				thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayerRed", spawnPoint.position, spawnPoint.rotation, 0);
 			} else {
 				spawnPoint = spawnPoints[5];
-				thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayerBlue", spawnPoint, spawnPoint.rotation, 0);
+				thisPlayer = PhotonNetwork.Instantiate("ScissorsPlayerBlue", spawnPoint.position, spawnPoint.rotation, 0);
 
 			}
 
