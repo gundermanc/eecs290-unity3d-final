@@ -318,6 +318,7 @@ MonoBehaviour:
   baseDamage: 10
   teamNumber: 0
   debuffValue: 0
+  ProjectileSpeed: 1000
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
