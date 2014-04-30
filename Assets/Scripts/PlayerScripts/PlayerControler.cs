@@ -119,15 +119,16 @@ public class PlayerControler : MonoBehaviour {
 					}
 					//Paper-Type Attack: Create a horizontal line of paper airplanes
 					if (elementalType == Element.Paper) {
+						Vector3 right = new Vector3 (ProjectileSpawnLocation.transform.forward.z, 0, -ProjectileSpawnLocation.transform.forward.x);
 						GameObject paperAirplaneA = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 						paperAirplaneA.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
-						GameObject paperAirplaneB = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + Vector3.left*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						GameObject paperAirplaneB = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position - right*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 						paperAirplaneB.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
-						GameObject paperAirplaneC = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + Vector3.left*2, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						GameObject paperAirplaneC = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position - right*2, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 						paperAirplaneC.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
-						GameObject paperAirplaneD = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + Vector3.right*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						GameObject paperAirplaneD = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + right*1, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 						paperAirplaneD.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
-						GameObject paperAirplaneE = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + Vector3.right*2, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
+						GameObject paperAirplaneE = PhotonNetwork.Instantiate(Projectile.name, ProjectileSpawnLocation.transform.position + right*2, ProjectileSpawnLocation.transform.rotation, 0) as GameObject;
 						paperAirplaneE.rigidbody.AddForce(ProjectileSpawnLocation.transform.forward * ProjectileSpeed);
 						GameManager.TeamMessage(this.gameObject.GetComponent<ElementalObjectScript>().teamNumber, "Paper Player used Copy Machine!", Color.white);
 						OnScreenDisplayManager.PostMessage("7 second cooldown!");
