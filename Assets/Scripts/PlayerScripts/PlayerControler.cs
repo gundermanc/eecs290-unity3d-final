@@ -298,15 +298,18 @@ public class PlayerControler : MonoBehaviour {
 
 	[RPC]
 	private void StartGame(){
-		if (gameObject.GetComponent<PhotonView> ().isMine) {
-			GameManager.started = true;
-			killcam.depth = 10;
-			OnScreenDisplayManager.PostMessage ("The game will begin in in 15 seconds.", Color.red);
-			dead = true;
-			deathtime = Time.timeSinceLevelLoad;
-			killcamstart = new Vector3 (RespawnPoint.position.x, RespawnPoint.position.y + 40, RespawnPoint.position.z);
-			killcamend = new Vector3 (RespawnPoint.position.x, RespawnPoint.position.y + 10, RespawnPoint.position.z);
-			transform.position = new Vector3 (0, 0, -10);
+		foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player")){
+			if (p.GetComponent<PhotonView> ().isMine) {
+				PlayerControler pc = p.GetComponent<PlayerControler>();
+				GameManager.started = true;
+				pc.killcam.depth = 10;
+				OnScreenDisplayManager.PostMessage ("The game will begin in in 15 seconds.", Color.red);
+				pc.dead = true;
+				pc.deathtime = Time.timeSinceLevelLoad;
+				pc.killcamstart = new Vector3 (pc.RespawnPoint.position.x, pc.RespawnPoint.position.y + 40, pc.RespawnPoint.position.z);
+				pc.killcamend = new Vector3 (pc.RespawnPoint.position.x, pc.RespawnPoint.position.y + 10, pc.RespawnPoint.position.z);
+				p.transform.position = new Vector3 (0, 0, -10);
+			}
 		}
 	}
 
