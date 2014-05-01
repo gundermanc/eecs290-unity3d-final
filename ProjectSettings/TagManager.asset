@@ -6,6 +6,7 @@ TagManager:
   - Tower
   - Ground
   - Explosion
+  - Scissors
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

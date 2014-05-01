@@ -55,12 +55,11 @@ public class GameManager : MonoBehaviour {
 				player.GetComponent<PlayerControler>().Kill();
 			}
 
-			// the value in this is returning null...
+			// This gets all the tower scripts so the towers get reset
 			foreach (TowerScript tower in GameObject.FindObjectsOfType<TowerScript>()) {
 				// i dont know why this is returning null
 				tower.TowerReset();
 			}
-			gameEnd = 0;
 		}
 		
 		// toggle game paused state

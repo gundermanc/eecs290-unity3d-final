@@ -13,7 +13,7 @@ GameObject:
   - 111: {fileID: 11100000}
   m_Layer: 0
   m_Name: Medieval Sward 2
-  m_TagString: Untagged
+  m_TagString: Scissors
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ GameObject:
   - 111: {fileID: 11100002}
   m_Layer: 0
   m_Name: Medieval Sward
-  m_TagString: Untagged
+  m_TagString: Scissors
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +53,7 @@ GameObject:
   - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: SuperScissors
-  m_TagString: Untagged
+  m_TagString: Scissors
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

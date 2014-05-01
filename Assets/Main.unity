@@ -4914,7 +4914,7 @@ MonoBehaviour:
   blueTowerBarTexture: {fileID: 2800000, guid: c7daffb763fea38459cc7d6271e9c3ec, type: 3}
   messageDisplayTime: 5
   bloodDecalsTexture: {fileID: 0}
-  logoTexture: {fileID: 2800000, guid: 1031bef2a295b9f4e8ad8aea3ed46591, type: 3}
+  logoTexture: {fileID: 2800000, guid: 7d314b9b31d8e6e4c96e66bc2e08d61e, type: 3}
   overlayTexture: {fileID: 2800000, guid: 176fe2badc5b1064aa2ec6d8b0a272cc, type: 3}
 --- !u!4 &1335402080
 Transform:

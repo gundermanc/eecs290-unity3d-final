@@ -19,11 +19,14 @@ public class ProjectileScript : MonoBehaviour {
 			if(tag == "Scissors"){
 				transform.Rotate(90f,0,0);
 				rigidbody.AddForce(transform.up * ProjectileSpeed);
+				rigidbody.AddForce(transform.forward * 100f);
+				rigidbody.AddTorque(transform.forward * ProjectileSpeed * 100000f);
 			} else {
 				transform.Rotate(0,90f,0);
 				rigidbody.AddForce(transform.right * -ProjectileSpeed);
+				rigidbody.AddTorque(transform.forward * (ProjectileSpeed));
 			}
-			rigidbody.AddTorque(transform.forward * (ProjectileSpeed));
+
 		}
 		else {
 			rigidbody.AddForce(transform.forward * ProjectileSpeed);
