@@ -60,6 +60,9 @@ public class GameManager : MonoBehaviour {
 				// i dont know why this is returning null
 				tower.TowerReset();
 			}
+
+			TeamMessage ((team+1)%2, "Game is over press ESC twice to Restart.", Color.green);
+			TeamMessage (team, "Game is over press ESC twice to Restart.", Color.green);
 		}
 		
 		// toggle game paused state
