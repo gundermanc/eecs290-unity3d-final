@@ -48,7 +48,7 @@ public class PlayerControler : MonoBehaviour {
 		transform.GetComponentInChildren<Camera>().depth = 1;
 		//if()
 
-		if (teamNumber == 1 && elementalType == Element.Paper && !GameManager.started) {
+		if (GameObject.FindGameObjectsWithTag("Player").Length >= 6 && !GameManager.started) {
 			gameObject.GetPhotonView().RPC("StartGame", PhotonTargets.All);
 		}
 
@@ -301,7 +301,7 @@ public class PlayerControler : MonoBehaviour {
 	[RPC]
 	private void StartGame(){
 		foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player")){
-			if (p.GetComponent<PhotonView> ().isMine) {
+			if (p.GetComponent<PhotonView> ().isMine && !GameManager.started) {
 				PlayerControler pc = p.GetComponent<PlayerControler>();
 				GameManager.started = true;
 				pc.killcam.depth = 10;

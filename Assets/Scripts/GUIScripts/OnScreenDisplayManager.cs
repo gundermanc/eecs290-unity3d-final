@@ -30,7 +30,7 @@ public class OnScreenDisplayManager : MonoBehaviour {
 	public Texture bloodDecalsTexture;			// the texture for the game over blood graphics
 	public Texture logoTexture;
 	public Texture overlayTexture;
-	private const string gameTitle = "Rock, Paper, Scissors"; //text for the game title
+	private const string gameTitle = "ROCK - PAPER - SCISSORS"; //text for the game title
 	
 	// private constants
 	private const int pauseMenuMargins = 70; //Coordinates for the rectangle used in the pause menu
