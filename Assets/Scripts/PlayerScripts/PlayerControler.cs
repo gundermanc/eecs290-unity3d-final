@@ -48,7 +48,7 @@ public class PlayerControler : MonoBehaviour {
 		transform.GetComponentInChildren<Camera>().depth = 1;
 		//if()
 
-		if (teamNumber == 1 && elementalType == Element.Rock && !GameManager.started) {
+		if (teamNumber == 1 && elementalType == Element.Paper && !GameManager.started) {
 			gameObject.GetPhotonView().RPC("StartGame", PhotonTargets.All);
 		}
 
