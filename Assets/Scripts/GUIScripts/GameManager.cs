@@ -61,8 +61,8 @@ public class GameManager : MonoBehaviour {
 				tower.TowerReset();
 			}
 
-			TeamMessage ((team+1)%2, "Game is over press ESC twice to Restart.", Color.green);
-			TeamMessage (team, "Game is over press ESC twice to Restart.", Color.green);
+			TeamMessage ((0), "Game is over press ESC twice to Restart.", Color.green);
+			TeamMessage (1, "Game is over press ESC twice to Restart.", Color.green);
 		}
 		
 		// toggle game paused state
