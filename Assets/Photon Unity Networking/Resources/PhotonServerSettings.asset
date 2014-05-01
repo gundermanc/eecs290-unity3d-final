@@ -32,4 +32,5 @@ MonoBehaviour:
   - TeamChat
   - TeamMessage
   - StartGame
+  - TowerReset
   DisableAutoOpenWizard: 0

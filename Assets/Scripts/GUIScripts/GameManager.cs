@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour {
 			foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
 				player.GetComponent<PlayerControler>().Kill();
 			}
+			foreach (GameObject tower in GameObject.FindGameObjectsWithTag("Tower")) {
+				tower.GetComponent<TowerScript>().TowerReset();
+			}
 		}
 		
 		// toggle game paused state
@@ -90,6 +93,10 @@ public class GameManager : MonoBehaviour {
 		}
 		// if the method reaches this point then the teams towers have been destroyed
 		EndLevel((team+1)%1);
+	}
+
+	public void TowerReset(int team, int towerType){
+		teamTowersDead[team, towerType] = false;
 	}
 	
 	/**

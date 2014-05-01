@@ -10,6 +10,11 @@ public class TowerScript : Photon.MonoBehaviour {
 	public float lerpSpeed;
 	public GameObject dustCloud;
 	private GameObject cloud;
+	private Vector3 StartLocation;
+
+	void Start(){
+		StartLocation = transform.position;
+	}
 
 	[RPC]
 	public void Death(int ID){
@@ -23,12 +28,24 @@ public class TowerScript : Photon.MonoBehaviour {
 		}
 	}
 
+	[RPC]
+	public void TowerReset(){
+		dead = false;
+		transform.position = StartLocation;
+		ElementalObjectScript[] elementalComponents = this.GetComponentsInChildren<ElementalObjectScript>();
+		for(int i = 0; i < elementalComponents.Length; i++){
+			elementalComponents[i].Health = 1000;
+		}
+
+		GameObject.Find ("GameManager").GetComponent<GameManager>().TowerReset(teamNumber, (int)elementType);
+	}
+
 	void Update(){
 		if(dead){
 			transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, (transform.position.y - 0.05f), transform.position.z), lerpSpeed);
 		}
 		if(timeOfDeath != 0 && timeToDestroy < Time.time - timeOfDeath){
-			Destroy(gameObject);
+			//Destroy(gameObject);
 			//PhotonNetwork.Destroy(this.photonView);
 		}
 
