@@ -2072,7 +2072,7 @@ MonoBehaviour:
   NormalAttackCooldown: .200000003
   specialCooldownOne: 6
   specialCooldownTwo: 8
-  teamNumber: 0
+  teamNumber: 1
   altTexture: {fileID: 0}
   PowerUp: {fileID: 0}
   speedDebuffed: 0

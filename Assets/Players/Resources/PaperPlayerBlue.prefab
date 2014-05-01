@@ -595,7 +595,7 @@ MonoBehaviour:
   defense: 1
   moveSpeed: 1
   thisType: 1
-  teamNumber: 0
+  teamNumber: 1
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
