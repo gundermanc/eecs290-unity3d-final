@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour {
 
 		//10 seconds after the game is done, the level is reloaded
 		if (Time.timeSinceLevelLoad - gameEnd > 10 && gameEnd != 0) {
-			Application.LoadLevel(0);
+			PhotonNetwork.LoadLevel(0);
 		}
 		
 		// toggle game paused state
