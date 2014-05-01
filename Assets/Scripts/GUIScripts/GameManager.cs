@@ -55,9 +55,9 @@ public class GameManager : MonoBehaviour {
 			}
 
 			// the value in this is returning null...
-			foreach (GameObject tower in GameObject.FindGameObjectsWithTag("Tower")) {
+			foreach (TowerScript tower in GameObject.FindObjectsOfType<TowerScript>()) {
 				// i dont know why this is returning null
-				tower.transform.GetComponent<TowerScript>().TowerReset();
+				tower.GetComponentInChildren<TowerScript>().TowerReset();
 			}
 		}
 		
