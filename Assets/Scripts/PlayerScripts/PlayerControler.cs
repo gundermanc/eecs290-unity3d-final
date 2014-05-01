@@ -51,6 +51,8 @@ public class PlayerControler : MonoBehaviour {
 		if (teamNumber == 1 && elementalType == Element.Rock && !GameManager.started) {
 			gameObject.GetPhotonView().RPC("StartGame", PhotonTargets.All);
 		}
+
+		gameObject.GetPhotonView ().RPC ("SyncData", PhotonTargets.Others);
 	}
 	
 	// Update is called once per frame
@@ -303,7 +305,7 @@ public class PlayerControler : MonoBehaviour {
 				PlayerControler pc = p.GetComponent<PlayerControler>();
 				GameManager.started = true;
 				pc.killcam.depth = 10;
-				OnScreenDisplayManager.PostMessage ("The game will begin in in 15 seconds.", Color.red);
+				OnScreenDisplayManager.PostMessage ("The game will begin in 15 seconds.", Color.red);
 				pc.dead = true;
 				pc.deathtime = Time.timeSinceLevelLoad;
 				pc.killcamstart = new Vector3 (pc.RespawnPoint.position.x, pc.RespawnPoint.position.y + 40, pc.RespawnPoint.position.z);
@@ -325,6 +327,17 @@ public class PlayerControler : MonoBehaviour {
 	public void RPCTeamMessage(int team, string message){
 		if (teamNumber == team && gameObject.GetPhotonView().isMine){
 			OnScreenDisplayManager.PostMessage(message, Color.green);
+		}
+	}
+
+	[RPC]
+	public void SyncData(){
+		foreach (ElementalObjectScript data in GameObject.FindObjectsOfType<ElementalObjectScript>()) {
+			try{
+				data.transform.GetComponent<ElementalObjectScript>().RPCHurt(data.transform.parent.GetComponent<PhotonView>().viewID, 0, true);
+			} catch(UnityException e){
+				data.transform.GetComponent<ElementalObjectScript>().RPCHurt(data.transform.GetComponent<PhotonView>().viewID, 0, false);
+			}
 		}
 	}
 
