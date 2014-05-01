@@ -33,4 +33,5 @@ MonoBehaviour:
   - TeamMessage
   - StartGame
   - TowerReset
+  - SyncData
   DisableAutoOpenWizard: 0

@@ -45,14 +45,19 @@ public class GameManager : MonoBehaviour {
 			return;
 		}
 
+		//TODO
 		//10 seconds after the game is done, the level is reloaded
 		if (Time.timeSinceLevelLoad - gameEnd > 10 && gameEnd != 0) {
 			//PhotonNetwork.LoadLevel(0);
+			// killing the players works when you pause
 			foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
 				player.GetComponent<PlayerControler>().Kill();
 			}
+
+			// the value in this is returning null...
 			foreach (GameObject tower in GameObject.FindGameObjectsWithTag("Tower")) {
-				tower.GetComponent<TowerScript>().TowerReset();
+				// i dont know why this is returning null
+				tower.transform.GetComponent<TowerScript>().TowerReset();
 			}
 		}
 		
