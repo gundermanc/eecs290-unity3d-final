@@ -22,7 +22,6 @@ public class PlayerControler : MonoBehaviour {
 	private float specialOneCooldownTimer;		//Stores the time left until the next special #1 attack can be done
 	private float specialTwoCooldownTimer;		//Stores the time left until the next special #2 attack can be done
 	private bool hasShotOnce = false;
-	private bool toDie;
 	private bool dead;
 	private float deathtime;
 	private int deathcount;
@@ -39,7 +38,6 @@ public class PlayerControler : MonoBehaviour {
 		timeSinceDebuffed = 0.0f;			//Thus the timer is set to 0
 		fatiguedOut = false;				//By default they are not out of stamina
 		normalAttackCooldownTimer = 0.0f;
-		toDie = false;
 		dead = false;
 		deathtime = -1f;
 		deathcount = 0;
@@ -49,6 +47,10 @@ public class PlayerControler : MonoBehaviour {
 		//IF SOMETHING WITH CAMERAS BREAKS THIS WILL BE THE CULPRATE I CANT SPELL
 		transform.GetComponentInChildren<Camera>().depth = 1;
 		//if()
+
+		if (teamNumber == 1 && elementalType == Element.Rock && !GameManager.started) {
+			gameObject.GetPhotonView().RPC("StartGame", PhotonTargets.All);
+		}
 	}
 	
 	// Update is called once per frame
@@ -294,6 +296,20 @@ public class PlayerControler : MonoBehaviour {
 		}
 	}
 
+	[RPC]
+	private void StartGame(){
+		if (gameObject.GetComponent<PhotonView> ().isMine) {
+			GameManager.started = true;
+			killcam.depth = 10;
+			OnScreenDisplayManager.PostMessage ("The game will begin in in 15 seconds.", Color.red);
+			dead = true;
+			deathtime = Time.timeSinceLevelLoad;
+			killcamstart = new Vector3 (RespawnPoint.position.x, RespawnPoint.position.y + 40, RespawnPoint.position.z);
+			killcamend = new Vector3 (RespawnPoint.position.x, RespawnPoint.position.y + 10, RespawnPoint.position.z);
+			transform.position = new Vector3 (0, 0, -10);
+		}
+	}
+
 	public void Kill(){
 		gameObject.GetComponent<PhotonView>().RPC("Die", PhotonTargets.All, gameObject.GetComponent<PhotonView> ().viewID);
 	}
@@ -315,6 +331,5 @@ public class PlayerControler : MonoBehaviour {
 		gameObject.transform.rotation = RespawnPoint.rotation;
 		killcam.depth = -1;
 		respawnreport = 0;
-		toDie = false;
 	}
 }

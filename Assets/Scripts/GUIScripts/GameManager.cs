@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
 	private static GameMode mode;
 	//Time when the game ends
 	private static float gameEnd;
+	//True once the game begins
+	public static bool started;
 	
 	/**
 	 * Script initialization. This is called by unity on object creation.
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour {
 		Pause ();
 		mode = GameMode.StartMenu;
 		gameEnd = 0;
+		started = false;
 
 		// initiallizes all towers for each team as not dead
 		for(int i = 0; i < teamTowersDead.GetLength(0); i++){
@@ -203,7 +206,7 @@ public class GameManager : MonoBehaviour {
 			}	
 		}
 	}	
-	
+
 	/**
 	 * Called when player reaches the end of a level. Dispatches EndLevel GUIs
 	 * and loads next level.

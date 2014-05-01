@@ -41,7 +41,7 @@ public class ProjectileScript : MonoBehaviour {
 			active = false;	
 		}
 
-		if((Target.collider.tag == "Player" || Target.collider.tag == "Tower") && active){
+		if((Target.collider.tag == "Player" || Target.collider.tag == "Tower") && active && GameManager.started){
 			active = false;
 			if(teamNumber != Target.transform.GetComponent<ElementalObjectScript>().teamNumber){
 				Element enemyType = Target.transform.GetComponent<ElementalObjectScript>().getElementalType();
