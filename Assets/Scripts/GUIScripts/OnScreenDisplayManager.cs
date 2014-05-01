@@ -347,7 +347,17 @@ public class OnScreenDisplayManager : MonoBehaviour {
 		DrawTowerHealthBars ();
 		DrawHealthBar ();
 		DrawFatigueBar ();
+		DrawGameNotStarted ();
 		DrawMessages ();
+	}
+
+	public void DrawGameNotStarted () {
+		if(!GameManager.started) {
+			// draw overlay
+			GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), overlayTexture);
+
+			GUI.Label(new Rect((Screen.width / 2) - 100, (Screen.height / 2) - 50, 200, 200), "Waiting for players...");
+		}
 	}
 
 	/**
