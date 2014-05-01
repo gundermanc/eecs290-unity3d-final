@@ -15,8 +15,14 @@ public class ProjectileScript : MonoBehaviour {
 	void Start () {
 		active = true;
 		if(ProjectileType != Element.Paper){
-			transform.Rotate(0,90f,0);
-			rigidbody.AddForce(transform.right * -ProjectileSpeed);
+			// this means the object is a super scissors and should do some things
+			if(tag == "Scissors"){
+				transform.Rotate(90f,0,0);
+				rigidbody.AddForce(transform.up * ProjectileSpeed);
+			} else {
+				transform.Rotate(0,90f,0);
+				rigidbody.AddForce(transform.right * -ProjectileSpeed);
+			}
 			rigidbody.AddTorque(transform.forward * (ProjectileSpeed));
 		}
 		else {

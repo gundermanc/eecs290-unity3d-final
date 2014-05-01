@@ -31,4 +31,5 @@ MonoBehaviour:
   - RPCTeamMessage
   - TeamChat
   - TeamMessage
+  - StartGame
   DisableAutoOpenWizard: 0
