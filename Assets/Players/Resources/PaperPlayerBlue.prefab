@@ -636,11 +636,12 @@ MonoBehaviour:
   NormalAttackCooldown: .150000006
   specialCooldownOne: 5
   specialCooldownTwo: 7
-  teamNumber: 0
+  teamNumber: 1
   altTexture: {fileID: 0}
   PowerUp: {fileID: 0}
   speedDebuffed: 0
   timeSinceDebuffed: 0
+  skyboxMats: []
 --- !u!114 &11400016
 MonoBehaviour:
   m_ObjectHideFlags: 1

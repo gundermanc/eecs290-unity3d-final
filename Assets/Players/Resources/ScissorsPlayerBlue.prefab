@@ -2031,7 +2031,7 @@ MonoBehaviour:
   defense: 1
   moveSpeed: 1
   thisType: 2
-  teamNumber: 0
+  teamNumber: 1
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2077,6 +2077,7 @@ MonoBehaviour:
   PowerUp: {fileID: 0}
   speedDebuffed: 0
   timeSinceDebuffed: 0
+  skyboxMats: []
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
