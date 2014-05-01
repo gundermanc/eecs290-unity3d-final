@@ -57,8 +57,9 @@ public class GameManager : MonoBehaviour {
 			// the value in this is returning null...
 			foreach (TowerScript tower in GameObject.FindObjectsOfType<TowerScript>()) {
 				// i dont know why this is returning null
-				tower.GetComponentInChildren<TowerScript>().TowerReset();
+				tower.TowerReset();
 			}
+			gameEnd = 0;
 		}
 		
 		// toggle game paused state

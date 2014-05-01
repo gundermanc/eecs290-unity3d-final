@@ -36,7 +36,6 @@ public class TowerScript : Photon.MonoBehaviour {
 		for(int i = 0; i < elementalComponents.Length; i++){
 			elementalComponents[i].Health = 1000;
 		}
-
 		GameObject.Find ("GameManager").GetComponent<GameManager>().TowerReset(teamNumber, (int)elementType);
 	}
 
